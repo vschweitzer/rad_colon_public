@@ -1,0 +1,153 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Purpose}{iii}{section*.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Experimental Setup}{iii}{section*.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Results}{iii}{section*.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Contents}{iv}{section*.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1}Motivation}{2}{subsection.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2}Aim of this Thesis}{2}{subsection.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.3}State of Research}{2}{subsection.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Underlying Concepts}{3}{section.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1}Radiomics}{3}{subsection.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.1}Image Acquisition}{4}{subsubsection.2.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.2}Image Segmentation}{4}{subsubsection.2.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.3}Feature Extraction}{5}{subsubsection.2.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.4}Radiomics Features}{5}{subsubsection.2.1.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{First Order Statistics}{5}{section*.18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Shape-based (3D) and Shape-based (2D)}{5}{section*.19}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\acl {glcm}}{5}{section*.20}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\acl {glrlm}}{6}{section*.22}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\acl {glszm}}{6}{section*.24}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\acl {ngtdm}}{6}{section*.26}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\acl {gldm}}{6}{section*.28}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.5}Base Scan Filters}{6}{subsubsection.2.1.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Wavelet}{6}{section*.31}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\acl {log}}{6}{section*.32}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Square and SquareRoot}{7}{section*.34}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Logarithm and Exponential}{7}{section*.35}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Gradient}{7}{section*.36}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{LocalBinaryPattern2D and LocalBinaryPattern3D}{7}{section*.37}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.6}Challenges in Radiomics}{7}{subsubsection.2.1.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Datasets}{7}{section*.39}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Segmentation}{7}{section*.40}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Feature Selection}{8}{section*.41}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Feature Definition}{8}{section*.42}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2}\acl {mri}}{8}{subsection.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.1}Physical Basics}{8}{subsubsection.2.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2}Obtaining Measurements}{9}{subsubsection.2.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.3}T\textsubscript {1} and T\textsubscript {2}}{10}{subsubsection.2.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.4}The NIfTI-1.1 Format}{11}{subsubsection.2.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3}Classification}{12}{subsection.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.1}Decision Trees}{12}{subsubsection.2.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.2}Constructing Decision Trees}{13}{subsubsection.2.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.3}\aclp {rf}}{13}{subsubsection.2.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.4}Evaluation}{14}{subsubsection.2.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Materials and Methods}{15}{section.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1}Dataset}{16}{subsection.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2}Choice of Tools}{16}{subsection.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3}Experimental Setup}{17}{subsection.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4}Hypothesis}{18}{subsection.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Implementation}{18}{section.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1}Code Structure}{18}{subsection.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2}Annotation Extrapolation}{19}{subsection.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.2.1}Creation of 2D annotations}{20}{subsubsection.4.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.2.2}Creation of 3D annotations}{20}{subsubsection.4.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.2.3}Optimization of 3D-reconstruction}{22}{subsubsection.4.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.2.4}Rationalization}{22}{subsubsection.4.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3}Reducing Redundant Work}{23}{subsection.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4}Reproducibility}{24}{subsection.4.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.5}Feature Extraction}{24}{subsection.4.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.6}Sampling}{24}{subsection.4.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.7}Feature Filtering}{24}{subsection.4.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.7.1}Filtering by Grouping}{25}{subsubsection.4.7.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.7.2}Filtering by Importance}{25}{subsubsection.4.7.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Results}{26}{section.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Discussion}{29}{section.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}References}{32}{section.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8}Glossary}{36}{section.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9}Appendix}{38}{section.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.1}MRI Image Credit}{38}{subsection.9.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.2}PyRadiomics Extractor Configuration}{38}{subsection.9.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.3}Software Versions}{39}{subsection.9.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.4}\acs {mri} Metadata}{40}{subsection.9.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.5}Grouping Accuracy versus Grouping Importance}{40}{subsection.9.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {9.5.1}Outliers}{40}{subsubsection.9.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {9.5.2}By Input Image Filter}{42}{subsubsection.9.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {9.5.3}By Feature Group}{43}{subsubsection.9.5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {9.5.4}By Feature Extraction Method}{43}{subsubsection.9.5.4}%

@@ -1,0 +1,269 @@
+% !TEX program = xelatex
+\documentclass[11pt,a4paper]{article}
+
+% This template uses parts inspired by the
+% template created by DAndexer & SEntacher
+
+%\usepackage{utf8}{inputenc}
+% For Umlaute and special characters
+%\usepackage[ngerman]{babel}
+% Page margins etc.
+\usepackage[a4paper]{geometry}
+% Set font
+\usepackage{fontspec}
+% Using images
+\usepackage{graphicx}
+% Easier quoting
+\usepackage{csquotes}
+% Customized headers and footers
+\usepackage{fancyhdr}
+% Make clickable toc and more
+\usepackage{hyperref}
+\hypersetup{
+    pdftitle={On the Predictability of Remission in Colorectal Tumor Patients using Radiomics},
+    pdfsubject={Testing the Predictability of Remission in Colorectal Tumor Patients using Radiomics},
+    pdfauthor={Valentin Schweitzer},
+    pdfkeywords={pCR, Radiomics, Colorectal Tumors, Random Forests, Bachelor Thesis},
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+% For re-using \author and co.
+\usepackage{titling}
+\author{Valentin Schweitzer}
+\date{\today}
+\title{On the Predictability of Remission in\\Colorectal Tumor Patients using Radiomics}
+
+% For displaying/referencing section names
+\usepackage{nameref}
+\makeatletter
+%\newcommand*{\currentname}{\@currentlabelname}
+\newcommand*{\currentname}{\leftmark}
+
+\makeatother
+
+% Subfigures
+\usepackage{subcaption}
+% Schmemata and drawings
+\usepackage{tikz}
+\usetikzlibrary{matrix,fit,calc,positioning,chains,shapes.multipart}
+% Better figure positioning
+\usepackage{float}
+% Better tables
+\usepackage{tabularx}
+% Long tabularx tables
+\usepackage{xltabular}
+% Generate filler text
+\usepackage{kantlipsum}
+% Glossary and acronyms
+\usepackage{acronym}
+% Easier tree drawing
+\usepackage{tikz-qtree}
+% Stuff like math letters
+\usepackage{amsfonts}
+
+\usepackage{pgf-umlcd}
+
+% Taken from https://tex.stackexchange.com/questions/416466/acronym-package-handling-possessive-case-apostrophe-s
+\makeatletter
+\newcommand{\acg}[1]{%
+    \expandafter\ifx\csname AC@#1\endcsname\AC@used
+        \acs{#1}'s%
+    \else
+        \aclu{#1}'s (\acs{#1})%
+    \fi
+}
+\makeatother
+
+\makeatletter
+\newcommand{\acsg}[1]{%
+    \acs{#1}'s%
+}
+\makeatother
+
+% Number Reference section
+\usepackage{tocbibind}
+% Change the date format
+\usepackage{datetime2}
+% Change width of figure captions
+\usepackage{caption}
+% Set global caption width
+\captionsetup{width=12cm}
+\usepackage{enumitem}
+
+\usepackage{forest}
+
+% Bibliography management
+\usepackage[
+    minnames=6,
+    maxnames=6,
+    style=ieee,
+    dateabbrev=false,
+    citestyle=numeric-comp
+]{biblatex}
+
+\addbibresource{bib.bib}
+
+%\def\citepunt{,\,}
+
+% Uncomment for better font
+% \setmainfont{Comic Sans MS}
+
+% Load custom fonts if available
+\IfFontExistsTF{Crimson Pro}{
+    \setmainfont[
+        BoldFont={Crimson Pro Medium},
+        ItalicFont={Crimson Pro Light Italic},
+        LetterSpace = -2 % Move letters slightly closer together
+    ]{Crimson Pro Light}
+}{
+    % Use font files
+    \setmainfont[
+        ExternalLocation={fonts/},
+        BoldFont={CrimsonPro-Medium.ttf},
+        ItalicFont={CrimsonPro-LightItalic.ttf},
+        LetterSpace = -2 % Move letters slightly closer together
+    ]{CrimsonPro-Light.ttf}
+}
+\IfFontExistsTF{Space Mono}{
+    \setmonofont[
+        BoldFont={Space Mono Bold},
+        ItalicFont={Space Mono Italic},
+        LetterSpace = -4, % Move letters slightly closer together
+        Scale=0.8
+    ]{Space Mono}
+}{
+    \setmonofont[
+        ExternalLocation={fonts/},
+        BoldFont={SpaceMono-Bold.ttf},
+        ItalicFont={SpaceMono-Italic.ttf},
+        Scale=0.8,
+        LetterSpace = -4 % Move letters slightly closer together
+    ]{SpaceMono-Regular.ttf}
+}
+
+% Used to enquote stuff
+\usepackage{csquotes}
+% For equations
+\usepackage{mathtools}
+% For code blocks
+\usepackage{listings}
+\usepackage{color}
+% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=false,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=0pt,             
+    numberstyle=\ttfamily\footnotesize,
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=4
+}
+
+\usepackage{caption}
+\captionsetup[table]{skip=14pt}
+% Support for multi-page tables
+\usepackage{longtable}
+
+% Support for column-text
+\usepackage{multicol}
+
+% For tikz plots
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+
+% Number representations
+\usepackage{siunitx}
+
+% Group (put space inbetween pairs of 3) only integers
+\sisetup{
+    group-digits=integer,
+    round-mode=figures,
+    round-precision=3, 
+    inter-unit-product=\ensuremath{{\cdot}},
+    output-product=\ensuremath{\cdot},
+    exponent-product=\ensuremath{\cdot},
+    detect-all,
+}
+
+% Control footnote indent
+\usepackage[hang,flushmargin]{footmisc} 
+
+% Fix paragraph spacing
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+% Short hyphen for use in math mode
+\mathchardef\mhyphen="2D
+
+%%%%%%%%%%%%%%%%%%%%
+% Custom variables %
+%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\threeDcount}{7}
+\newcommand{\removelinebreaks}[1]{%
+      \def\\{ }#1}
+
+\newcommand{\tbd}{\begin{center}\dots\textit{TBD}\dots\end{center}}
+\newcommand{\featureCount}{1743}
+
+% https://tex.stackexchange.com/questions/215697/skip-line-numbers-and-resume-from-specific-number
+
+\newcommand*\Suppressnumber{%
+  \lst@AddToHook{OnNewLine}{%
+    \let\thelstnumber\relax%
+     \advance\c@lstnumber-\@ne\relax%
+    }%
+}
+
+\newcommand*\Reactivatenumber{%
+  \lst@AddToHook{OnNewLine}{%
+   \let\thelstnumber\origthelstnumber%
+   \advance\c@lstnumber\@ne\relax}%
+}
+
+% https://tex.stackexchange.com/questions/89166/centering-in-tabularx-and-x-columns
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\listfiles
+
+\begin{document}
+\include{cover}
+\newgeometry{top=2.5cm,right=2.5cm,bottom=3cm,left=2.5cm}
+\pagenumbering{roman}
+\setlength{\headheight}{15pt}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\include{affidavit}
+\newpage
+\include{acknowledgements}
+\newpage
+\include{abstract}
+\include{toc}
+% Add chapter name with content
+%\lhead{\removelinebreaks{\thetitle}}
+\lhead{\currentname}
+\pagenumbering{arabic}
+\include{intro}
+%\include{theory}
+% \iffalse
+% \input{praxis}
+% \fi
+\include{main}
+\printbibliography[heading=bibnumbered]
+\lhead{}
+\include{glossary}
+\input{appendix}
+\end{document}

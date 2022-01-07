@@ -1,0 +1,2118 @@
+\section{Appendix}
+
+This section contains complimentary details to information introduced in the 
+main body of this thesis. It is referred to, if data provided here may 
+potentially, but not necessarily, be relevant to the reader.
+
+\subsection{Additional MRI Image Credit}
+
+To illustrate the difference between weightings in \ac{mri} scans, a comparison 
+between T\textsubscript{1} and T\textsubscript{2} weighted images of a human 
+brain were shown in Figure~\ref{fig:t1_t2}.
+Data were provided in part by the Human Connectome Project, WU-Minn Consortium 
+(Principal Investigators: David Van Essen and Kamil Ugurbil; 1U54MH091657) 
+funded by the 16 NIH Institutes and Centers that support the NIH Blueprint for 
+Neuroscience Research; and by the McDonnell Center for Systems Neuroscience at 
+Washington University. The \ac{mri} scan in question was taken of patient 100206.
+
+\subsection{PyRadiomics Extractor Configuration}\label{sec:pyrad_config}
+
+The configuration in Listing~\ref{code:pyrad_config} is supplied to PyRadiomics' 
+\texttt{radiomics.featureextractor.RadiomicsFeatureExtractor} class, providing 
+extraction parameters. 
+
+\begin{lstlisting}[caption={PyRadiomics configuration file. This file is based on the default PyRadiomics configuration file\cite{py_rad_docs}. The majority of features is enabled, to be selectively filtered out later. Some features are disabled, as recommended in the PyRadiomics documentation. Examples for reasons to disable certain features are obsolescense or redundance in combination with other features~\cite{py_rad_docs}}., label={code:pyrad_config}]
+    setting:
+    binWidth: 25
+    label: 1
+    interpolator: sitkBSpline
+    resampledPixelSpacing: null
+    weightingNorm: null
+    normalize: true
+  imageType:
+    Original: {}
+    LoG:
+      sigma:
+        - 1
+        - 3
+    Wavelet:
+      binWidth: 10
+    Square: {}
+    SquareRoot: {}
+    Logarithm: {}
+    Exponential: {}
+    Gradient: {}
+    LBP3D: {}
+  featureClass:
+    shape: null
+    firstorder: []
+    glcm:
+      - Autocorrelation
+      - JointAverage
+      - ClusterProminence
+      - ClusterShade
+      - ClusterTendency
+      - Contrast
+      - Correlation
+      - DifferenceAverage
+      - DifferenceEntropy
+      - DifferenceVariance
+      - JointEnergy
+      - JointEntropy
+      - Imc1
+      - Imc2
+      - Idm
+      - Idmn
+      - Id
+      - Idn
+      - InverseVariance
+      - MaximumProbability
+      - SumEntropy
+      - SumSquares
+    glrlm: null
+    glszm: null
+    gldm: null
+    ngtdm: null  
+\end{lstlisting}
+
+\subsection{Software Versions}
+
+The experimental setup presented here depends on a collection of software 
+distributions. To enable replication of this setup, the versions of all relevant
+tools are listed in Table~\ref{tbl:software_versions}, where 
+Table~\ref{tbl:library_versions} gives information about individual software 
+libraries used in conjunction with the Python programming language.
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{X r}
+    Software & Version\\\hline
+    Python & 3.9.7 \\
+    ITK-SNAP & 3.8.0 \\
+  \end{tabularx}
+  \caption{Versions of Software Tools used in the development of this thesis. 
+  Tools that do not have a direct impact on model performance and which are not 
+  specifically referenced, such as text editors, are omitted.}\label{tbl:software_versions}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{X r}
+    Library & Version \\\hline
+    cycler & 0.10.0 \\
+    docopt & 0.6.2 \\
+    imageio & 2.9.0 \\
+    joblib & 1.0.1 \\
+    kiwisolver & 1.3.2 \\
+    matplotlib & 3.4.3 \\
+    networkx & 2.6.2 \\
+    nibabel & 3.2.1 \\
+    numpy & 1.21.2 \\
+    packaging & 21.0 \\
+    Pillow & 8.4.0 \\
+    pykwalify & 1.8.0 \\
+    pyparsing & 2.4.7 \\
+    pyradiomics & 3.0.1 \\
+    python-dateutil & 2.8.2 \\
+    PyWavelets & 1.1.1 \\
+    ruamel.yaml & 0.17.14 \\
+    ruamel.yaml.clib & 0.2.6 \\
+    scikit-image & 0.18.3 \\
+    scikit-learn & 0.24.2 \\
+    scipy & 1.7.1 \\
+    SimpleITK & 2.1.0 \\
+    six & 1.16.0 \\
+    sklearn & 0.0 \\
+    threadpoolctl & 2.2.0 \\
+    tifffile & 2021.8.8 \\
+  \end{tabularx}
+  \caption{Versions of Python libraries used in the development of this thesis.}\label{tbl:library_versions}
+\end{table}
+
+\subsection{\acs{mri} Metadata}\label{sec:mri_metadata}
+
+Here, additional information the \ac{mri} scans making up the total dataset
+is provided. All \ac{mri} scans have been T\textsubscript{2} weighted, with a
+\SI[minimum-decimal-digits=0,drop-zero-decimal]{16}{bit} color depth. Information about Voxel and Scan dimensions can be 
+found in Table~\ref{tbl:scan_dimensions}.
+
+\sisetup{group-digits=integer,round-mode=places,round-precision=8}
+
+\begin{table}[H]
+  \tiny
+  \begin{tabularx}{\textwidth}{X X r}
+    Voxel Dimensions & Scan Dimensions & Number of Scans \\\hline
+    \num{0.4225352} $ \times $ \num{0.4225352} $ \times $ \num{3.86}         &   \num[minimum-decimal-digits=0,drop-zero-decimal]{640} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{640} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{25}  & 34\\
+    \num{0.33854166} $ \times $ \num{0.33854166} $ \times $ \num{3.85}       &   \num[minimum-decimal-digits=0,drop-zero-decimal]{768} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{768} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{26}  & 9\\
+    \num{0.875} $ \times $ \num{0.875} $ \times $ \num{3.75}                 &   \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{38}  & 5\\
+    \num{0.4882813} $ \times $ \num{0.4882813} $ \times $ \num{5.2}          &   \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{22}  & 3\\
+    \num{0.4882813} $ \times $ \num{0.4882813} $ \times $ \num{5.2000003}    &   \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{22}  & 3\\
+    \num{0.625} $ \times $ \num{0.625} $ \times $ \num{3.75}                 &   \num[minimum-decimal-digits=0,drop-zero-decimal]{384} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{34}  & 3\\
+    \num{0.75} $ \times $ \num{0.75} $ \times $ \num{4.4}                    &   \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{40}  & 3\\
+    \num{0.3125} $ \times $ \num{0.3125} $ \times $ \num{3.5}                &   \num[minimum-decimal-digits=0,drop-zero-decimal]{768} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{768} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{36}  & 2\\
+    \num{0.31413612} $ \times $ \num{0.31413612} $ \times $ \num{3.85}       &   \num[minimum-decimal-digits=0,drop-zero-decimal]{864} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{864} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{30}  & 2\\
+    \num{0.33854166} $ \times $ \num{0.33854166} $ \times $ \num{3.8500001}  &   \num[minimum-decimal-digits=0,drop-zero-decimal]{768} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{768} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{26}  & 2\\
+    \num{0.625} $ \times $ \num{0.625} $ \times $ \num{5.0}                  &   \num[minimum-decimal-digits=0,drop-zero-decimal]{384} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{26}  & 2\\
+    \num{0.6510417} $ \times $ \num{0.6510417} $ \times $ \num{3.3}          &   \num[minimum-decimal-digits=0,drop-zero-decimal]{384} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{384} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{30}  & 2\\
+    \num{0.78125} $ \times $ \num{0.78125} $ \times $ \num{6.5}              &   \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{25}  & 2\\
+    \num{0.9375} $ \times $ \num{0.9375} $ \times $ \num{3.6000001}          &   \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{30}  & 2\\
+    \num{0.31413612} $ \times $ \num{0.31413612} $ \times $ \num{3.8499997}  &   \num[minimum-decimal-digits=0,drop-zero-decimal]{864} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{864} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{30}  & 1\\
+    \num{0.33678755} $ \times $ \num{0.33678755} $ \times $ \num{3.85}       &   \num[minimum-decimal-digits=0,drop-zero-decimal]{800} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{800} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{26}  & 1\\
+    \num{0.33854166} $ \times $ \num{0.33854166} $ \times $ \num{3.8499997}  &   \num[minimum-decimal-digits=0,drop-zero-decimal]{768} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{768} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{26}  & 1\\
+    \num{0.390625} $ \times $ \num{0.390625} $ \times $ \num{4.4}            &   \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{23}  & 1\\
+    \num{0.4225352} $ \times $ \num{0.4225352} $ \times $ \num{3.8599997}    &   \num[minimum-decimal-digits=0,drop-zero-decimal]{640} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{640} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{25}  & 1\\
+    \num{0.4225352} $ \times $ \num{0.4225352} $ \times $ \num{3.8600001}    &   \num[minimum-decimal-digits=0,drop-zero-decimal]{640} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{640} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{25}  & 1\\
+    \num{0.42857143} $ \times $ \num{0.42857143} $ \times $ \num{3.86}       &   \num[minimum-decimal-digits=0,drop-zero-decimal]{560} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{560} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{25}  & 1\\
+    \num{0.4375} $ \times $ \num{0.4375} $ \times $ \num{5.2000003}          &   \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{22}  & 1\\
+    \num{0.4882813} $ \times $ \num{0.4882813} $ \times $ \num{5.1999993}    &   \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{22}  & 1\\
+    \num{0.5078125} $ \times $ \num{0.5078125} $ \times $ \num{5.2}          &   \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{22}  & 1\\
+    \num{0.520833} $ \times $ \num{0.520833} $ \times $ \num{3.6000042}      &   \num[minimum-decimal-digits=0,drop-zero-decimal]{384} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{384} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{25}  & 1\\
+    \num{0.5273438} $ \times $ \num{0.5273438} $ \times $ \num{5.0}          &   \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{23}  & 1\\
+    \num{0.5445545} $ \times $ \num{0.5445545} $ \times $ \num{4.4}          &   \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{28}  & 1\\
+    \num{0.625} $ \times $ \num{0.625} $ \times $ \num{3.8500001}            &   \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{512} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{30}  & 1\\
+    \num{0.71875} $ \times $ \num{0.71875} $ \times $ \num{3.6}              &   \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{27}  & 1\\
+    \num{0.71875} $ \times $ \num{0.71875} $ \times $ \num{4.8}              &   \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{28}  & 1\\
+    \num{0.78125} $ \times $ \num{0.78125} $ \times $ \num{3.6000001}        &   \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{27}  & 1\\
+    \num{0.78125} $ \times $ \num{0.78125} $ \times $ \num{6.0}              &   \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{320} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{30}  & 1\\
+    \num{0.9765625} $ \times $ \num{0.9765625} $ \times $ \num{6.25}         &   \num[minimum-decimal-digits=0,drop-zero-decimal]{256} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{256} $ \times $ \num[minimum-decimal-digits=0,drop-zero-decimal]{19}  & 1\\       
+  \end{tabularx}
+  \caption{Voxel and scan dimensions along with the number of scans conforming to these dimensions.}\label{tbl:scan_dimensions}
+\end{table}
+
+\sisetup{round-mode=none}
+
+\subsection{Grouping Accuracy versus Grouping Importance}\label{sec:accuracy_vs_importance}
+
+This data makes up the base of Figure~\ref{fig:accuracy_vs_importance}. Data points are
+sectioned into three groupings; grouping by input image filter, by feature group
+and by feature extraction method.
+The theory behind these groupings is covered in detail in Section~\ref{sec:filtering_grouping}.
+
+Outliers, listed in Section~\ref{sec:appendix_outliers}, denote feature 
+groupings that are either unexpectedly \enquote{synergetic}, or unusually not 
+so. An outlier is defined as being located outside the \SI{95}{\percent} 
+confidence interval of a linear regression of accuracy over average importance 
+per feature, fitted over all groupings of that category.
+
+\subsubsection{Outliers}\label{sec:appendix_outliers}
+
+Table~\ref{tbl:outliers} lists all feature groupings that performed either 
+significantly better or worse than expected. The table contains groupings of 
+all categories. Groupings split by category along with the exact values of 
+both average importance and accuracy of that grouping can be found in the 
+following section.
+
+\input{outliers}
+
+\subsubsection{Feature Grouping Performances}
+
+This section contains exact information about average importance, balanced 
+accuracy and feature counts per grouping. Split by grouping category, 
+Tables~\ref{tbl:syn_input_image_filter}, \ref{tbl:syn_feature_group}
+and~\ref{tbl:syn_feature_extraction_method} contain results for Input Image 
+Filter, Feature Group and Feature Extraction Method groupings respectively.
+The data shown here forms the basis of Figure~\ref{fig:accuracy_vs_importance}
+and the associated discussion.
+
+\begin{table}[H]
+  \tiny
+  \begin{xltabular}{\textwidth}{X l l l r}
+    Grouping Name       & Average Importance (mean) & Average Importance (median) & Balanced Accuracy & Feature Count\\\hline\endhead
+    squareroot          & \num{0.000341704565399872} & \num{0.000266577969971479} & \num{0.565803571428571} & 91\\
+    original            & \num{0.000354917081698337} & \num{0.000261187760791617} & \num{0.568035714285714} & 105\\
+    logarithm           & \num{0.000345929141200555} & \num{0.000265853408533981} & \num{0.568214285714286} & 91\\
+    wavelet-LLL         & \num{0.000402072161452621} & \num{0.000276593490165019} & \num{0.590267857142857} & 91\\
+    log-sigma-1-0-mm-3D & \num{0.000384638623273095} & \num{0.000316377087987373} & \num{0.597321428571429} & 91\\
+    lbp-3D-k            & \num{0.000414960374545107} & \num{0.00034170954195838 } & \num{0.600625}          & 91\\
+    wavelet-HHH         & \num{0.000370210030304343} & \num{0.000345888440136271} & \num{0.604642857142857} & 91\\
+    square              & \num{0.000279055112816945} & \num{0.000230604481671522} & \num{0.608214285714286} & 182\\
+    wavelet-HLH         & \num{0.000408122412609522} & \num{0.000339668522268521} & \num{0.612053571428572} & 91\\
+    wavelet-LHH         & \num{0.000428648739534644} & \num{0.000353465971157847} & \num{0.613482142857143} & 91\\
+    wavelet-LLH         & \num{0.000468245403758965} & \num{0.000382907832285733} & \num{0.618303571428571} & 91\\
+    wavelet-HHL         & \num{0.000411653667688676} & \num{0.000360961327310767} & \num{0.624910714285714} & 91\\
+    log-sigma-3-0-mm-3D & \num{0.000467394071131184} & \num{0.000282871066317851} & \num{0.630178571428571} & 91\\
+    wavelet-LHL         & \num{0.000454730328222036} & \num{0.000390905069919834} & \num{0.632678571428571} & 91\\
+    exponential         & \num{0.000225155134390635} & \num{5.68065789285015E-05} & \num{0.647321428571429} & 91\\
+    wavelet-HLL         & \num{0.000538989618678287} & \num{0.000416208609120368} & \num{0.648660714285714} & 91\\
+    gradient            & \num{0.000301757715918419} & \num{4.97519742161806E-05} & \num{0.651428571428571} & 91\\
+    lbp-3D-m2           & \num{0.000229107937737779} & \num{4.96886164714694E-05} & \num{0.653839285714285} & 91\\
+    lbp-3D-m1           & \num{0.000251987043357795} & \num{3.11536672615141E-05} & \num{0.672946428571428} & 91\\
+  \end{xltabular}
+  \caption{Input Image Filter groupings alongside their average (mean and median) importance per feature, balanced accuracy reached by that group and number of features included.}\label{tbl:syn_input_image_filter}
+\end{table}
+
+\begin{table}[H]
+  \tiny
+  \begin{xltabular}{\textwidth}{X l l l r}
+    Grouping Name & Average Importance (mean) & Average Importance (median) & Balanced Accuracy & Feature Count\\\hline\endhead
+    shape         & \num{0.00045380555129263}       & \num{0.000408408002069951}        & \num{0.558392857142857} & 14\\
+    glcm          & \num{0.000291909052522544}      & \num{0.000266757140080705}        & \num{0.573660714285714} & 418\\
+    firstorder    & \num{0.000358882355981309}      & \num{0.000315884424174178}        & \num{0.576339285714286} & 342\\
+    ngtdm         & \num{0.000290326959296795}      & \num{0.00029181862439038}         & \num{0.600535714285714} & 95\\
+    glszm         & \num{0.000381474889504424}      & \num{0.000316198002653161}        & \num{0.617321428571428} & 304\\
+    gldm          & \num{0.000327477592478678}      & \num{0.000253692504681163}        & \num{0.620267857142857} & 266\\
+    glrlm         & \num{0.000531956079924822}      & \num{0.000300015340885009}        & \num{0.649821428571429} & 304\\    
+  \end{xltabular}
+  \caption{Feature Group groupings alongside their average (mean and median) importance per feature, balanced accuracy reached by that group and number of features included.}\label{tbl:syn_feature_group}
+\end{table}
+
+{\tiny
+  \begin{xltabular}[H]{\textwidth}{X l l l r}
+    \caption{Feature Extraction Method groupings alongside their average (mean and median) importance per feature, balanced accuracy reached by that group and number of features included.}\label{tbl:syn_feature_extraction_method}\endlastfoot\\
+    Grouping Name                          & Average Importance (mean) & Average Importance (median) & Balanced Accuracy & Feature Count\\\hline\endhead
+    LeastAxisLength                        & \num{0.000192753020082659} & \num{0.000192753020082659} & \num{0.461428571428571} & 1\\
+    MajorAxisLength                        & \num{0.000818285991585234} & \num{0.000818285991585234} & \num{0.462321428571429} & 1\\
+    SurfaceVolumeRatio                     & \num{0.000160202667383835} & \num{0.000160202667383835} & \num{0.462589285714286} & 1\\
+    90Percentile                           & \num{0.000317235886688426} & \num{0.00028364629145112}  & \num{0.463125} & 19\\
+    Imc2                                   & \num{0.000256897953937047} & \num{0.000285880963573963} & \num{0.464910714285714} & 19\\
+    RunLengthNonUniformityNormalized       & \num{0.000255177233088193} & \num{0.000236130345513413} & \num{0.466160714285714} & 19\\
+    MeanAbsoluteDeviation                  & \num{0.000351015317044901} & \num{0.000318526129453791} & \num{0.469107142857143} & 19\\
+    LargeDependenceHighGrayLevelEmphasis   & \num{0.000250813756179078} & \num{0.000192291163937927} & \num{0.474107142857143} & 19\\
+    MinorAxisLength                        & \num{0.000315710812684378} & \num{0.000315710812684378} & \num{0.477232142857143} & 1\\
+    Maximum2DDiameterRow                   & \num{0.00042158515736195}  & \num{0.00042158515736195}  & \num{0.480803571428571} & 1\\
+    LargeDependenceEmphasis                & \num{0.000186926328610863} & \num{0.000173633057949301} & \num{0.487857142857143} & 19\\
+    DifferenceVariance                     & \num{0.000219852824714896} & \num{0.000260734025123532} & \num{0.489017857142857} & 19\\
+    DifferenceEntropy                      & \num{0.0002240587193821}   & \num{0.000273790754542432} & \num{0.490267857142857} & 19\\
+    JointEnergy                            & \num{0.000216494359313307} & \num{0.000258034710540827} & \num{0.490982142857143} & 19\\
+    RunPercentage                          & \num{0.000206661533045109} & \num{0.000205661705993437} & \num{0.492053571428571} & 19\\
+    Variance                               & \num{0.000338397847686762} & \num{0.00027895287094278}  & \num{0.492142857142857} & 19\\
+    MaximumProbability                     & \num{0.000256652841901275} & \num{0.000257210029909079} & \num{0.492142857142857} & 19\\
+    JointEntropy                           & \num{0.00022185944901707}  & \num{0.000236873802028507} & \num{0.495714285714286} & 19\\
+    SurfaceArea                            & \num{0.000420555567317798} & \num{0.000420555567317798} & \num{0.496607142857143} & 1\\
+    ShortRunHighGrayLevelEmphasis          & \num{0.000249840783482713} & \num{0.000205688270192137} & \num{0.497410714285714} & 19\\
+    RobustMeanAbsoluteDeviation            & \num{0.000381076857149254} & \num{0.000336670521582876} & \num{0.501071428571429} & 19\\
+    ShortRunEmphasis                       & \num{0.000249101705165469} & \num{0.000239649557233807} & \num{0.503392857142857} & 19\\
+    InterquartileRange                     & \num{0.000393146338396516} & \num{0.000315940752820833} & \num{0.504285714285714} & 19\\
+    SizeZoneNonUniformityNormalized        & \num{0.000294251197492025} & \num{0.000355621297018621} & \num{0.505446428571428} & 19\\
+    Sphericity                             & \num{0.000551854706848811} & \num{0.000551854706848811} & \num{0.506696428571429} & 1\\
+    Flatness                               & \num{0.000312163315905046} & \num{0.000312163315905046} & \num{0.515267857142857} & 1\\
+    LargeDependenceLowGrayLevelEmphasis    & \num{0.000190257994243145} & \num{0.00016859078896113}  & \num{0.517053571428571} & 19\\
+    Skewness                               & \num{0.000432913663509079} & \num{0.000363663609762297} & \num{0.517142857142857} & 19\\
+    HighGrayLevelRunEmphasis               & \num{0.000260786975960082} & \num{0.00027274977895857}  & \num{0.518214285714286} & 19\\
+    Maximum3DDiameter                      & \num{0.000646915606479321} & \num{0.000646915606479321} & \num{0.519196428571428} & 1\\
+    LowGrayLevelRunEmphasis                & \num{0.000258821347480441} & \num{0.000263650370320852} & \num{0.519732142857143} & 19\\
+    Maximum2DDiameterColumn                & \num{0.000682633477372861} & \num{0.000682633477372861} & \num{0.5225} & 1\\
+    Imc1                                   & \num{0.000287000408236279} & \num{0.00031635856640093}  & \num{0.523303571428571} & 19\\
+    Mean                                   & \num{0.000377818305773541} & \num{0.000323827583827372} & \num{0.525} & 38\\
+    ShortRunLowGrayLevelEmphasis           & \num{0.00031136249442259}  & \num{0.000245491144220808} & \num{0.527857142857143} & 19\\
+    SmallDependenceEmphasis                & \num{0.000189245644981453} & \num{0.000179573630877548} & \num{0.529375} & 19\\
+    SmallDependenceHighGrayLevelEmphasis   & \num{0.000206436275378163} & \num{0.000177526480431356} & \num{0.529732142857143} & 19\\
+    HighGrayLevelEmphasis                  & \num{0.000246752882712125} & \num{0.000210576409339904} & \num{0.529821428571429} & 19\\
+    LowGrayLevelZoneEmphasis               & \num{0.000307892386525893} & \num{0.000336974512880458} & \num{0.532232142857143} & 19\\
+    RunEntropy                             & \num{0.000184160172690058} & \num{0.000172995948945838} & \num{0.532321428571429} & 19\\
+    LowGrayLevelEmphasis                   & \num{0.000243486977797869} & \num{0.000206808052467671} & \num{0.5325} & 19\\
+    HighGrayLevelZoneEmphasis              & \num{0.00030381697917109}  & \num{0.000306803247037094} & \num{0.532767857142857} & 19\\
+    RootMeanSquared                        & \num{0.000391352315616504} & \num{0.000345336251110605} & \num{0.533214285714286} & 19\\
+    SmallDependenceLowGrayLevelEmphasis    & \num{0.00021262113701135}  & \num{0.000198871824381}    & \num{0.534553571428571} & 19\\
+    DependenceVariance                     & \num{0.000417664975956439} & \num{0.000427940102875833} & \num{0.534821428571429} & 19\\
+    Entropy                                & \num{0.000286725210583047} & \num{0.000262149940506973} & \num{0.539017857142857} & 19\\
+    SumSquares                             & \num{0.000303241793860893} & \num{0.000255152000779382} & \num{0.539375} & 19\\
+    Uniformity                             & \num{0.000291830012009122} & \num{0.00025928152390139}  & \num{0.540625} & 19\\
+    Maximum                                & \num{0.00030042817501506}  & \num{0.000289285862560469} & \num{0.541428571428571} & 42\\
+    Range                                  & \num{0.000259447254962939} & \num{0.000259433994953312} & \num{0.541964285714286} & 19\\
+    TotalEnergy                            & \num{0.000290822506333389} & \num{0.000307575549195901} & \num{0.542142857142857} & 19\\
+    JointAverage                           & \num{0.000316772127095928} & \num{0.000239749562141409} & \num{0.543839285714286} & 19\\
+    Correlation                            & \num{0.000335040800279584} & \num{0.000273971110896472} & \num{0.544285714285715} & 19\\
+    Busyness                               & \num{0.000275929924815069} & \num{0.000339548339165088} & \num{0.545982142857143} & 19\\
+    Complexity                             & \num{0.000289137696603458} & \num{0.000269678357950421} & \num{0.546964285714286} & 19\\
+    GrayLevelVariance                      & \num{0.00027454611188747}  & \num{0.000263326621196735} & \num{0.548214285714286} & 57\\
+    Maximum2DDiameterSlice                 & \num{0.000749680265164642} & \num{0.000749680265164642} & \num{0.548482142857143} & 1\\
+    ClusterShade                           & \num{0.000365756449491964} & \num{0.000300875321723022} & \num{0.549107142857143} & 19\\
+    Elongation                             & \num{0.000342553699408943} & \num{0.000342553699408943} & \num{0.549464285714286} & 1\\
+    Kurtosis                               & \num{0.000474110119530288} & \num{0.000351373545555505} & \num{0.550892857142857} & 19\\
+    ZoneVariance                           & \num{0.000315602668535249} & \num{0.000242235016879686} & \num{0.552321428571428} & 19\\
+    SmallAreaLowGrayLevelEmphasis          & \num{0.000311547274277065} & \num{0.000333465446861615} & \num{0.552946428571429} & 19\\
+    Contrast                               & \num{0.000293322112029501} & \num{0.000262840102410839} & \num{0.554464285714286} & 38\\
+    Idn                                    & \num{0.000309447215329252} & \num{0.000253575613407252} & \num{0.556071428571428} & 19\\
+    SumEntropy                             & \num{0.000266992668900244} & \num{0.00024685254663712}  & \num{0.556160714285714} & 19\\
+    Idmn                                   & \num{0.000307506887250623} & \num{0.000239556361227461} & \num{0.55625} & 19\\
+    GrayLevelNonUniformityNormalized       & \num{0.000273730197239957} & \num{0.00028079005274026}  & \num{0.556607142857143} & 38\\
+    InverseVariance                        & \num{0.000310352977602218} & \num{0.000259717600370205} & \num{0.556964285714286} & 19\\
+    DifferenceAverage                      & \num{0.000312805776869658} & \num{0.000236635982440911} & \num{0.556964285714286} & 19\\
+    Coarseness                             & \num{0.00030543849255068}  & \num{0.000367342738201371} & \num{0.559017857142857} & 19\\
+    SmallAreaEmphasis                      & \num{0.000332147735297015} & \num{0.000348605427210781} & \num{0.560089285714286} & 19\\
+    Id                                     & \num{0.0003090443541503}   & \num{0.000255542706374966} & \num{0.560357142857143} & 76\\
+    Strength                               & \num{0.00030387150388422}  & \num{0.000337932534687941} & \num{0.560535714285714} & 19\\
+    Idm                                    & \num{0.000307612483907285} & \num{0.000248533080285071} & \num{0.560982142857143} & 38\\
+    MeshVolume                             & \num{0.000396260436822103} & \num{0.000396260436822103} & \num{0.563928571428571} & 1\\
+    Minimum                                & \num{0.000322590164718114} & \num{0.000335782790267707} & \num{0.564196428571429} & 19\\
+    Autocorrelation                        & \num{0.000315489946764868} & \num{0.000240520495818609} & \num{0.565267857142857} & 19\\
+    DependenceEntropy                      & \num{0.000405783740605248} & \num{0.000334131628138018} & \num{0.565714285714286} & 19\\
+    LargeAreaHighGrayLevelEmphasis         & \num{0.000266070141636204} & \num{0.000192487504489202} & \num{0.570714285714286} & 19\\
+    10Percentile                           & \num{0.000421905097723375} & \num{0.000325904314573446} & \num{0.573303571428571} & 19\\
+    VoxelVolume                            & \num{0.000342122993679242} & \num{0.000342122993679242} & \num{0.577232142857143} & 1\\
+    ClusterTendency                        & \num{0.00031679300339271}  & \num{0.000307009874425878} & \num{0.580357142857143} & 19\\
+    DependenceNonUniformityNormalized      & \num{0.000439815981558903} & \num{0.000411743635551193} & \num{0.581071428571429} & 19\\
+    SmallAreaHighGrayLevelEmphasis         & \num{0.000363525535204834} & \num{0.000300776402024004} & \num{0.582767857142857} & 19\\
+    LargeAreaEmphasis                      & \num{0.000279042845484471} & \num{0.000238397411459287} & \num{0.583928571428571} & 19\\
+    Median                                 & \num{0.00040935190140695}  & \num{0.000296801888753792} & \num{0.598571428571429} & 19\\
+    ClusterProminence                      & \num{0.000350372592706282} & \num{0.000289438101256778} & \num{0.598928571428571} & 19\\
+    Energy                                 & \num{0.000417510890953797} & \num{0.000356320277750621} & \num{0.603839285714286} & 19\\
+    ZoneEntropy                            & \num{0.000508343410352827} & \num{0.000474166076901191} & \num{0.608928571428571} & 19\\
+    RunLengthNonUniformity                 & \num{0.000993044024156794} & \num{0.000815615846414965} & \num{0.613125} & 38\\
+    LargeAreaLowGrayLevelEmphasis          & \num{0.000338568351568341} & \num{0.00031884628186976}  & \num{0.616875} & 19\\
+    SizeZoneNonUniformity                  & \num{0.000495934005879104} & \num{0.000393519839808611} & \num{0.618214285714285} & 38\\
+    LongRunEmphasis                        & \num{0.000713574165999038} & \num{0.000414606006678722} & \num{0.636339285714286} & 19\\
+    ZonePercentage                         & \num{0.000368873418216379} & \num{0.000311370909530323} & \num{0.638660714285714} & 19\\
+    LongRunHighGrayLevelEmphasis           & \num{0.000687213072786737} & \num{0.000430207313367466} & \num{0.640803571428571} & 19\\
+    DependenceNonUniformity                & \num{0.000615258035982897} & \num{0.000510192739561261} & \num{0.641071428571429} & 38\\
+    LongRunLowGrayLevelEmphasis            & \num{0.000730322376983643} & \num{0.000471111367671612} & \num{0.646964285714286} & 19\\
+    GrayLevelNonUniformity                 & \num{0.000640204165474765} & \num{0.000428002612759955} & \num{0.659196428571429} & 95\\
+    RunVariance                            & \num{0.000869185422734627} & \num{0.00056704949938805}  & \num{0.664553571428572} & 19\\    
+    \vspace{10pt}
+  \end{xltabular}
+  }
+
+% TODO: Restructure this
+\iffalse
+\subsection{Feature Importances}
+
+{\tiny
+  \begin{xltabular}[H]{\textwidth}{X r}
+    \caption{Importance of individual features, collected through the usage of the \enquote{sacrificial} model as described in Section~\ref{sec:filtering_importance}.}\label{tbl:importances}\endlastfoot\\
+        Feature & Weighted Importance \\\hline\endhead
+        square\_firstorder\_Entropy & 0.0 \\
+        square\_firstorder\_Uniformity & 0.0 \\
+        square\_glcm\_Autocorrelation & 0.0 \\
+        square\_glcm\_JointAverage & 0.0 \\
+        square\_glcm\_ClusterProminence & 0.0 \\
+        square\_glcm\_ClusterShade & 0.0 \\
+        square\_glcm\_ClusterTendency & 0.0 \\
+        square\_glcm\_Contrast & 0.0 \\
+        square\_glcm\_Correlation & 0.0 \\
+        square\_glcm\_DifferenceAverage & 0.0 \\
+        square\_glcm\_DifferenceEntropy & 0.0 \\
+        square\_glcm\_DifferenceVariance & 0.0 \\
+        square\_glcm\_JointEnergy & 0.0 \\
+        square\_glcm\_JointEntropy & 0.0 \\
+        square\_glcm\_Imc1 & 0.0 \\
+        square\_glcm\_Imc2 & 0.0 \\
+        square\_glcm\_Idm & 0.0 \\
+        square\_glcm\_Idmn & 0.0 \\
+        square\_glcm\_Id & 0.0 \\
+        square\_glcm\_Idn & 0.0 \\
+        square\_glcm\_InverseVariance & 0.0 \\
+        square\_glcm\_MaximumProbability & 0.0 \\
+        square\_glcm\_SumEntropy & 0.0 \\
+        square\_glcm\_SumSquares & 0.0 \\
+        square\_glrlm\_GrayLevelNonUniformityNormalized & 0.0 \\
+        square\_glrlm\_GrayLevelVariance & 0.0 \\
+        square\_glrlm\_HighGrayLevelRunEmphasis & 0.0 \\
+        square\_glrlm\_LowGrayLevelRunEmphasis & 0.0 \\
+        square\_glszm\_GrayLevelNonUniformityNormalized & 0.0 \\
+        square\_glszm\_GrayLevelVariance & 0.0 \\
+        square\_glszm\_HighGrayLevelZoneEmphasis & 0.0 \\
+        square\_glszm\_LowGrayLevelZoneEmphasis & 0.0 \\
+        square\_glszm\_SizeZoneNonUniformity & 0.0 \\
+        square\_gldm\_GrayLevelVariance & 0.0 \\
+        square\_gldm\_HighGrayLevelEmphasis & 0.0 \\
+        square\_gldm\_LowGrayLevelEmphasis & 0.0 \\
+        square\_ngtdm\_Busyness & 0.0 \\
+        square\_ngtdm\_Coarseness & 0.0 \\
+        square\_ngtdm\_Complexity & 0.0 \\
+        square\_ngtdm\_Contrast & 0.0 \\
+        square\_ngtdm\_Strength & 0.0 \\
+        exponential\_firstorder\_Entropy & 0.0 \\
+        exponential\_firstorder\_Uniformity & 0.0 \\
+        exponential\_glcm\_Autocorrelation & 0.0 \\
+        exponential\_glcm\_JointAverage & 0.0 \\
+        exponential\_glcm\_ClusterProminence & 0.0 \\
+        exponential\_glcm\_ClusterShade & 0.0 \\
+        exponential\_glcm\_ClusterTendency & 0.0 \\
+        exponential\_glcm\_Contrast & 0.0 \\
+        exponential\_glcm\_Correlation & 0.0 \\
+        exponential\_glcm\_DifferenceAverage & 0.0 \\
+        exponential\_glcm\_DifferenceEntropy & 0.0 \\
+        exponential\_glcm\_DifferenceVariance & 0.0 \\
+        exponential\_glcm\_JointEnergy & 0.0 \\
+        exponential\_glcm\_JointEntropy & 0.0 \\
+        exponential\_glcm\_Imc1 & 0.0 \\
+        exponential\_glcm\_Imc2 & 0.0 \\
+        exponential\_glcm\_Idm & 0.0 \\
+        exponential\_glcm\_Idmn & 0.0 \\
+        exponential\_glcm\_Id & 0.0 \\
+        exponential\_glcm\_Idn & 0.0 \\
+        exponential\_glcm\_InverseVariance & 0.0 \\
+        exponential\_glcm\_MaximumProbability & 0.0 \\
+        exponential\_glcm\_SumEntropy & 0.0 \\
+        exponential\_glcm\_SumSquares & 0.0 \\
+        exponential\_glrlm\_GrayLevelNonUniformityNormalized & 0.0 \\
+        exponential\_glrlm\_GrayLevelVariance & 0.0 \\
+        exponential\_glrlm\_HighGrayLevelRunEmphasis & 0.0 \\
+        exponential\_glrlm\_LowGrayLevelRunEmphasis & 0.0 \\
+        exponential\_glszm\_GrayLevelNonUniformityNormalized & 0.0 \\
+        exponential\_glszm\_GrayLevelVariance & 0.0 \\
+        exponential\_glszm\_HighGrayLevelZoneEmphasis & 0.0 \\
+        exponential\_glszm\_LowGrayLevelZoneEmphasis & 0.0 \\
+        exponential\_glszm\_SizeZoneNonUniformity & 0.0 \\
+        exponential\_gldm\_GrayLevelVariance & 0.0 \\
+        exponential\_gldm\_HighGrayLevelEmphasis & 0.0 \\
+        exponential\_gldm\_LowGrayLevelEmphasis & 0.0 \\
+        exponential\_ngtdm\_Busyness & 0.0 \\
+        exponential\_ngtdm\_Coarseness & 0.0 \\
+        exponential\_ngtdm\_Complexity & 0.0 \\
+        exponential\_ngtdm\_Contrast & 0.0 \\
+        exponential\_ngtdm\_Strength & 0.0 \\
+        gradient\_firstorder\_Entropy & 0.0 \\
+        gradient\_firstorder\_Uniformity & 0.0 \\
+        gradient\_glcm\_Autocorrelation & 0.0 \\
+        gradient\_glcm\_JointAverage & 0.0 \\
+        gradient\_glcm\_ClusterProminence & 0.0 \\
+        gradient\_glcm\_ClusterShade & 0.0 \\
+        gradient\_glcm\_ClusterTendency & 0.0 \\
+        gradient\_glcm\_Contrast & 0.0 \\
+        gradient\_glcm\_Correlation & 0.0 \\
+        gradient\_glcm\_DifferenceAverage & 0.0 \\
+        gradient\_glcm\_DifferenceEntropy & 0.0 \\
+        gradient\_glcm\_DifferenceVariance & 0.0 \\
+        gradient\_glcm\_JointEnergy & 0.0 \\
+        gradient\_glcm\_JointEntropy & 0.0 \\
+        gradient\_glcm\_Imc1 & 0.0 \\
+        gradient\_glcm\_Imc2 & 0.0 \\
+        gradient\_glcm\_Idm & 0.0 \\
+        gradient\_glcm\_Idmn & 0.0 \\
+        gradient\_glcm\_Id & 0.0 \\
+        gradient\_glcm\_Idn & 0.0 \\
+        gradient\_glcm\_InverseVariance & 0.0 \\
+        gradient\_glcm\_MaximumProbability & 0.0 \\
+        gradient\_glcm\_SumEntropy & 0.0 \\
+        gradient\_glcm\_SumSquares & 0.0 \\
+        gradient\_glrlm\_GrayLevelNonUniformityNormalized & 0.0 \\
+        gradient\_glrlm\_GrayLevelVariance & 0.0 \\
+        gradient\_glrlm\_HighGrayLevelRunEmphasis & 0.0 \\
+        gradient\_glrlm\_LowGrayLevelRunEmphasis & 0.0 \\
+        gradient\_glszm\_GrayLevelNonUniformityNormalized & 0.0 \\
+        gradient\_glszm\_GrayLevelVariance & 0.0 \\
+        gradient\_glszm\_HighGrayLevelZoneEmphasis & 0.0 \\
+        gradient\_glszm\_LowGrayLevelZoneEmphasis & 0.0 \\
+        gradient\_glszm\_SizeZoneNonUniformity & 0.0 \\
+        gradient\_gldm\_GrayLevelVariance & 0.0 \\
+        gradient\_gldm\_HighGrayLevelEmphasis & 0.0 \\
+        gradient\_gldm\_LowGrayLevelEmphasis & 0.0 \\
+        gradient\_ngtdm\_Busyness & 0.0 \\
+        gradient\_ngtdm\_Coarseness & 0.0 \\
+        gradient\_ngtdm\_Complexity & 0.0 \\
+        gradient\_ngtdm\_Contrast & 0.0 \\
+        gradient\_ngtdm\_Strength & 0.0 \\
+        lbp-3D-m1\_firstorder\_Entropy & 0.0 \\
+        lbp-3D-m1\_firstorder\_Maximum & 0.0 \\
+        lbp-3D-m1\_firstorder\_Minimum & 0.0 \\
+        lbp-3D-m1\_firstorder\_Range & 0.0 \\
+        lbp-3D-m1\_firstorder\_Uniformity & 0.0 \\
+        lbp-3D-m1\_glcm\_Autocorrelation & 0.0 \\
+        lbp-3D-m1\_glcm\_JointAverage & 0.0 \\
+        lbp-3D-m1\_glcm\_ClusterProminence & 0.0 \\
+        lbp-3D-m1\_glcm\_ClusterShade & 0.0 \\
+        lbp-3D-m1\_glcm\_ClusterTendency & 0.0 \\
+        lbp-3D-m1\_glcm\_Contrast & 0.0 \\
+        lbp-3D-m1\_glcm\_Correlation & 0.0 \\
+        lbp-3D-m1\_glcm\_DifferenceAverage & 0.0 \\
+        lbp-3D-m1\_glcm\_DifferenceEntropy & 0.0 \\
+        lbp-3D-m1\_glcm\_DifferenceVariance & 0.0 \\
+        lbp-3D-m1\_glcm\_JointEnergy & 0.0 \\
+        lbp-3D-m1\_glcm\_JointEntropy & 0.0 \\
+        lbp-3D-m1\_glcm\_Imc1 & 0.0 \\
+        lbp-3D-m1\_glcm\_Imc2 & 0.0 \\
+        lbp-3D-m1\_glcm\_Idm & 0.0 \\
+        lbp-3D-m1\_glcm\_Idmn & 0.0 \\
+        lbp-3D-m1\_glcm\_Id & 0.0 \\
+        lbp-3D-m1\_glcm\_Idn & 0.0 \\
+        lbp-3D-m1\_glcm\_InverseVariance & 0.0 \\
+        lbp-3D-m1\_glcm\_MaximumProbability & 0.0 \\
+        lbp-3D-m1\_glcm\_SumEntropy & 0.0 \\
+        lbp-3D-m1\_glcm\_SumSquares & 0.0 \\
+        lbp-3D-m1\_glrlm\_GrayLevelNonUniformityNormalized & 0.0 \\
+        lbp-3D-m1\_glrlm\_GrayLevelVariance & 0.0 \\
+        lbp-3D-m1\_glrlm\_HighGrayLevelRunEmphasis & 0.0 \\
+        lbp-3D-m1\_glrlm\_LowGrayLevelRunEmphasis & 0.0 \\
+        lbp-3D-m1\_glszm\_GrayLevelNonUniformityNormalized & 0.0 \\
+        lbp-3D-m1\_glszm\_GrayLevelVariance & 0.0 \\
+        lbp-3D-m1\_glszm\_HighGrayLevelZoneEmphasis & 0.0 \\
+        lbp-3D-m1\_glszm\_LowGrayLevelZoneEmphasis & 0.0 \\
+        lbp-3D-m1\_glszm\_SizeZoneNonUniformity & 0.0 \\
+        lbp-3D-m1\_gldm\_GrayLevelVariance & 0.0 \\
+        lbp-3D-m1\_gldm\_HighGrayLevelEmphasis & 0.0 \\
+        lbp-3D-m1\_gldm\_LowGrayLevelEmphasis & 0.0 \\
+        lbp-3D-m1\_ngtdm\_Busyness & 0.0 \\
+        lbp-3D-m1\_ngtdm\_Coarseness & 0.0 \\
+        lbp-3D-m1\_ngtdm\_Complexity & 0.0 \\
+        lbp-3D-m1\_ngtdm\_Contrast & 0.0 \\
+        lbp-3D-m1\_ngtdm\_Strength & 0.0 \\
+        lbp-3D-m2\_firstorder\_Entropy & 0.0 \\
+        lbp-3D-m2\_firstorder\_Minimum & 0.0 \\
+        lbp-3D-m2\_firstorder\_Uniformity & 0.0 \\
+        lbp-3D-m2\_glcm\_Autocorrelation & 0.0 \\
+        lbp-3D-m2\_glcm\_JointAverage & 0.0 \\
+        lbp-3D-m2\_glcm\_ClusterProminence & 0.0 \\
+        lbp-3D-m2\_glcm\_ClusterShade & 0.0 \\
+        lbp-3D-m2\_glcm\_ClusterTendency & 0.0 \\
+        lbp-3D-m2\_glcm\_Contrast & 0.0 \\
+        lbp-3D-m2\_glcm\_Correlation & 0.0 \\
+        lbp-3D-m2\_glcm\_DifferenceAverage & 0.0 \\
+        lbp-3D-m2\_glcm\_DifferenceEntropy & 0.0 \\
+        lbp-3D-m2\_glcm\_DifferenceVariance & 0.0 \\
+        lbp-3D-m2\_glcm\_JointEnergy & 0.0 \\
+        lbp-3D-m2\_glcm\_JointEntropy & 0.0 \\
+        lbp-3D-m2\_glcm\_Imc1 & 0.0 \\
+        lbp-3D-m2\_glcm\_Imc2 & 0.0 \\
+        lbp-3D-m2\_glcm\_Idm & 0.0 \\
+        lbp-3D-m2\_glcm\_Idmn & 0.0 \\
+        lbp-3D-m2\_glcm\_Id & 0.0 \\
+        lbp-3D-m2\_glcm\_Idn & 0.0 \\
+        lbp-3D-m2\_glcm\_InverseVariance & 0.0 \\
+        lbp-3D-m2\_glcm\_MaximumProbability & 0.0 \\
+        lbp-3D-m2\_glcm\_SumEntropy & 0.0 \\
+        lbp-3D-m2\_glcm\_SumSquares & 0.0 \\
+        lbp-3D-m2\_glrlm\_GrayLevelNonUniformityNormalized & 0.0 \\
+        lbp-3D-m2\_glrlm\_GrayLevelVariance & 0.0 \\
+        lbp-3D-m2\_glrlm\_HighGrayLevelRunEmphasis & 0.0 \\
+        lbp-3D-m2\_glrlm\_LowGrayLevelRunEmphasis & 0.0 \\
+        lbp-3D-m2\_glszm\_GrayLevelNonUniformityNormalized & 0.0 \\
+        lbp-3D-m2\_glszm\_GrayLevelVariance & 0.0 \\
+        lbp-3D-m2\_glszm\_HighGrayLevelZoneEmphasis & 0.0 \\
+        lbp-3D-m2\_glszm\_LowGrayLevelZoneEmphasis & 0.0 \\
+        lbp-3D-m2\_glszm\_SizeZoneNonUniformity & 0.0 \\
+        lbp-3D-m2\_gldm\_GrayLevelVariance & 0.0 \\
+        lbp-3D-m2\_gldm\_HighGrayLevelEmphasis & 0.0 \\
+        lbp-3D-m2\_gldm\_LowGrayLevelEmphasis & 0.0 \\
+        lbp-3D-m2\_ngtdm\_Busyness & 0.0 \\
+        lbp-3D-m2\_ngtdm\_Coarseness & 0.0 \\
+        lbp-3D-m2\_ngtdm\_Complexity & 0.0 \\
+        lbp-3D-m2\_ngtdm\_Contrast & 0.0 \\
+        lbp-3D-m2\_ngtdm\_Strength & 0.0 \\
+        exponential\_glszm\_ZoneEntropy & 2.1236636913598388e-05 \\
+        gradient\_glszm\_ZoneEntropy & 2.414310548957808e-05 \\
+        square\_glszm\_SizeZoneNonUniformityNormalized & 2.5152909427453702e-05 \\
+        exponential\_glszm\_SizeZoneNonUniformityNormalized & 2.5812574299077352e-05 \\
+        lbp-3D-m1\_glszm\_GrayLevelNonUniformity & 2.8612188687333292e-05 \\
+        exponential\_glszm\_GrayLevelNonUniformity & 3.0135341025776752e-05 \\
+        lbp-3D-m1\_glszm\_ZoneEntropy & 3.115366726151407e-05 \\
+        gradient\_glszm\_GrayLevelNonUniformity & 3.550875272207037e-05 \\
+        lbp-3D-m2\_glszm\_SizeZoneNonUniformityNormalized & 3.810779739153187e-05 \\
+        gradient\_glszm\_SizeZoneNonUniformityNormalized & 4.094691459505148e-05 \\
+        square\_glszm\_GrayLevelNonUniformity & 4.145934899203768e-05 \\
+        lbp-3D-m2\_glszm\_GrayLevelNonUniformity & 4.253793848373998e-05 \\
+        gradient\_glszm\_SmallAreaEmphasis & 4.443401065903416e-05 \\
+        lbp-3D-m1\_glszm\_SizeZoneNonUniformityNormalized & 4.536943292324457e-05 \\
+        square\_glszm\_ZoneEntropy & 4.581074976957043e-05 \\
+        lbp-3D-m1\_glszm\_ZoneVariance & 4.832361873378613e-05 \\
+        lbp-3D-m2\_glszm\_SmallAreaLowGrayLevelEmphasis & 4.870864283505619e-05 \\
+        lbp-3D-m2\_glszm\_ZoneEntropy & 4.9688616471469436e-05 \\
+        gradient\_glszm\_SmallAreaHighGrayLevelEmphasis & 4.9751974216180585e-05 \\
+        square\_glszm\_SmallAreaEmphasis & 5.394015841597638e-05 \\
+        exponential\_glszm\_SmallAreaLowGrayLevelEmphasis & 5.510812228785115e-05 \\
+        gradient\_glszm\_SmallAreaLowGrayLevelEmphasis & 5.606109948591638e-05 \\
+        lbp-3D-m2\_glszm\_SmallAreaEmphasis & 5.6196637540198255e-05 \\
+        exponential\_glszm\_ZoneVariance & 5.680657892850154e-05 \\
+        square\_glszm\_SmallAreaLowGrayLevelEmphasis & 5.708517164508632e-05 \\
+        square\_glszm\_ZoneVariance & 5.8527450279960884e-05 \\
+        gradient\_glszm\_ZoneVariance & 5.856931342273861e-05 \\
+        lbp-3D-m1\_glszm\_SmallAreaLowGrayLevelEmphasis & 6.143386858454754e-05 \\
+        square\_glszm\_SmallAreaHighGrayLevelEmphasis & 6.429917762574742e-05 \\
+        lbp-3D-m2\_glszm\_ZoneVariance & 6.430181069414291e-05 \\
+        lbp-3D-m1\_glszm\_SmallAreaEmphasis & 6.483366979356148e-05 \\
+        exponential\_glszm\_SmallAreaHighGrayLevelEmphasis & 6.541911764053545e-05 \\
+        lbp-3D-m2\_glszm\_SmallAreaHighGrayLevelEmphasis & 6.704172896333666e-05 \\
+        lbp-3D-m1\_glszm\_SmallAreaHighGrayLevelEmphasis & 6.753961300769807e-05 \\
+        exponential\_glszm\_SmallAreaEmphasis & 6.927108021811102e-05 \\
+        lbp-3D-m1\_firstorder\_Median & 6.938541205089048e-05 \\
+        wavelet-LHH\_gldm\_LargeDependenceEmphasis & 0.00011065190157928896 \\
+        wavelet-LHH\_glrlm\_RunPercentage & 0.00011484478548988142 \\
+        wavelet-HHL\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.00011530146727985785 \\
+        gradient\_gldm\_SmallDependenceEmphasis & 0.00011647676413968005 \\
+        lbp-3D-m1\_gldm\_LargeDependenceEmphasis & 0.00011867678534680839 \\
+        wavelet-HHH\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.00012095057547761791 \\
+        wavelet-HLH\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.00012440689313217372 \\
+        lbp-3D-m2\_glrlm\_RunEntropy & 0.0001271503855628196 \\
+        wavelet-HHH\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.0001288540204057248 \\
+        wavelet-HLH\_glszm\_LargeAreaEmphasis & 0.00012889080017040467 \\
+        lbp-3D-m1\_gldm\_SmallDependenceEmphasis & 0.0001292959684322646 \\
+        gradient\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.00013029668430441298 \\
+        square\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.0001306483189658677 \\
+        wavelet-HHH\_gldm\_SmallDependenceEmphasis & 0.00013192880397919622 \\
+        gradient\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.00013206142702658978 \\
+        wavelet-HLH\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.0001325158451115491 \\
+        exponential\_gldm\_LargeDependenceEmphasis & 0.00013252355561761475 \\
+        log-sigma-1-0-mm-3D\_gldm\_LargeDependenceEmphasis & 0.0001333657085694197 \\
+        wavelet-HHH\_glrlm\_RunPercentage & 0.00013547157255781875 \\
+        wavelet-HLH\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.00013784206335996623 \\
+        wavelet-LLL\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.00014079408040733882 \\
+        gradient\_glrlm\_RunPercentage & 0.00014228142991851484 \\
+        lbp-3D-m1\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.00014235955515859737 \\
+        lbp-3D-m2\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.00014288476788542852 \\
+        lbp-3D-m1\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.00014434290799901497 \\
+        lbp-3D-m1\_glrlm\_RunEntropy & 0.0001452587728985129 \\
+        square\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.0001456023601323263 \\
+        wavelet-HHH\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.00014615677110493743 \\
+        lbp-3D-m2\_gldm\_SmallDependenceEmphasis & 0.0001461810735500718 \\
+        lbp-3D-m2\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.00014634015291387163 \\
+        wavelet-LHH\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.00014704303438124944 \\
+        gradient\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.00014764816826815362 \\
+        wavelet-LHL\_glszm\_LargeAreaEmphasis & 0.00014779794435749083 \\
+        log-sigma-3-0-mm-3D\_glszm\_SizeZoneNonUniformity & 0.0001482580934897571 \\
+        wavelet-HHH\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.0001492522411323557 \\
+        log-sigma-1-0-mm-3D\_gldm\_SmallDependenceEmphasis & 0.0001500230105692007 \\
+        wavelet-HHL\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.00015033139924893564 \\
+        wavelet-HHL\_glszm\_LargeAreaEmphasis & 0.0001504282866638801 \\
+        square\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.0001507891778864535 \\
+        lbp-3D-m2\_glrlm\_RunPercentage & 0.00015100732825394232 \\
+        exponential\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.0001517953382546743 \\
+        wavelet-HHL\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.000152232108066578 \\
+        wavelet-HHL\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.00015268223726094932 \\
+        exponential\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.0001528728329079206 \\
+        gradient\_gldm\_LargeDependenceEmphasis & 0.00015296678245708273 \\
+        wavelet-HHH\_glrlm\_ShortRunEmphasis & 0.00015306469785706953 \\
+        wavelet-HHL\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.00015310177363154462 \\
+        lbp-3D-m1\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.00015329153589327676 \\
+        wavelet-HHH\_glrlm\_RunEntropy & 0.00015367174812620812 \\
+        wavelet-HHL\_gldm\_LargeDependenceEmphasis & 0.0001536933553389092 \\
+        log-sigma-1-0-mm-3D\_firstorder\_Median & 0.0001542309737869025 \\
+        wavelet-LLH\_glszm\_LargeAreaEmphasis & 0.000154532008325369 \\
+        exponential\_glrlm\_RunEntropy & 0.00015462193137186092 \\
+        wavelet-LHL\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.0001549698098227613 \\
+        wavelet-HHH\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.00015520568652819156 \\
+        lbp-3D-k\_gldm\_LargeDependenceEmphasis & 0.00015523339013919442 \\
+        exponential\_gldm\_SmallDependenceEmphasis & 0.00015528655200082111 \\
+        square\_glrlm\_RunEntropy & 0.00015540791255861863 \\
+        lbp-3D-m2\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.00015565485598302236 \\
+        original\_glcm\_SumSquares & 0.0001560225133648745 \\
+        wavelet-HHL\_glrlm\_ShortRunEmphasis & 0.00015745216149417327 \\
+        wavelet-HHL\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.00015764853854233977 \\
+        wavelet-HLH\_glrlm\_RunLengthNonUniformityNormalized & 0.00015887746579436207 \\
+        wavelet-HLH\_gldm\_SmallDependenceEmphasis & 0.00015916227142446295 \\
+        log-sigma-3-0-mm-3D\_glrlm\_RunEntropy & 0.00015920678086805734 \\
+        original\_glcm\_SumEntropy & 0.00016002927573765055 \\
+        original\_shape\_SurfaceVolumeRatio & 0.00016020266738383477 \\
+        square\_gldm\_LargeDependenceEmphasis & 0.0001604892164637336 \\
+        squareroot\_firstorder\_90Percentile & 0.0001606109763017413 \\
+        exponential\_glrlm\_RunPercentage & 0.00016077355297985279 \\
+        lbp-3D-k\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.00016084797822274222 \\
+        wavelet-HHL\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.00016105265561445497 \\
+        log-sigma-1-0-mm-3D\_glrlm\_ShortRunEmphasis & 0.00016130734079607107 \\
+        lbp-3D-k\_glszm\_ZoneVariance & 0.00016143190091830303 \\
+        wavelet-HHL\_glszm\_ZonePercentage & 0.0001614969804560422 \\
+        lbp-3D-m2\_gldm\_LargeDependenceEmphasis & 0.00016229595103877626 \\
+        lbp-3D-m1\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.0001624796837441874 \\
+        square\_glrlm\_RunPercentage & 0.00016313451773313674 \\
+        wavelet-HLH\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.00016416148168079732 \\
+        wavelet-HHH\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.0001646193065947548 \\
+        gradient\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.00016466780666545447 \\
+        wavelet-LHH\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.00016500369913467015 \\
+        original\_glcm\_JointEnergy & 0.00016505331456673686 \\
+        lbp-3D-k\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.00016542483704359362 \\
+        square\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.00016554336565708372 \\
+        wavelet-HLL\_gldm\_SmallDependenceEmphasis & 0.0001658718231917193 \\
+        wavelet-LHL\_glrlm\_RunLengthNonUniformityNormalized & 0.0001675866812182808 \\
+        log-sigma-1-0-mm-3D\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.00016859078896112975 \\
+        gradient\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.00016889281193550147 \\
+        gradient\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.00016914131158644806 \\
+        square\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.00016923826918579618 \\
+        wavelet-HHL\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.00016965595422876106 \\
+        squareroot\_glcm\_SumEntropy & 0.00016992710035559986 \\
+        lbp-3D-k\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.00017015596962616567 \\
+        wavelet-LHH\_glrlm\_RunEntropy & 0.0001702034910878779 \\
+        wavelet-HHL\_glrlm\_RunEntropy & 0.00017036993970657332 \\
+        exponential\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.00017046092278964398 \\
+        squareroot\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.00017174380867228807 \\
+        lbp-3D-m2\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.00017175298161930036 \\
+        original\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.00017189783365463755 \\
+        original\_gldm\_LowGrayLevelEmphasis & 0.00017189852485050003 \\
+        wavelet-LLH\_glszm\_ZoneVariance & 0.00017231062474528164 \\
+        squareroot\_glrlm\_LowGrayLevelRunEmphasis & 0.0001726423585481861 \\
+        lbp-3D-k\_glrlm\_RunEntropy & 0.00017288625364176178 \\
+        squareroot\_glrlm\_RunEntropy & 0.00017299594894583752 \\
+        log-sigma-1-0-mm-3D\_ngtdm\_Strength & 0.00017305038089713488 \\
+        square\_gldm\_SmallDependenceEmphasis & 0.0001730684622655832 \\
+        wavelet-LHH\_glrlm\_ShortRunEmphasis & 0.00017312285612076372 \\
+        squareroot\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.0001734576613736075 \\
+        wavelet-HLL\_glszm\_LargeAreaEmphasis & 0.00017348817377401104 \\
+        wavelet-HLH\_gldm\_LargeDependenceEmphasis & 0.00017363305794930144 \\
+        exponential\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.0001747967980940411 \\
+        wavelet-LLL\_glrlm\_LowGrayLevelRunEmphasis & 0.00017526022963174748 \\
+        wavelet-HLL\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.00017536795658149541 \\
+        gradient\_glrlm\_RunEntropy & 0.0001758713564620766 \\
+        wavelet-LHL\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.00017667790103719977 \\
+        squareroot\_glcm\_Idn & 0.00017688845904348318 \\
+        wavelet-LLL\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.00017752648043135643 \\
+        log-sigma-3-0-mm-3D\_ngtdm\_Coarseness & 0.00017829147749097934 \\
+        exponential\_firstorder\_90Percentile & 0.0001783909040291504 \\
+        log-sigma-1-0-mm-3D\_glrlm\_RunEntropy & 0.00017856629471745244 \\
+        wavelet-LHH\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.0001786544642449196 \\
+        log-sigma-3-0-mm-3D\_gldm\_SmallDependenceEmphasis & 0.00017957363087754764 \\
+        wavelet-LHH\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.0001800143094009091 \\
+        lbp-3D-m2\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.0001803226817456116 \\
+        log-sigma-1-0-mm-3D\_ngtdm\_Busyness & 0.00018088321524397028 \\
+        wavelet-HLL\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.0001810646641966008 \\
+        wavelet-LHL\_glrlm\_ShortRunEmphasis & 0.00018180438228789566 \\
+        wavelet-HHL\_gldm\_SmallDependenceEmphasis & 0.00018194277545239304 \\
+        squareroot\_gldm\_LargeDependenceEmphasis & 0.00018244170027470496 \\
+        original\_gldm\_HighGrayLevelEmphasis & 0.0001834241040005116 \\
+        logarithm\_glrlm\_HighGrayLevelRunEmphasis & 0.00018437599869461705 \\
+        squareroot\_gldm\_LowGrayLevelEmphasis & 0.00018469959307243982 \\
+        logarithm\_glcm\_Idmn & 0.00018510417591644364 \\
+        original\_glcm\_ClusterTendency & 0.00018533764991604553 \\
+        original\_firstorder\_Range & 0.0001853618404516491 \\
+        wavelet-LHL\_gldm\_LargeDependenceEmphasis & 0.00018590515877221742 \\
+        wavelet-HHL\_glrlm\_LongRunHighGrayLevelEmphasis & 0.00018597312089099223 \\
+        logarithm\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.0001864396258661447 \\
+        wavelet-HHH\_gldm\_LargeDependenceEmphasis & 0.00018654710569288705 \\
+        lbp-3D-m2\_glrlm\_RunLengthNonUniformityNormalized & 0.0001866402175217936 \\
+        squareroot\_glcm\_Idmn & 0.000186651404483334 \\
+        original\_glrlm\_LowGrayLevelRunEmphasis & 0.00018669266494815694 \\
+        wavelet-LHH\_glszm\_LargeAreaEmphasis & 0.00018717325605617266 \\
+        log-sigma-1-0-mm-3D\_ngtdm\_Coarseness & 0.00018729266239565735 \\
+        squareroot\_firstorder\_10Percentile & 0.0001872950884365421 \\
+        log-sigma-3-0-mm-3D\_glcm\_JointAverage & 0.00018730325043650472 \\
+        wavelet-LLL\_glrlm\_HighGrayLevelRunEmphasis & 0.00018740095285628663 \\
+        wavelet-LHL\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.0001874009815698104 \\
+        wavelet-HHL\_glrlm\_RunLengthNonUniformityNormalized & 0.0001877330337351987 \\
+        log-sigma-3-0-mm-3D\_ngtdm\_Strength & 0.0001878859322954959 \\
+        wavelet-LLL\_firstorder\_Range & 0.00018790325538942752 \\
+        log-sigma-1-0-mm-3D\_gldm\_HighGrayLevelEmphasis & 0.00018794528079436158 \\
+        wavelet-HHH\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.0001890412143123975 \\
+        logarithm\_glrlm\_RunEntropy & 0.00018994518043287536 \\
+        logarithm\_gldm\_LowGrayLevelEmphasis & 0.0001899723329126346 \\
+        log-sigma-3-0-mm-3D\_gldm\_LowGrayLevelEmphasis & 0.00019007750886458798 \\
+        original\_gldm\_SmallDependenceEmphasis & 0.00019042576746953937 \\
+        logarithm\_firstorder\_Uniformity & 0.00019133460850506994 \\
+        lbp-3D-k\_glszm\_LargeAreaEmphasis & 0.00019145435412714653 \\
+        wavelet-HHH\_glszm\_ZonePercentage & 0.000191877247907223 \\
+        wavelet-HLH\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.00019202085632691798 \\
+        log-sigma-1-0-mm-3D\_glrlm\_RunPercentage & 0.00019223553812030176 \\
+        square\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.00019229116393792729 \\
+        original\_glcm\_Idn & 0.00019248326558848214 \\
+        logarithm\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.00019248750448920177 \\
+        original\_shape\_LeastAxisLength & 0.00019275302008265937 \\
+        wavelet-HLH\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.00019281082683176082 \\
+        lbp-3D-m1\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.00019340239126538849 \\
+        original\_gldm\_DependenceEntropy & 0.00019355742909835856 \\
+        original\_firstorder\_Uniformity & 0.0001938866369995327 \\
+        logarithm\_glcm\_SumSquares & 0.00019390112364522764 \\
+        lbp-3D-m1\_glrlm\_RunPercentage & 0.00019418762863872692 \\
+        log-sigma-3-0-mm-3D\_glcm\_Autocorrelation & 0.00019465431010412754 \\
+        wavelet-LHH\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.00019491266081885533 \\
+        wavelet-HLH\_glrlm\_ShortRunEmphasis & 0.0001954319110392877 \\
+        original\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.0001954734099157235 \\
+        wavelet-HLH\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.00019585501024624435 \\
+        squareroot\_gldm\_HighGrayLevelEmphasis & 0.00019627719952872115 \\
+        wavelet-LLL\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.00019657412095881643 \\
+        squareroot\_firstorder\_Mean & 0.00019697412836234383 \\
+        wavelet-LHL\_glrlm\_RunPercentage & 0.0001973660346709059 \\
+        square\_glrlm\_ShortRunEmphasis & 0.00019743116947193152 \\
+        log-sigma-1-0-mm-3D\_firstorder\_Range & 0.00019781523132767972 \\
+        original\_glcm\_Contrast & 0.00019791263093517025 \\
+        logarithm\_glcm\_JointEntropy & 0.00019800742120655232 \\
+        wavelet-HLH\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.00019887182438100006 \\
+        original\_glcm\_JointEntropy & 0.00019925161410134295 \\
+        original\_glrlm\_RunEntropy & 0.00019937908524374505 \\
+        logarithm\_glcm\_SumEntropy & 0.00019956490607753822 \\
+        lbp-3D-m1\_firstorder\_10Percentile & 0.00019971578020007742 \\
+        wavelet-LHL\_glrlm\_RunEntropy & 0.00019974395545593426 \\
+        original\_firstorder\_RootMeanSquared & 0.00019986545928553042 \\
+        original\_gldm\_LargeDependenceEmphasis & 0.00019994864087972684 \\
+        wavelet-LHH\_firstorder\_TotalEnergy & 0.00020015661928821408 \\
+        log-sigma-3-0-mm-3D\_glcm\_JointEntropy & 0.00020046011196067688 \\
+        squareroot\_gldm\_GrayLevelVariance & 0.00020077123898563963 \\
+        wavelet-LLL\_glcm\_Idmn & 0.0002010110411187609 \\
+        wavelet-HLL\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.0002011156260644114 \\
+        square\_firstorder\_MeanAbsoluteDeviation & 0.00020116725591527108 \\
+        original\_glcm\_MaximumProbability & 0.00020139158695536464 \\
+        squareroot\_firstorder\_Maximum & 0.00020158442409085498 \\
+        wavelet-HHH\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.00020158996226166115 \\
+        wavelet-LHH\_gldm\_SmallDependenceEmphasis & 0.00020184224581709464 \\
+        original\_glcm\_Idmn & 0.00020184917165938198 \\
+        wavelet-LLL\_glcm\_DifferenceEntropy & 0.00020212257073950833 \\
+        wavelet-LLH\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.00020225153912835703 \\
+        logarithm\_firstorder\_90Percentile & 0.0002028972784539517 \\
+        exponential\_firstorder\_RobustMeanAbsoluteDeviation & 0.00020314171949293913 \\
+        logarithm\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.00020314275878157258 \\
+        log-sigma-3-0-mm-3D\_ngtdm\_Busyness & 0.0002032455485927578 \\
+        wavelet-HHH\_glszm\_LargeAreaEmphasis & 0.00020385521639502445 \\
+        logarithm\_glcm\_Idm & 0.00020390337565725307 \\
+        squareroot\_glcm\_SumSquares & 0.00020441111611181438 \\
+        logarithm\_gldm\_DependenceEntropy & 0.0002044184248832796 \\
+        wavelet-LLL\_firstorder\_Mean & 0.00020464770457687524 \\
+        exponential\_glrlm\_ShortRunEmphasis & 0.00020489722848744787 \\
+        wavelet-LLL\_gldm\_LargeDependenceEmphasis & 0.00020512526176238093 \\
+        logarithm\_glcm\_Autocorrelation & 0.0002052281489056347 \\
+        original\_glcm\_DifferenceAverage & 0.00020539931218945876 \\
+        original\_glrlm\_RunPercentage & 0.00020566170599343745 \\
+        original\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.00020568827019213734 \\
+        wavelet-LHH\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.00020603946606617273 \\
+        logarithm\_gldm\_HighGrayLevelEmphasis & 0.0002064198037563981 \\
+        wavelet-LLL\_firstorder\_Maximum & 0.0002066551088076952 \\
+        log-sigma-3-0-mm-3D\_glcm\_SumEntropy & 0.00020668757108208502 \\
+        log-sigma-1-0-mm-3D\_gldm\_LowGrayLevelEmphasis & 0.00020680805246767113 \\
+        wavelet-LHL\_firstorder\_Energy & 0.0002081038935993787 \\
+        original\_ngtdm\_Complexity & 0.00020824019937445547 \\
+        square\_firstorder\_RootMeanSquared & 0.00020828429665237426 \\
+        exponential\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.00020859690004254382 \\
+        logarithm\_glcm\_InverseVariance & 0.00020869763770019163 \\
+        wavelet-LLL\_glcm\_DifferenceAverage & 0.00020876041598130726 \\
+        original\_glrlm\_HighGrayLevelRunEmphasis & 0.00020886077868506573 \\
+        wavelet-HHL\_glrlm\_GrayLevelVariance & 0.00020962090586107364 \\
+        wavelet-HHH\_glrlm\_RunLengthNonUniformityNormalized & 0.00020969974038054673 \\
+        wavelet-HLL\_glszm\_ZonePercentage & 0.00020980483871238187 \\
+        exponential\_firstorder\_10Percentile & 0.00020983736326962444 \\
+        logarithm\_gldm\_SmallDependenceEmphasis & 0.00021026419847621443 \\
+        wavelet-HLH\_glrlm\_RunEntropy & 0.0002104932889802305 \\
+        wavelet-LLL\_gldm\_HighGrayLevelEmphasis & 0.00021057640933990358 \\
+        squareroot\_firstorder\_Uniformity & 0.00021071817243341524 \\
+        wavelet-LLH\_glszm\_ZonePercentage & 0.00021091727046641616 \\
+        exponential\_firstorder\_MeanAbsoluteDeviation & 0.00021097592128984516 \\
+        logarithm\_firstorder\_Entropy & 0.0002111464036085905 \\
+        wavelet-LLL\_glcm\_InverseVariance & 0.0002112619006745809 \\
+        squareroot\_glcm\_Autocorrelation & 0.00021129773458642868 \\
+        wavelet-LHL\_glszm\_SizeZoneNonUniformityNormalized & 0.00021170470115541257 \\
+        logarithm\_glcm\_Id & 0.00021194926613725613 \\
+        log-sigma-1-0-mm-3D\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.00021198689841265699 \\
+        lbp-3D-k\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.00021205201570371058 \\
+        wavelet-LLH\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.0002122478433735058 \\
+        lbp-3D-k\_gldm\_GrayLevelVariance & 0.00021228627458804466 \\
+        wavelet-LLL\_glcm\_Correlation & 0.00021246825093992062 \\
+        logarithm\_glcm\_ClusterProminence & 0.00021248939200830343 \\
+        wavelet-LHL\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.00021257822299651331 \\
+        wavelet-LHL\_gldm\_SmallDependenceEmphasis & 0.00021268988133723072 \\
+        squareroot\_glcm\_DifferenceAverage & 0.00021314406902935723 \\
+        lbp-3D-k\_gldm\_HighGrayLevelEmphasis & 0.00021321795249760022 \\
+        squareroot\_glrlm\_HighGrayLevelRunEmphasis & 0.0002132732432977458 \\
+        wavelet-HHL\_firstorder\_TotalEnergy & 0.00021337007595269785 \\
+        square\_firstorder\_Mean & 0.00021371034767206894 \\
+        wavelet-HLH\_glszm\_GrayLevelVariance & 0.0002137727764944655 \\
+        original\_firstorder\_90Percentile & 0.00021382358472427296 \\
+        logarithm\_glrlm\_GrayLevelVariance & 0.00021390018847893346 \\
+        original\_glcm\_Idm & 0.0002140733032356343 \\
+        gradient\_firstorder\_Range & 0.0002141847387701603 \\
+        logarithm\_glcm\_Idn & 0.00021457979453669464 \\
+        wavelet-LHL\_glszm\_ZonePercentage & 0.00021490646297103226 \\
+        wavelet-HHL\_glrlm\_LongRunLowGrayLevelEmphasis & 0.0002151736684531562 \\
+        lbp-3D-m2\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.00021541289095888895 \\
+        log-sigma-3-0-mm-3D\_glrlm\_ShortRunEmphasis & 0.00021563209036645393 \\
+        logarithm\_firstorder\_10Percentile & 0.0002158609913293708 \\
+        squareroot\_glrlm\_RunPercentage & 0.00021603977396253017 \\
+        log-sigma-3-0-mm-3D\_firstorder\_Median & 0.0002168961612519523 \\
+        wavelet-HLL\_firstorder\_Range & 0.0002170195992386989 \\
+        original\_glszm\_LargeAreaEmphasis & 0.00021704934004126723 \\
+        log-sigma-1-0-mm-3D\_glcm\_ClusterShade & 0.00021739798570634652 \\
+        squareroot\_glcm\_ClusterProminence & 0.00021750138762956602 \\
+        logarithm\_glcm\_JointAverage & 0.00021756180738089683 \\
+        logarithm\_firstorder\_Maximum & 0.0002178922293474009 \\
+        original\_firstorder\_Entropy & 0.0002179566294761699 \\
+        wavelet-LLL\_glcm\_Contrast & 0.00021867122440158982 \\
+        log-sigma-3-0-mm-3D\_gldm\_HighGrayLevelEmphasis & 0.00021912237425367737 \\
+        wavelet-HLL\_firstorder\_Variance & 0.00021919891445916126 \\
+        original\_glcm\_Id & 0.0002193135063321507 \\
+        log-sigma-3-0-mm-3D\_glcm\_MaximumProbability & 0.00021938226981538592 \\
+        wavelet-HHL\_firstorder\_Energy & 0.00021946235186100016 \\
+        wavelet-HHH\_glrlm\_LongRunHighGrayLevelEmphasis & 0.00021976800362082392 \\
+        wavelet-LHH\_glrlm\_RunLengthNonUniformityNormalized & 0.00021994702835826359 \\
+        lbp-3D-k\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.00022079125947413193 \\
+        wavelet-LLL\_glcm\_DifferenceVariance & 0.00022109620773944484 \\
+        exponential\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.0002214025926669415 \\
+        wavelet-LHL\_firstorder\_TotalEnergy & 0.00022171495810499787 \\
+        wavelet-LHH\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.00022201862112734223 \\
+        wavelet-HHL\_glrlm\_RunPercentage & 0.0002221108708823895 \\
+        squareroot\_glcm\_JointEnergy & 0.00022216560152730087 \\
+        wavelet-LLL\_glcm\_Autocorrelation & 0.00022227166963450004 \\
+        log-sigma-3-0-mm-3D\_ngtdm\_Contrast & 0.00022268489134895521 \\
+        wavelet-LLL\_firstorder\_InterquartileRange & 0.00022310925725984752 \\
+        logarithm\_gldm\_LargeDependenceEmphasis & 0.00022370487905718989 \\
+        logarithm\_ngtdm\_Contrast & 0.0002242642218548994 \\
+        squareroot\_glcm\_Idm & 0.00022427065662694096 \\
+        squareroot\_glcm\_InverseVariance & 0.0002249189593083091 \\
+        wavelet-LLL\_firstorder\_10Percentile & 0.00022515530605190726 \\
+        log-sigma-1-0-mm-3D\_ngtdm\_Contrast & 0.00022517468802025638 \\
+        original\_glcm\_InverseVariance & 0.0002254209979346955 \\
+        wavelet-HLL\_glszm\_ZoneVariance & 0.00022552964208800966 \\
+        wavelet-LLH\_ngtdm\_Complexity & 0.0002256594807345471 \\
+        wavelet-HHH\_firstorder\_Range & 0.00022642049864058845 \\
+        wavelet-LLH\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.00022683935814931487 \\
+        wavelet-LHL\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.00022713802228409766 \\
+        wavelet-LLL\_glcm\_JointAverage & 0.00022717095158537688 \\
+        lbp-3D-m1\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.000227225199586132 \\
+        exponential\_firstorder\_Median & 0.00022735846431400417 \\
+        original\_glszm\_ZoneVariance & 0.00022768920931634016 \\
+        original\_glrlm\_LongRunEmphasis & 0.00022772942676661104 \\
+        wavelet-LLL\_glrlm\_RunEntropy & 0.00022778352842263945 \\
+        wavelet-LLL\_firstorder\_90Percentile & 0.00022791060609599572 \\
+        wavelet-HLH\_glszm\_ZonePercentage & 0.0002282009441384799 \\
+        log-sigma-3-0-mm-3D\_gldm\_GrayLevelVariance & 0.00022879175054402745 \\
+        original\_firstorder\_Variance & 0.00022905037918330616 \\
+        lbp-3D-m2\_firstorder\_Kurtosis & 0.0002292826595497529 \\
+        squareroot\_firstorder\_Entropy & 0.0002293404193087089 \\
+        log-sigma-3-0-mm-3D\_glcm\_SumSquares & 0.00022988249525601146 \\
+        squareroot\_glcm\_ClusterTendency & 0.00022996568419479256 \\
+        squareroot\_glcm\_JointAverage & 0.0002300430033368289 \\
+        log-sigma-3-0-mm-3D\_gldm\_LargeDependenceEmphasis & 0.00023013814918262346 \\
+        squareroot\_glcm\_Id & 0.00023019104217658965 \\
+        wavelet-HLH\_glcm\_Idn & 0.0002306313737699428 \\
+        logarithm\_glcm\_MaximumProbability & 0.00023071916813675652 \\
+        logarithm\_glcm\_Contrast & 0.0002307906804086375 \\
+        wavelet-LHH\_gldm\_DependenceNonUniformityNormalized & 0.00023084625319694815 \\
+        exponential\_firstorder\_RootMeanSquared & 0.00023100182438492807 \\
+        square\_firstorder\_TotalEnergy & 0.00023101792116645534 \\
+        exponential\_glrlm\_RunLengthNonUniformityNormalized & 0.00023103543260065727 \\
+        wavelet-LLL\_glcm\_JointEntropy & 0.00023183726567364653 \\
+        log-sigma-3-0-mm-3D\_firstorder\_90Percentile & 0.0002318814442351986 \\
+        wavelet-HHH\_glrlm\_LongRunLowGrayLevelEmphasis & 0.00023224111000403507 \\
+        log-sigma-1-0-mm-3D\_glrlm\_RunLengthNonUniformityNormalized & 0.00023244425856926162 \\
+        wavelet-LLL\_glcm\_Idm & 0.0002326223722444941 \\
+        square\_firstorder\_Variance & 0.00023269654650724366 \\
+        wavelet-LHL\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.00023278487538278285 \\
+        original\_glcm\_Imc2 & 0.00023292795547487003 \\
+        logarithm\_glrlm\_LowGrayLevelRunEmphasis & 0.0002329845972036681 \\
+        squareroot\_firstorder\_RootMeanSquared & 0.0002332705448385226 \\
+        log-sigma-1-0-mm-3D\_firstorder\_Entropy & 0.00023361758488285318 \\
+        wavelet-HLH\_glcm\_DifferenceAverage & 0.00023382298058083876 \\
+        wavelet-LLL\_firstorder\_RootMeanSquared & 0.00023401553034962803 \\
+        lbp-3D-m1\_glrlm\_RunLengthNonUniformityNormalized & 0.00023428599934056815 \\
+        lbp-3D-m2\_firstorder\_RobustMeanAbsoluteDeviation & 0.00023446516929456824 \\
+        original\_gldm\_GrayLevelVariance & 0.00023447220269760566 \\
+        lbp-3D-k\_glrlm\_RunPercentage & 0.00023464113929445965 \\
+        wavelet-HHH\_glszm\_GrayLevelNonUniformityNormalized & 0.00023509835540622658 \\
+        logarithm\_firstorder\_Mean & 0.00023510470054426794 \\
+        wavelet-LLL\_glcm\_Id & 0.00023541393943886005 \\
+        log-sigma-3-0-mm-3D\_glszm\_HighGrayLevelZoneEmphasis & 0.00023552138046579514 \\
+        squareroot\_glrlm\_GrayLevelVariance & 0.00023565698971873735 \\
+        wavelet-HHL\_glrlm\_RunVariance & 0.00023570830825429362 \\
+        logarithm\_firstorder\_RootMeanSquared & 0.00023574230228727878 \\
+        wavelet-LLL\_ngtdm\_Complexity & 0.00023603789677135954 \\
+        wavelet-HHH\_gldm\_HighGrayLevelEmphasis & 0.00023608629280087872 \\
+        gradient\_glrlm\_RunLengthNonUniformityNormalized & 0.0002361303455134132 \\
+        wavelet-HLH\_glszm\_LowGrayLevelZoneEmphasis & 0.00023648765677079724 \\
+        lbp-3D-k\_gldm\_LowGrayLevelEmphasis & 0.0002364972473526755 \\
+        log-sigma-1-0-mm-3D\_gldm\_GrayLevelVariance & 0.0002365294541541262 \\
+        logarithm\_glcm\_DifferenceAverage & 0.0002366359824409108 \\
+        squareroot\_glcm\_JointEntropy & 0.00023687380202850662 \\
+        logarithm\_glcm\_JointEnergy & 0.00023700684822192074 \\
+        log-sigma-3-0-mm-3D\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.00023747918458478885 \\
+        original\_firstorder\_RobustMeanAbsoluteDeviation & 0.00023762105819890574 \\
+        log-sigma-1-0-mm-3D\_glcm\_JointEntropy & 0.00023775747362726312 \\
+        squareroot\_ngtdm\_Contrast & 0.00023799355186413182 \\
+        wavelet-LLL\_glszm\_LargeAreaEmphasis & 0.00023839741145928746 \\
+        wavelet-LHH\_firstorder\_Energy & 0.00023840387572108293 \\
+        wavelet-LHL\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.00023860968393489006 \\
+        wavelet-HLH\_glrlm\_RunPercentage & 0.00023874718254449407 \\
+        squareroot\_glcm\_MaximumProbability & 0.00023877576419849872 \\
+        squareroot\_gldm\_DependenceNonUniformityNormalized & 0.0002388097079917432 \\
+        wavelet-LLH\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.00023885554452294938 \\
+        square\_firstorder\_90Percentile & 0.00023893165004482497 \\
+        original\_firstorder\_TotalEnergy & 0.00023896771103573613 \\
+        wavelet-HHH\_glrlm\_LongRunEmphasis & 0.0002390504747205879 \\
+        wavelet-HLH\_glszm\_GrayLevelNonUniformityNormalized & 0.00023926751051845573 \\
+        wavelet-HLH\_glcm\_Idmn & 0.0002395563612274612 \\
+        gradient\_glrlm\_ShortRunEmphasis & 0.00023964955723380717 \\
+        logarithm\_glcm\_DifferenceVariance & 0.00023970810897214277 \\
+        original\_glcm\_JointAverage & 0.00023974956214140898 \\
+        log-sigma-3-0-mm-3D\_firstorder\_10Percentile & 0.0002401111038080456 \\
+        wavelet-HHH\_firstorder\_TotalEnergy & 0.0002401736749054001 \\
+        wavelet-HHL\_firstorder\_RootMeanSquared & 0.00024038483859099616 \\
+        original\_glcm\_Autocorrelation & 0.00024052049581860905 \\
+        original\_glcm\_ClusterProminence & 0.000240725479717853 \\
+        wavelet-HHH\_gldm\_LowGrayLevelEmphasis & 0.00024082881942600983 \\
+        log-sigma-1-0-mm-3D\_glcm\_JointEnergy & 0.00024087925717341532 \\
+        lbp-3D-m1\_glrlm\_ShortRunEmphasis & 0.00024092185744260355 \\
+        squareroot\_glcm\_Contrast & 0.00024111842565153156 \\
+        original\_firstorder\_MeanAbsoluteDeviation & 0.00024130180921355426 \\
+        squareroot\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.00024139875036743706 \\
+        original\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.00024165994574015513 \\
+        squareroot\_glrlm\_GrayLevelNonUniformityNormalized & 0.00024166047795767874 \\
+        wavelet-LHH\_glszm\_SmallAreaLowGrayLevelEmphasis & 0.00024196900519948356 \\
+        squareroot\_glszm\_ZoneVariance & 0.0002422350168796859 \\
+        log-sigma-3-0-mm-3D\_glrlm\_RunLengthNonUniformityNormalized & 0.00024253546880667306 \\
+        logarithm\_glcm\_ClusterTendency & 0.00024256670430128707 \\
+        wavelet-HLL\_firstorder\_Maximum & 0.0002429840420119689 \\
+        log-sigma-3-0-mm-3D\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.0002430208736061636 \\
+        wavelet-HLL\_firstorder\_RootMeanSquared & 0.0002431484702510464 \\
+        logarithm\_firstorder\_Median & 0.00024378163643328662 \\
+        lbp-3D-k\_glcm\_ClusterShade & 0.00024380135679786456 \\
+        wavelet-HHL\_firstorder\_Minimum & 0.00024406519737634887 \\
+        logarithm\_gldm\_GrayLevelVariance & 0.00024411942133977654 \\
+        wavelet-HHL\_firstorder\_Range & 0.0002454116924163576 \\
+        wavelet-LHH\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.0002454911442208081 \\
+        original\_firstorder\_Maximum & 0.00024573364226515814 \\
+        wavelet-LLL\_glrlm\_RunLengthNonUniformityNormalized & 0.0002459565091618908 \\
+        square\_firstorder\_10Percentile & 0.00024602554714948916 \\
+        wavelet-LLL\_glrlm\_GrayLevelVariance & 0.0002461044546134688 \\
+        log-sigma-3-0-mm-3D\_glszm\_GrayLevelVariance & 0.0002463324220362869 \\
+        log-sigma-1-0-mm-3D\_glcm\_SumEntropy & 0.00024685254663712016 \\
+        wavelet-HHH\_firstorder\_Maximum & 0.00024689925526857887 \\
+        lbp-3D-k\_firstorder\_Uniformity & 0.00024690324113887696 \\
+        squareroot\_glcm\_DifferenceVariance & 0.00024741006793536414 \\
+        squareroot\_glrlm\_ShortRunEmphasis & 0.00024742953188055454 \\
+        wavelet-HLL\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.0002476627649830132 \\
+        wavelet-LLL\_firstorder\_RobustMeanAbsoluteDeviation & 0.0002477963066505457 \\
+        squareroot\_glszm\_LargeAreaEmphasis & 0.0002480909820806606 \\
+        lbp-3D-m2\_glrlm\_ShortRunEmphasis & 0.0002481698236013659 \\
+        square\_firstorder\_Energy & 0.00024822633516222923 \\
+        squareroot\_glcm\_Imc2 & 0.00024835626179353176 \\
+        wavelet-LLL\_glcm\_SumEntropy & 0.00024933786346234804 \\
+        wavelet-LLH\_firstorder\_Range & 0.00024934166067097115 \\
+        wavelet-HLL\_glrlm\_GrayLevelVariance & 0.000249679541442155 \\
+        logarithm\_firstorder\_MeanAbsoluteDeviation & 0.00024991893285027935 \\
+        wavelet-HLL\_glcm\_Imc1 & 0.0002504329515798075 \\
+        squareroot\_gldm\_SmallDependenceEmphasis & 0.000250852512499351 \\
+        wavelet-HHL\_glrlm\_GrayLevelNonUniformityNormalized & 0.00025112811136351936 \\
+        squareroot\_ngtdm\_Complexity & 0.00025129370789664276 \\
+        lbp-3D-m1\_firstorder\_Skewness & 0.0002514836801964341 \\
+        square\_firstorder\_Minimum & 0.00025151971233166687 \\
+        wavelet-LLL\_gldm\_LowGrayLevelEmphasis & 0.00025165302930559366 \\
+        log-sigma-3-0-mm-3D\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.00025192641525422264 \\
+        wavelet-LLH\_glrlm\_RunEntropy & 0.0002520917538436389 \\
+        square\_firstorder\_Median & 0.00025212352481010313 \\
+        original\_firstorder\_Mean & 0.00025220067965565137 \\
+        wavelet-LHL\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.00025243790379750645 \\
+        logarithm\_glcm\_Correlation & 0.00025247596114968696 \\
+        gradient\_firstorder\_Maximum & 0.00025347758021701696 \\
+        wavelet-LLL\_glcm\_Idn & 0.0002535756134072522 \\
+        log-sigma-1-0-mm-3D\_glcm\_Autocorrelation & 0.00025373230027519414 \\
+        wavelet-HHH\_firstorder\_Minimum & 0.00025412313750919113 \\
+        logarithm\_glszm\_ZoneVariance & 0.000254138221994763 \\
+        original\_glrlm\_GrayLevelNonUniformityNormalized & 0.0002544091566378732 \\
+        original\_firstorder\_10Percentile & 0.0002545020341885917 \\
+        lbp-3D-k\_firstorder\_90Percentile & 0.0002545040358421153 \\
+        original\_glrlm\_ShortRunEmphasis & 0.0002548959132160673 \\
+        logarithm\_glrlm\_RunPercentage & 0.00025491624500907374 \\
+        wavelet-HLH\_firstorder\_Minimum & 0.0002549479734632387 \\
+        wavelet-LLL\_glcm\_SumSquares & 0.0002551520007793821 \\
+        log-sigma-3-0-mm-3D\_glszm\_GrayLevelNonUniformityNormalized & 0.00025528146112586416 \\
+        wavelet-LLL\_gldm\_SmallDependenceEmphasis & 0.000255458594108103 \\
+        square\_glrlm\_RunLengthNonUniformityNormalized & 0.000256054695729354 \\
+        wavelet-LHL\_glrlm\_LongRunHighGrayLevelEmphasis & 0.00025687524558639616 \\
+        wavelet-HHL\_glcm\_MaximumProbability & 0.00025721002990907875 \\
+        wavelet-HLH\_glcm\_Idm & 0.0002575097993426804 \\
+        wavelet-HHL\_glrlm\_LongRunEmphasis & 0.00025759899063947333 \\
+        log-sigma-3-0-mm-3D\_firstorder\_Variance & 0.0002577097961618266 \\
+        wavelet-HHL\_gldm\_DependenceEntropy & 0.0002579447118335853 \\
+        wavelet-LHH\_glcm\_JointEnergy & 0.0002580347105408269 \\
+        wavelet-LHH\_glcm\_Imc1 & 0.0002586315818969956 \\
+        wavelet-HLL\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.0002589017582959117 \\
+        wavelet-LLH\_firstorder\_Variance & 0.0002592708989604862 \\
+        log-sigma-3-0-mm-3D\_firstorder\_Uniformity & 0.0002592815239013903 \\
+        logarithm\_firstorder\_Range & 0.00025943399495331206 \\
+        wavelet-LLH\_gldm\_SmallDependenceEmphasis & 0.0002596715147355502 \\
+        log-sigma-3-0-mm-3D\_glcm\_InverseVariance & 0.00025971760037020485 \\
+        wavelet-HHH\_glcm\_Imc2 & 0.00025991897460484717 \\
+        original\_glcm\_DifferenceVariance & 0.00026002468908202617 \\
+        log-sigma-1-0-mm-3D\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.00026013588864896235 \\
+        lbp-3D-m2\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.00026033497459917315 \\
+        wavelet-HHH\_glszm\_SizeZoneNonUniformityNormalized & 0.00026052439538011915 \\
+        log-sigma-3-0-mm-3D\_glcm\_DifferenceVariance & 0.00026073402512353166 \\
+        wavelet-HLL\_glrlm\_RunPercentage & 0.00026092072779267903 \\
+        wavelet-HLH\_firstorder\_Range & 0.00026097207790206993 \\
+        wavelet-HLH\_glcm\_Id & 0.0002610730397629563 \\
+        original\_ngtdm\_Contrast & 0.00026118776079161695 \\
+        wavelet-LLL\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.00026120654676176124 \\
+        log-sigma-3-0-mm-3D\_glcm\_Idm & 0.0002620752727205847 \\
+        wavelet-LLL\_firstorder\_Entropy & 0.0002621499405069734 \\
+        original\_firstorder\_InterquartileRange & 0.00026226074283224466 \\
+        original\_gldm\_DependenceNonUniformityNormalized & 0.0002624001496917174 \\
+        logarithm\_glrlm\_GrayLevelNonUniformityNormalized & 0.0002624602039592982 \\
+        exponential\_firstorder\_InterquartileRange & 0.0002627199290205168 \\
+        original\_firstorder\_Median & 0.0002630966666959705 \\
+        wavelet-HHH\_glszm\_GrayLevelVariance & 0.00026332662119673503 \\
+        lbp-3D-m2\_firstorder\_MeanAbsoluteDeviation & 0.00026334177454952944 \\
+        log-sigma-3-0-mm-3D\_glrlm\_LowGrayLevelRunEmphasis & 0.000263650370320852 \\
+        original\_glszm\_GrayLevelVariance & 0.0002642840164495171 \\
+        wavelet-HLH\_glcm\_Contrast & 0.0002644924440300604 \\
+        lbp-3D-k\_glszm\_SmallAreaLowGrayLevelEmphasis & 0.00026461970965934806 \\
+        wavelet-HHH\_glrlm\_RunVariance & 0.0002646780824886947 \\
+        wavelet-LLL\_firstorder\_Uniformity & 0.0002648297542355638 \\
+        wavelet-HLL\_firstorder\_Minimum & 0.0002652178387557977 \\
+        log-sigma-1-0-mm-3D\_firstorder\_Kurtosis & 0.0002652239353190676 \\
+        log-sigma-3-0-mm-3D\_glcm\_DifferenceEntropy & 0.00026529732969541724 \\
+        wavelet-LHH\_glcm\_DifferenceVariance & 0.00026533256605149746 \\
+        log-sigma-3-0-mm-3D\_glrlm\_RunPercentage & 0.00026541984794803663 \\
+        exponential\_firstorder\_Mean & 0.00026558526781842254 \\
+        logarithm\_glszm\_GrayLevelNonUniformityNormalized & 0.00026585340853398055 \\
+        wavelet-LLL\_gldm\_LargeDependenceLowGrayLevelEmphasis & 0.00026615739779036824 \\
+        squareroot\_glcm\_Correlation & 0.00026657796997147916 \\
+        wavelet-HLH\_glcm\_InverseVariance & 0.00026671591669013303 \\
+        wavelet-LLL\_glcm\_ClusterProminence & 0.000266798363471277 \\
+        log-sigma-1-0-mm-3D\_glszm\_HighGrayLevelZoneEmphasis & 0.00026681017970217315 \\
+        wavelet-HLH\_glcm\_ClusterTendency & 0.0002668253917938535 \\
+        exponential\_firstorder\_Maximum & 0.0002668829469860605 \\
+        wavelet-HLL\_glcm\_JointEnergy & 0.0002673442249247367 \\
+        log-sigma-1-0-mm-3D\_gldm\_DependenceEntropy & 0.0002676289585537155 \\
+        log-sigma-3-0-mm-3D\_glszm\_LowGrayLevelZoneEmphasis & 0.00026766031699007717 \\
+        lbp-3D-m2\_firstorder\_InterquartileRange & 0.0002677097707705607 \\
+        squareroot\_firstorder\_Median & 0.0002677307464870644 \\
+        log-sigma-1-0-mm-3D\_glszm\_LargeAreaEmphasis & 0.0002677810502868349 \\
+        lbp-3D-k\_firstorder\_Entropy & 0.000268292817634655 \\
+        log-sigma-3-0-mm-3D\_glcm\_JointEnergy & 0.0002686374565420241 \\
+        squareroot\_firstorder\_Range & 0.000268731259714953 \\
+        log-sigma-3-0-mm-3D\_glcm\_Contrast & 0.00026900791656241834 \\
+        wavelet-LHL\_gldm\_DependenceNonUniformityNormalized & 0.0002692636131080025 \\
+        square\_firstorder\_Kurtosis & 0.0002696542831965316 \\
+        lbp-3D-k\_ngtdm\_Complexity & 0.0002696783579504209 \\
+        wavelet-HLH\_glcm\_SumEntropy & 0.000269732160973545 \\
+        wavelet-HHH\_glrlm\_LowGrayLevelRunEmphasis & 0.00026975807674665725 \\
+        exponential\_firstorder\_Variance & 0.0002697982014323396 \\
+        log-sigma-3-0-mm-3D\_glcm\_DifferenceAverage & 0.0002699517743792066 \\
+        wavelet-HLH\_glcm\_DifferenceVariance & 0.0002700554072772497 \\
+        original\_glcm\_DifferenceEntropy & 0.0002701167041764348 \\
+        wavelet-LLL\_gldm\_GrayLevelVariance & 0.0002701246608142903 \\
+        wavelet-HHL\_glcm\_JointEnergy & 0.0002702695715346792 \\
+        lbp-3D-k\_glcm\_Correlation & 0.0002702750924372655 \\
+        lbp-3D-m2\_firstorder\_Variance & 0.00027090602151403796 \\
+        logarithm\_glrlm\_RunLengthNonUniformityNormalized & 0.00027092171296871995 \\
+        wavelet-LHH\_firstorder\_RobustMeanAbsoluteDeviation & 0.00027201380787393744 \\
+        logarithm\_firstorder\_Variance & 0.00027228126679009016 \\
+        squareroot\_glcm\_DifferenceEntropy & 0.0002723208341631503 \\
+        log-sigma-3-0-mm-3D\_ngtdm\_Complexity & 0.00027256347357011707 \\
+        wavelet-HLL\_glrlm\_HighGrayLevelRunEmphasis & 0.00027274977895857004 \\
+        exponential\_firstorder\_Kurtosis & 0.00027278773779409684 \\
+        wavelet-LLH\_glrlm\_LongRunEmphasis & 0.0002728600152590468 \\
+        squareroot\_firstorder\_Variance & 0.0002729483773366363 \\
+        squareroot\_glrlm\_RunLengthNonUniformityNormalized & 0.00027297708007989246 \\
+        logarithm\_glszm\_LargeAreaEmphasis & 0.00027307242366565927 \\
+        wavelet-LLL\_glrlm\_ShortRunEmphasis & 0.0002733503794668461 \\
+        wavelet-HLL\_glcm\_DifferenceEntropy & 0.0002737907545424316 \\
+        original\_glcm\_Correlation & 0.00027397111089647155 \\
+        wavelet-HHL\_firstorder\_Maximum & 0.0002739889508569569 \\
+        original\_glrlm\_GrayLevelVariance & 0.00027415409500425563 \\
+        log-sigma-1-0-mm-3D\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.0002743193921651316 \\
+        wavelet-HLL\_firstorder\_MeanAbsoluteDeviation & 0.00027458495245591625 \\
+        wavelet-HLL\_firstorder\_90Percentile & 0.0002746084236358769 \\
+        wavelet-LHL\_firstorder\_RobustMeanAbsoluteDeviation & 0.0002746539685692475 \\
+        logarithm\_glcm\_DifferenceEntropy & 0.00027485083736364813 \\
+        wavelet-LHH\_ngtdm\_Strength & 0.0002755479171397718 \\
+        wavelet-HLL\_glszm\_SmallAreaHighGrayLevelEmphasis & 0.00027573098036523893 \\
+        original\_glszm\_GrayLevelNonUniformityNormalized & 0.0002760365425089666 \\
+        logarithm\_glszm\_SmallAreaHighGrayLevelEmphasis & 0.0002761419023515921 \\
+        wavelet-LLH\_gldm\_DependenceEntropy & 0.0002761727510425133 \\
+        wavelet-LLL\_glcm\_Imc2 & 0.0002764873610372565 \\
+        wavelet-LLL\_glcm\_JointEnergy & 0.00027659349016501947 \\
+        log-sigma-3-0-mm-3D\_glcm\_Idn & 0.00027671906395796396 \\
+        wavelet-LHL\_firstorder\_InterquartileRange & 0.0002768425709118673 \\
+        wavelet-LLH\_firstorder\_TotalEnergy & 0.00027859142508372973 \\
+        wavelet-HHL\_firstorder\_Variance & 0.00027895287094278047 \\
+        wavelet-LLL\_gldm\_DependenceEntropy & 0.00027919787059459947 \\
+        wavelet-LLH\_ngtdm\_Contrast & 0.0002801044734242177 \\
+        log-sigma-3-0-mm-3D\_glrlm\_HighGrayLevelRunEmphasis & 0.00028011722909778184 \\
+        log-sigma-3-0-mm-3D\_glszm\_ZoneEntropy & 0.0002804005674458081 \\
+        log-sigma-3-0-mm-3D\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.00028058932812161986 \\
+        log-sigma-1-0-mm-3D\_glszm\_ZonePercentage & 0.000281859328761371 \\
+        wavelet-HLL\_glszm\_SizeZoneNonUniformityNormalized & 0.00028203760654091185 \\
+        squareroot\_firstorder\_InterquartileRange & 0.00028230063786367565 \\
+        wavelet-LHL\_firstorder\_MeanAbsoluteDeviation & 0.0002828164734069269 \\
+        log-sigma-3-0-mm-3D\_glcm\_ClusterShade & 0.00028287106631785124 \\
+        wavelet-LHH\_gldm\_DependenceEntropy & 0.0002829119433279811 \\
+        wavelet-HLL\_glrlm\_RunEntropy & 0.0002833956727843828 \\
+        log-sigma-1-0-mm-3D\_firstorder\_Mean & 0.0002834497506765561 \\
+        log-sigma-1-0-mm-3D\_firstorder\_90Percentile & 0.00028364629145112054 \\
+        log-sigma-1-0-mm-3D\_firstorder\_Minimum & 0.0002840016862585401 \\
+        log-sigma-3-0-mm-3D\_firstorder\_Entropy & 0.00028411358184270407 \\
+        squareroot\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.00028411474967851195 \\
+        wavelet-LLL\_glcm\_MaximumProbability & 0.0002846331373588151 \\
+        squareroot\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.000284804112663485 \\
+        wavelet-HHL\_glszm\_GrayLevelNonUniformityNormalized & 0.0002855435629715543 \\
+        squareroot\_glszm\_SmallAreaHighGrayLevelEmphasis & 0.00028554948931321805 \\
+        logarithm\_gldm\_DependenceNonUniformityNormalized & 0.00028556790235048825 \\
+        logarithm\_glcm\_Imc2 & 0.0002858809635739633 \\
+        wavelet-HHL\_glcm\_SumSquares & 0.0002867867851676894 \\
+        logarithm\_glrlm\_LongRunEmphasis & 0.0002867902438526562 \\
+        log-sigma-3-0-mm-3D\_glcm\_Idmn & 0.0002869901738208512 \\
+        wavelet-LLH\_firstorder\_RootMeanSquared & 0.00028706416502758005 \\
+        wavelet-LLL\_gldm\_DependenceNonUniformityNormalized & 0.000287151708408315 \\
+        wavelet-LLL\_glrlm\_RunPercentage & 0.00028735676745000134 \\
+        wavelet-HHL\_glcm\_JointEntropy & 0.00028767724291518777 \\
+        wavelet-LHL\_firstorder\_90Percentile & 0.00028799529876935467 \\
+        log-sigma-3-0-mm-3D\_firstorder\_Energy & 0.00028871537812525603 \\
+        log-sigma-3-0-mm-3D\_glcm\_Id & 0.0002887280179918718 \\
+        wavelet-LLH\_glcm\_Autocorrelation & 0.00028876945012113706 \\
+        wavelet-HHL\_glcm\_DifferenceEntropy & 0.00028911678407451876 \\
+        wavelet-HHH\_glrlm\_HighGrayLevelRunEmphasis & 0.00028921172817201725 \\
+        log-sigma-1-0-mm-3D\_firstorder\_Uniformity & 0.00028926006236328067 \\
+        wavelet-HLH\_glcm\_ClusterProminence & 0.00028943810125677785 \\
+        wavelet-LLH\_glrlm\_RunPercentage & 0.0002894524786168873 \\
+        wavelet-LLH\_glcm\_SumEntropy & 0.0002896719584078367 \\
+        logarithm\_ngtdm\_Complexity & 0.0002897040287762146 \\
+        square\_firstorder\_InterquartileRange & 0.00028981138874728925 \\
+        wavelet-HLH\_glszm\_HighGrayLevelZoneEmphasis & 0.00028990089697250414 \\
+        wavelet-LHL\_firstorder\_10Percentile & 0.0002899749243113152 \\
+        wavelet-HLH\_ngtdm\_Complexity & 0.00029058850211980834 \\
+        logarithm\_glszm\_SmallAreaLowGrayLevelEmphasis & 0.00029070269634161154 \\
+        lbp-3D-k\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.0002907124581999635 \\
+        wavelet-LHH\_glszm\_SmallAreaEmphasis & 0.0002910234033258845 \\
+        wavelet-LLL\_ngtdm\_Contrast & 0.0002912786022452284 \\
+        wavelet-LLH\_glcm\_JointAverage & 0.0002918066581827614 \\
+        wavelet-LHH\_ngtdm\_Busyness & 0.0002918186243903804 \\
+        wavelet-HHL\_gldm\_DependenceNonUniformityNormalized & 0.0002922079869189 \\
+        wavelet-HHL\_glszm\_GrayLevelVariance & 0.0002933978606375519 \\
+        wavelet-HLL\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.00029345610409508465 \\
+        log-sigma-3-0-mm-3D\_firstorder\_InterquartileRange & 0.00029381906338972236 \\
+        square\_firstorder\_Skewness & 0.0002938561179905685 \\
+        log-sigma-3-0-mm-3D\_firstorder\_Maximum & 0.00029393858776212233 \\
+        wavelet-LLL\_firstorder\_Median & 0.0002939483178294917 \\
+        lbp-3D-k\_firstorder\_TotalEnergy & 0.0002944783408998197 \\
+        wavelet-LLL\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.0002947434512372948 \\
+        wavelet-LLL\_glszm\_ZoneVariance & 0.0002947598543070415 \\
+        wavelet-LLL\_glcm\_ClusterShade & 0.0002947629323423835 \\
+        squareroot\_glrlm\_LongRunEmphasis & 0.0002948172882311718 \\
+        gradient\_firstorder\_Variance & 0.00029533936406888906 \\
+        lbp-3D-m1\_glszm\_ZonePercentage & 0.0002960376891624244 \\
+        wavelet-HLH\_ngtdm\_Busyness & 0.00029616949333135395 \\
+        lbp-3D-k\_ngtdm\_Contrast & 0.0002961704909105483 \\
+        log-sigma-1-0-mm-3D\_glrlm\_GrayLevelNonUniformityNormalized & 0.0002963780005845775 \\
+        log-sigma-1-0-mm-3D\_glcm\_MaximumProbability & 0.00029647565672241287 \\
+        wavelet-HHL\_glcm\_DifferenceVariance & 0.0002964863861355582 \\
+        squareroot\_gldm\_DependenceEntropy & 0.00029652304621719737 \\
+        lbp-3D-k\_firstorder\_Kurtosis & 0.00029658140461482534 \\
+        original\_gldm\_DependenceVariance & 0.00029675700902952233 \\
+        wavelet-HHH\_firstorder\_Median & 0.0002968018887537918 \\
+        wavelet-LLH\_glcm\_Imc2 & 0.00029692561838475705 \\
+        squareroot\_glszm\_HighGrayLevelZoneEmphasis & 0.0002969352912519294 \\
+        log-sigma-1-0-mm-3D\_glszm\_SmallAreaHighGrayLevelEmphasis & 0.0002977635588490167 \\
+        wavelet-LLL\_glrlm\_GrayLevelNonUniformityNormalized & 0.0002979742580121096 \\
+        wavelet-HLL\_gldm\_LargeDependenceEmphasis & 0.00029893219153822177 \\
+        original\_glrlm\_RunLengthNonUniformityNormalized & 0.0002999107903509237 \\
+        logarithm\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.00030011989141909376 \\
+        squareroot\_firstorder\_Kurtosis & 0.0003001215316588284 \\
+        wavelet-HLH\_ngtdm\_Contrast & 0.00030012395534357206 \\
+        wavelet-LHH\_glszm\_SmallAreaHighGrayLevelEmphasis & 0.0003007764020240039 \\
+        wavelet-HHH\_glcm\_ClusterShade & 0.0003008753217230222 \\
+        wavelet-LHH\_firstorder\_Range & 0.0003014080714733994 \\
+        gradient\_glszm\_LargeAreaEmphasis & 0.00030155636296977015 \\
+        wavelet-HLH\_firstorder\_Variance & 0.00030158132495215875 \\
+        wavelet-HHL\_gldm\_GrayLevelVariance & 0.00030180088796329286 \\
+        wavelet-LHH\_firstorder\_90Percentile & 0.00030248652025098143 \\
+        squareroot\_firstorder\_MeanAbsoluteDeviation & 0.0003030263903644888 \\
+        squareroot\_gldm\_DependenceVariance & 0.0003036533987887795 \\
+        wavelet-HLL\_glrlm\_GrayLevelNonUniformityNormalized & 0.0003038415038310868 \\
+        squareroot\_firstorder\_RobustMeanAbsoluteDeviation & 0.00030407721022907626 \\
+        log-sigma-3-0-mm-3D\_glrlm\_GrayLevelVariance & 0.0003044901351818815 \\
+        squareroot\_glszm\_GrayLevelVariance & 0.00030481169348329926 \\
+        log-sigma-1-0-mm-3D\_glcm\_Imc2 & 0.00030489818116724956 \\
+        wavelet-HLH\_glcm\_Correlation & 0.000305088937442048 \\
+        wavelet-LLH\_glcm\_DifferenceEntropy & 0.00030510856589462175 \\
+        original\_glszm\_LowGrayLevelZoneEmphasis & 0.0003051702030151882 \\
+        lbp-3D-m2\_firstorder\_Skewness & 0.00030546261636501306 \\
+        log-sigma-1-0-mm-3D\_firstorder\_Energy & 0.0003060654890511288 \\
+        wavelet-HHH\_glcm\_Imc1 & 0.0003061327032861076 \\
+        log-sigma-1-0-mm-3D\_firstorder\_TotalEnergy & 0.0003062362341559142 \\
+        wavelet-HLH\_glcm\_Imc2 & 0.0003065413699660376 \\
+        logarithm\_glrlm\_ShortRunEmphasis & 0.0003067941243290454 \\
+        logarithm\_glszm\_HighGrayLevelZoneEmphasis & 0.00030680324703709415 \\
+        lbp-3D-k\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.0003068929797441062 \\
+        wavelet-HLL\_glcm\_DifferenceVariance & 0.0003069950084623339 \\
+        wavelet-LLL\_glcm\_ClusterTendency & 0.00030700987442587764 \\
+        wavelet-LHH\_glrlm\_LongRunLowGrayLevelEmphasis & 0.00030722445599566493 \\
+        lbp-3D-k\_gldm\_DependenceNonUniformityNormalized & 0.0003074262453999311 \\
+        lbp-3D-m1\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.00030744792137885887 \\
+        log-sigma-3-0-mm-3D\_firstorder\_TotalEnergy & 0.00030757554919590136 \\
+        square\_firstorder\_RobustMeanAbsoluteDeviation & 0.0003078345871117015 \\
+        wavelet-LLH\_glcm\_ClusterShade & 0.00030799116249112534 \\
+        log-sigma-1-0-mm-3D\_glszm\_GrayLevelVariance & 0.0003083389093119869 \\
+        lbp-3D-k\_glcm\_Idn & 0.0003087759016557482 \\
+        lbp-3D-k\_glrlm\_LowGrayLevelRunEmphasis & 0.00030896520525175545 \\
+        wavelet-HLH\_ngtdm\_Coarseness & 0.0003095907910553453 \\
+        wavelet-HHH\_glrlm\_GrayLevelVariance & 0.00030966895596340824 \\
+        lbp-3D-k\_glrlm\_LongRunHighGrayLevelEmphasis & 0.0003097362436976425 \\
+        wavelet-LHH\_glrlm\_LongRunEmphasis & 0.00031031916726440077 \\
+        wavelet-HLH\_firstorder\_TotalEnergy & 0.0003106618391372259 \\
+        logarithm\_glszm\_ZonePercentage & 0.00031084681324658063 \\
+        wavelet-LLH\_firstorder\_Maximum & 0.0003108523288988849 \\
+        logarithm\_firstorder\_InterquartileRange & 0.00031092441327312435 \\
+        square\_glszm\_ZonePercentage & 0.00031137090953032334 \\
+        squareroot\_glcm\_Imc1 & 0.00031209630887459283 \\
+        wavelet-LLH\_glcm\_JointEnergy & 0.0003121228037625915 \\
+        original\_shape\_Flatness & 0.0003121633159050461 \\
+        wavelet-LLH\_firstorder\_Median & 0.0003122090133091173 \\
+        lbp-3D-k\_glcm\_SumSquares & 0.00031227483107651834 \\
+        original\_glszm\_SmallAreaHighGrayLevelEmphasis & 0.00031249633910188866 \\
+        wavelet-LLL\_firstorder\_Variance & 0.00031281635032048534 \\
+        lbp-3D-k\_glcm\_ClusterProminence & 0.00031292642114369787 \\
+        log-sigma-1-0-mm-3D\_glcm\_SumSquares & 0.0003132850986336321 \\
+        log-sigma-1-0-mm-3D\_gldm\_DependenceVariance & 0.00031341942807010405 \\
+        squareroot\_glszm\_GrayLevelNonUniformityNormalized & 0.0003138730303106443 \\
+        log-sigma-1-0-mm-3D\_glcm\_Contrast & 0.0003139326310952286 \\
+        log-sigma-3-0-mm-3D\_firstorder\_Mean & 0.0003142074300606304 \\
+        wavelet-LHL\_glrlm\_GrayLevelNonUniformityNormalized & 0.00031501701063505204 \\
+        log-sigma-1-0-mm-3D\_ngtdm\_Complexity & 0.0003152335800309814 \\
+        lbp-3D-k\_glrlm\_LongRunLowGrayLevelEmphasis & 0.0003152566507394751 \\
+        wavelet-HHH\_glcm\_JointEnergy & 0.00031526289972072156 \\
+        original\_shape\_MinorAxisLength & 0.00031571081268437793 \\
+        log-sigma-3-0-mm-3D\_glcm\_ClusterTendency & 0.0003157932083976563 \\
+        exponential\_firstorder\_Range & 0.00031582809552752354 \\
+        wavelet-LHH\_firstorder\_InterquartileRange & 0.0003159407528208332 \\
+        wavelet-LLH\_glszm\_GrayLevelNonUniformityNormalized & 0.00031601891731895007 \\
+        wavelet-LHL\_glcm\_Imc1 & 0.0003163585664009297 \\
+        log-sigma-1-0-mm-3D\_glszm\_GrayLevelNonUniformityNormalized & 0.0003163770879873729 \\
+        lbp-3D-k\_firstorder\_Maximum & 0.00031646900868644387 \\
+        wavelet-HLH\_glcm\_JointEntropy & 0.0003166781020883437 \\
+        logarithm\_glszm\_GrayLevelVariance & 0.0003171654409802461 \\
+        lbp-3D-m2\_firstorder\_Maximum & 0.0003177294146135727 \\
+        original\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.0003177927858331513 \\
+        wavelet-LLL\_firstorder\_MeanAbsoluteDeviation & 0.000318016780897472 \\
+        exponential\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.0003181058005077629 \\
+        logarithm\_firstorder\_RobustMeanAbsoluteDeviation & 0.00031811641573006893 \\
+        wavelet-HHH\_glcm\_DifferenceEntropy & 0.0003181813661054372 \\
+        log-sigma-1-0-mm-3D\_glcm\_DifferenceVariance & 0.0003183404992467243 \\
+        lbp-3D-k\_firstorder\_MeanAbsoluteDeviation & 0.0003185261294537914 \\
+        wavelet-LHH\_glszm\_ZoneVariance & 0.00031867311069725014 \\
+        gradient\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.0003188462818697604 \\
+        wavelet-LHH\_glcm\_DifferenceEntropy & 0.0003189884568887753 \\
+        lbp-3D-k\_glcm\_ClusterTendency & 0.0003191632406180026 \\
+        wavelet-HHL\_firstorder\_Entropy & 0.0003192895447920947 \\
+        lbp-3D-k\_glcm\_JointAverage & 0.0003193617767337136 \\
+        lbp-3D-k\_glcm\_Idmn & 0.00031939065514667597 \\
+        log-sigma-1-0-mm-3D\_glszm\_LowGrayLevelZoneEmphasis & 0.00031940880503924396 \\
+        lbp-3D-m2\_firstorder\_Range & 0.0003198233232992197 \\
+        log-sigma-3-0-mm-3D\_firstorder\_MeanAbsoluteDeviation & 0.00032056008241698427 \\
+        logarithm\_firstorder\_TotalEnergy & 0.0003207328942477809 \\
+        wavelet-LHL\_glrlm\_LowGrayLevelRunEmphasis & 0.00032092956263613735 \\
+        wavelet-LHH\_firstorder\_Maximum & 0.0003222353608947117 \\
+        lbp-3D-k\_gldm\_DependenceEntropy & 0.000322989820175662 \\
+        wavelet-HHH\_gldm\_DependenceNonUniformityNormalized & 0.0003230622987021556 \\
+        wavelet-LHL\_firstorder\_Minimum & 0.00032308420572303763 \\
+        wavelet-HHH\_ngtdm\_Contrast & 0.00032341176826238476 \\
+        exponential\_glszm\_ZonePercentage & 0.0003236229931465377 \\
+        wavelet-HHH\_gldm\_GrayLevelVariance & 0.00032370759144411516 \\
+        log-sigma-1-0-mm-3D\_firstorder\_Maximum & 0.000323758059434523 \\
+        wavelet-HLL\_firstorder\_Median & 0.00032441677513778675 \\
+        log-sigma-1-0-mm-3D\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.00032483205946772317 \\
+        log-sigma-1-0-mm-3D\_glcm\_InverseVariance & 0.00032497031127850026 \\
+        square\_glszm\_LargeAreaEmphasis & 0.0003255411266415167 \\
+        lbp-3D-m2\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.0003255710926640191 \\
+        lbp-3D-k\_gldm\_SmallDependenceEmphasis & 0.0003256514043215846 \\
+        wavelet-LHH\_firstorder\_10Percentile & 0.00032590431457344635 \\
+        lbp-3D-k\_firstorder\_Median & 0.0003259854798509205 \\
+        gradient\_firstorder\_Kurtosis & 0.0003261839277960514 \\
+        lbp-3D-k\_glcm\_JointEntropy & 0.0003262065985895453 \\
+        lbp-3D-m1\_firstorder\_TotalEnergy & 0.00032647813789959723 \\
+        wavelet-LHH\_glcm\_MaximumProbability & 0.0003269998916471178 \\
+        wavelet-LLH\_firstorder\_Mean & 0.00032709508523775903 \\
+        wavelet-LHH\_glcm\_JointEntropy & 0.0003272307783652861 \\
+        log-sigma-3-0-mm-3D\_glrlm\_GrayLevelNonUniformityNormalized & 0.0003277927647872204 \\
+        log-sigma-1-0-mm-3D\_glrlm\_HighGrayLevelRunEmphasis & 0.0003279451817111621 \\
+        square\_firstorder\_Range & 0.00032803299292289274 \\
+        squareroot\_glszm\_ZonePercentage & 0.00032890201585416596 \\
+        exponential\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.00032902809635053186 \\
+        wavelet-LHH\_glrlm\_LongRunHighGrayLevelEmphasis & 0.00032915690224575515 \\
+        wavelet-HLL\_glrlm\_ShortRunEmphasis & 0.000329193126972126 \\
+        square\_firstorder\_Maximum & 0.0003295096713605032 \\
+        wavelet-HLL\_glcm\_JointEntropy & 0.0003295253157989201 \\
+        squareroot\_firstorder\_TotalEnergy & 0.0003295307567987296 \\
+        wavelet-HLL\_glszm\_SmallAreaEmphasis & 0.0003304256656713762 \\
+        gradient\_firstorder\_Skewness & 0.00033047542301574607 \\
+        exponential\_firstorder\_TotalEnergy & 0.00033095825474793863 \\
+        wavelet-HHH\_firstorder\_Entropy & 0.0003314190752445249 \\
+        original\_firstorder\_Kurtosis & 0.00033152473394902843 \\
+        logarithm\_gldm\_DependenceVariance & 0.0003317016518854704 \\
+        wavelet-LLH\_glrlm\_RunVariance & 0.0003317790744056874 \\
+        wavelet-HLL\_glrlm\_RunLengthNonUniformityNormalized & 0.0003318692449294389 \\
+        wavelet-LLL\_firstorder\_TotalEnergy & 0.00033219306506647255 \\
+        squareroot\_glszm\_SmallAreaLowGrayLevelEmphasis & 0.00033223962275797454 \\
+        wavelet-HLL\_glszm\_ZoneEntropy & 0.00033247000940508117 \\
+        wavelet-HHL\_glcm\_Imc1 & 0.0003329855465714071 \\
+        wavelet-HLH\_glcm\_JointEnergy & 0.0003330449850874243 \\
+        lbp-3D-m2\_firstorder\_TotalEnergy & 0.00033344013856665593 \\
+        lbp-3D-k\_glrlm\_LongRunEmphasis & 0.00033344716951730986 \\
+        wavelet-HHH\_glszm\_SmallAreaLowGrayLevelEmphasis & 0.00033346544686161484 \\
+        lbp-3D-m2\_glszm\_LargeAreaEmphasis & 0.00033386535155592427 \\
+        lbp-3D-k\_glrlm\_GrayLevelNonUniformityNormalized & 0.0003339026595153523 \\
+        log-sigma-1-0-mm-3D\_glcm\_DifferenceAverage & 0.0003340291626807852 \\
+        wavelet-LHL\_gldm\_DependenceEntropy & 0.0003341316281380176 \\
+        log-sigma-1-0-mm-3D\_firstorder\_InterquartileRange & 0.0003346621661328025 \\
+        original\_glszm\_ZonePercentage & 0.00033567200695642385 \\
+        lbp-3D-k\_glcm\_SumEntropy & 0.00033568592844375895 \\
+        wavelet-HLH\_ngtdm\_Strength & 0.00033575604613329054 \\
+        squareroot\_firstorder\_Minimum & 0.00033578279026770747 \\
+        wavelet-HHH\_glcm\_JointEntropy & 0.00033620615597329746 \\
+        wavelet-HHL\_glcm\_Imc2 & 0.0003364846294914277 \\
+        lbp-3D-m2\_glszm\_ZonePercentage & 0.00033658534160943635 \\
+        log-sigma-3-0-mm-3D\_firstorder\_RobustMeanAbsoluteDeviation & 0.0003366705215828762 \\
+        squareroot\_glszm\_LowGrayLevelZoneEmphasis & 0.0003369745128804581 \\
+        wavelet-HHL\_firstorder\_90Percentile & 0.0003371139366977182 \\
+        log-sigma-1-0-mm-3D\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.00033712578349773893 \\
+        squareroot\_glszm\_SmallAreaEmphasis & 0.0003378631903429425 \\
+        wavelet-LHL\_ngtdm\_Strength & 0.00033793253468794137 \\
+        wavelet-LHH\_glcm\_JointAverage & 0.00033854539079485724 \\
+        wavelet-LLH\_gldm\_LowGrayLevelEmphasis & 0.0003385521124091575 \\
+        wavelet-HLH\_glcm\_DifferenceEntropy & 0.0003387633488071554 \\
+        lbp-3D-k\_glcm\_Autocorrelation & 0.0003389590710958008 \\
+        wavelet-HLL\_gldm\_DependenceVariance & 0.00033928956138108696 \\
+        wavelet-HHH\_ngtdm\_Busyness & 0.0003395483391650884 \\
+        wavelet-HLH\_glszm\_SmallAreaEmphasis & 0.0003396685222685213 \\
+        lbp-3D-m1\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.0003405901641287913 \\
+        wavelet-HHL\_ngtdm\_Coarseness & 0.0003408170979650793 \\
+        wavelet-HLL\_glrlm\_LowGrayLevelRunEmphasis & 0.00034123155186850825 \\
+        lbp-3D-k\_glcm\_Id & 0.00034170954195837964 \\
+        original\_shape\_VoxelVolume & 0.00034212299367924174 \\
+        wavelet-LHL\_ngtdm\_Busyness & 0.00034225221191736666 \\
+        log-sigma-1-0-mm-3D\_glszm\_ZoneVariance & 0.000342366009246178 \\
+        original\_shape\_Elongation & 0.00034255369940894325 \\
+        logarithm\_glrlm\_RunVariance & 0.00034333271315201315 \\
+        original\_glszm\_SmallAreaLowGrayLevelEmphasis & 0.00034335818204201275 \\
+        original\_glszm\_HighGrayLevelZoneEmphasis & 0.0003437282445562956 \\
+        wavelet-LLH\_glrlm\_LongRunLowGrayLevelEmphasis & 0.000344156660274294 \\
+        wavelet-LHH\_gldm\_GrayLevelNonUniformity & 0.00034419806135886535 \\
+        exponential\_firstorder\_Energy & 0.00034427788455464447 \\
+        log-sigma-3-0-mm-3D\_gldm\_DependenceVariance & 0.0003443935288708019 \\
+        wavelet-HLH\_glcm\_MaximumProbability & 0.0003447975263955932 \\
+        wavelet-LLH\_glszm\_SmallAreaLowGrayLevelEmphasis & 0.0003451901020643029 \\
+        lbp-3D-m2\_firstorder\_RootMeanSquared & 0.0003453362511106046 \\
+        wavelet-HLH\_firstorder\_RootMeanSquared & 0.00034553952810729575 \\
+        logarithm\_glrlm\_LongRunHighGrayLevelEmphasis & 0.00034564727278453935 \\
+        wavelet-HHH\_firstorder\_Energy & 0.0003458884401362707 \\
+        wavelet-LLH\_glszm\_LowGrayLevelZoneEmphasis & 0.00034630129380874115 \\
+        wavelet-HLL\_firstorder\_10Percentile & 0.00034715555833132034 \\
+        original\_glcm\_Imc1 & 0.0003471626784181923 \\
+        wavelet-LHH\_firstorder\_Variance & 0.0003474846085587655 \\
+        lbp-3D-m1\_glszm\_LargeAreaEmphasis & 0.0003474992079141991 \\
+        log-sigma-3-0-mm-3D\_glszm\_SizeZoneNonUniformityNormalized & 0.000347757295964523 \\
+        lbp-3D-k\_glcm\_Contrast & 0.0003479139778708498 \\
+        wavelet-LHL\_glrlm\_LongRunEmphasis & 0.00034800319915592124 \\
+        wavelet-LHH\_gldm\_DependenceVariance & 0.0003481917996071159 \\
+        lbp-3D-k\_glcm\_DifferenceAverage & 0.00034820910698582985 \\
+        lbp-3D-k\_glcm\_DifferenceEntropy & 0.000348504080186964 \\
+        wavelet-LLH\_glszm\_SmallAreaEmphasis & 0.0003486054272107809 \\
+        log-sigma-3-0-mm-3D\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.00034885803762969505 \\
+        wavelet-LLL\_firstorder\_Skewness & 0.00034912970831855095 \\
+        wavelet-HHH\_glcm\_Autocorrelation & 0.00034928728960893866 \\
+        wavelet-HLL\_firstorder\_TotalEnergy & 0.00034963952580252023 \\
+        wavelet-HHH\_glcm\_DifferenceVariance & 0.00034991721041961694 \\
+        wavelet-LHH\_glcm\_Imc2 & 0.00035002012216803197 \\
+        wavelet-HLH\_gldm\_HighGrayLevelEmphasis & 0.0003502834870079004 \\
+        wavelet-LHL\_glszm\_ZoneVariance & 0.0003504041572358908 \\
+        lbp-3D-k\_glcm\_DifferenceVariance & 0.0003506431012359497 \\
+        log-sigma-3-0-mm-3D\_glszm\_SmallAreaEmphasis & 0.0003511913822815872 \\
+        logarithm\_firstorder\_Kurtosis & 0.0003513569594967409 \\
+        wavelet-LLL\_firstorder\_Kurtosis & 0.00035137354555550527 \\
+        lbp-3D-k\_glrlm\_HighGrayLevelRunEmphasis & 0.00035159144142535634 \\
+        wavelet-LLH\_glcm\_DifferenceVariance & 0.000351656635559255 \\
+        wavelet-LLL\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.0003517803971531676 \\
+        log-sigma-1-0-mm-3D\_glcm\_Idmn & 0.00035194868553130846 \\
+        wavelet-HHH\_gldm\_DependenceEntropy & 0.0003519599931933058 \\
+        wavelet-HHH\_glcm\_JointAverage & 0.00035197417050889966 \\
+        lbp-3D-k\_glcm\_MaximumProbability & 0.000352207969572486 \\
+        log-sigma-3-0-mm-3D\_firstorder\_RootMeanSquared & 0.00035285102196821566 \\
+        wavelet-LHH\_firstorder\_Skewness & 0.00035346597115784703 \\
+        wavelet-HLH\_glcm\_Imc1 & 0.0003540091608728743 \\
+        wavelet-LLH\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.00035441266636705655 \\
+        log-sigma-1-0-mm-3D\_glcm\_JointAverage & 0.00035480162345669433 \\
+        lbp-3D-k\_glcm\_InverseVariance & 0.00035481149545439606 \\
+        wavelet-LLH\_gldm\_HighGrayLevelEmphasis & 0.00035493403840184036 \\
+        wavelet-LLH\_ngtdm\_Strength & 0.00035508559640790835 \\
+        lbp-3D-k\_glcm\_JointEnergy & 0.0003551818861969891 \\
+        original\_glszm\_SizeZoneNonUniformityNormalized & 0.00035562129701862094 \\
+        original\_glrlm\_LongRunHighGrayLevelEmphasis & 0.0003556260573255822 \\
+        wavelet-HLH\_glszm\_SizeZoneNonUniformityNormalized & 0.00035565136393791443 \\
+        lbp-3D-m2\_firstorder\_Energy & 0.0003560583459479252 \\
+        lbp-3D-k\_firstorder\_Energy & 0.00035632027775062055 \\
+        wavelet-LLH\_firstorder\_10Percentile & 0.0003564570969759064 \\
+        original\_glrlm\_RunVariance & 0.0003564968238523113 \\
+        wavelet-HHH\_glcm\_MaximumProbability & 0.00035660053528987205 \\
+        wavelet-LHL\_firstorder\_RootMeanSquared & 0.00035663991206063433 \\
+        wavelet-LHH\_glrlm\_RunVariance & 0.0003567032379168609 \\
+        exponential\_glszm\_LargeAreaEmphasis & 0.0003568679337995721 \\
+        squareroot\_glszm\_SizeZoneNonUniformityNormalized & 0.00035730739795743574 \\
+        wavelet-LLH\_glcm\_Imc1 & 0.00035763568868289503 \\
+        logarithm\_gldm\_SmallDependenceLowGrayLevelEmphasis & 0.00035784802387346995 \\
+        wavelet-LLL\_glrlm\_LongRunHighGrayLevelEmphasis & 0.0003588035959498137 \\
+        wavelet-LLH\_glszm\_HighGrayLevelZoneEmphasis & 0.0003589863730905722 \\
+        wavelet-HLL\_firstorder\_Skewness & 0.00035909947173013703 \\
+        squareroot\_glrlm\_LongRunHighGrayLevelEmphasis & 0.0003593573644832503 \\
+        gradient\_firstorder\_TotalEnergy & 0.0003597104982786061 \\
+        wavelet-LHL\_glrlm\_HighGrayLevelRunEmphasis & 0.00036048734806731194 \\
+        wavelet-HHL\_gldm\_GrayLevelNonUniformity & 0.00036096132731076657 \\
+        wavelet-LHL\_glrlm\_GrayLevelVariance & 0.0003610626239474456 \\
+        logarithm\_glszm\_LowGrayLevelZoneEmphasis & 0.0003617211823703389 \\
+        squareroot\_firstorder\_Skewness & 0.00036215254981367026 \\
+        logarithm\_ngtdm\_Busyness & 0.00036239270329255745 \\
+        log-sigma-3-0-mm-3D\_firstorder\_Range & 0.0003626156110676068 \\
+        lbp-3D-k\_glrlm\_RunVariance & 0.00036323546447736326 \\
+        logarithm\_glcm\_ClusterShade & 0.0003633654146558507 \\
+        log-sigma-3-0-mm-3D\_firstorder\_Skewness & 0.0003636507657634079 \\
+        logarithm\_firstorder\_Skewness & 0.000363663609762297 \\
+        wavelet-LHL\_glszm\_SmallAreaLowGrayLevelEmphasis & 0.00036377774305813236 \\
+        wavelet-HLL\_gldm\_GrayLevelNonUniformity & 0.0003648195621172416 \\
+        wavelet-HLH\_firstorder\_Median & 0.00036577565810619225 \\
+        wavelet-HHH\_firstorder\_RootMeanSquared & 0.00036608615255722944 \\
+        lbp-3D-m2\_firstorder\_Mean & 0.00036709366115628394 \\
+        logarithm\_firstorder\_Minimum & 0.0003672208292480424 \\
+        wavelet-LHL\_ngtdm\_Coarseness & 0.00036734273820137063 \\
+        wavelet-LLH\_glrlm\_HighGrayLevelRunEmphasis & 0.0003676649687876086 \\
+        original\_glszm\_SmallAreaEmphasis & 0.0003679514702600269 \\
+        wavelet-LHL\_firstorder\_Mean & 0.0003680961168773666 \\
+        log-sigma-1-0-mm-3D\_glrlm\_LowGrayLevelRunEmphasis & 0.00036818883192444424 \\
+        wavelet-LHH\_firstorder\_MeanAbsoluteDeviation & 0.0003689762784174262 \\
+        wavelet-HHL\_ngtdm\_Strength & 0.00036932106873960595 \\
+        squareroot\_glszm\_ZoneEntropy & 0.000369638813979192 \\
+        wavelet-HHH\_firstorder\_Variance & 0.00036967678952453667 \\
+        log-sigma-3-0-mm-3D\_glszm\_SmallAreaHighGrayLevelEmphasis & 0.0003698642122920716 \\
+        log-sigma-1-0-mm-3D\_glcm\_Id & 0.00036987426555517444 \\
+        wavelet-HLH\_glcm\_JointAverage & 0.0003701272741821084 \\
+        exponential\_gldm\_DependenceVariance & 0.0003705270467113701 \\
+        wavelet-HHL\_firstorder\_Uniformity & 0.000370898118464715 \\
+        wavelet-LHH\_glcm\_Autocorrelation & 0.00037274686023339436 \\
+        lbp-3D-k\_glszm\_ZonePercentage & 0.00037326069474530435 \\
+        log-sigma-1-0-mm-3D\_glrlm\_GrayLevelVariance & 0.00037362407749582825 \\
+        wavelet-HLH\_firstorder\_Maximum & 0.0003742361118563803 \\
+        wavelet-HHH\_ngtdm\_Complexity & 0.0003745795480224512 \\
+        lbp-3D-k\_glcm\_Idm & 0.0003749884328885486 \\
+        wavelet-HHH\_ngtdm\_Strength & 0.000375210734341151 \\
+        wavelet-HLH\_glcm\_ClusterShade & 0.0003758805875972642 \\
+        wavelet-LHL\_glcm\_Imc2 & 0.00037601685437305544 \\
+        wavelet-LHL\_glszm\_GrayLevelNonUniformityNormalized & 0.00037642834033237946 \\
+        squareroot\_ngtdm\_Busyness & 0.0003765352343332655 \\
+        wavelet-HLH\_glszm\_SmallAreaHighGrayLevelEmphasis & 0.00037658557793280835 \\
+        wavelet-LLH\_glcm\_ClusterTendency & 0.0003770768039728044 \\
+        logarithm\_glszm\_SizeZoneNonUniformityNormalized & 0.0003770888149644584 \\
+        log-sigma-3-0-mm-3D\_glszm\_SmallAreaLowGrayLevelEmphasis & 0.00037711939754650454 \\
+        wavelet-HLH\_firstorder\_Mean & 0.00037848662573243194 \\
+        wavelet-LLH\_glszm\_GrayLevelVariance & 0.00037863946405907725 \\
+        square\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.0003793186482075991 \\
+        lbp-3D-k\_ngtdm\_Busyness & 0.0003796803475428956 \\
+        lbp-3D-m2\_firstorder\_90Percentile & 0.00037989901582838234 \\
+        wavelet-LHH\_glszm\_ZonePercentage & 0.00037994509659404344 \\
+        lbp-3D-k\_firstorder\_Range & 0.0003800098034807733 \\
+        wavelet-LHL\_glrlm\_LongRunLowGrayLevelEmphasis & 0.0003800443006455366 \\
+        lbp-3D-k\_glcm\_Imc2 & 0.00038034093391389355 \\
+        wavelet-HLH\_glcm\_Autocorrelation & 0.00038055154996979857 \\
+        wavelet-HHL\_firstorder\_MeanAbsoluteDeviation & 0.0003820382800359194 \\
+        wavelet-LLH\_glcm\_Correlation & 0.0003829078322857328 \\
+        gradient\_glszm\_ZonePercentage & 0.0003834111861726264 \\
+        lbp-3D-k\_firstorder\_Mean & 0.0003841073090349284 \\
+        squareroot\_glcm\_ClusterShade & 0.00038437161687091795 \\
+        wavelet-LLH\_firstorder\_Energy & 0.0003844329579897607 \\
+        lbp-3D-k\_gldm\_GrayLevelNonUniformity & 0.0003852321929413144 \\
+        wavelet-LLH\_gldm\_LargeDependenceEmphasis & 0.00038532745194632073 \\
+        wavelet-LHL\_glcm\_DifferenceEntropy & 0.0003863171494296255 \\
+        wavelet-HHH\_glszm\_GrayLevelNonUniformity & 0.0003871261413361253 \\
+        logarithm\_glcm\_Imc1 & 0.000387776792976648 \\
+        original\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.00038852741812717107 \\
+        log-sigma-1-0-mm-3D\_glszm\_SmallAreaEmphasis & 0.00038879236286038725 \\
+        wavelet-HHL\_firstorder\_10Percentile & 0.0003888153085668644 \\
+        wavelet-LLH\_ngtdm\_Coarseness & 0.0003902448917760719 \\
+        wavelet-HLL\_glcm\_Imc2 & 0.00039068790645353514 \\
+        log-sigma-1-0-mm-3D\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.00039069423505562576 \\
+        wavelet-LHL\_glrlm\_RunVariance & 0.00039090506991983385 \\
+        wavelet-HHH\_glrlm\_GrayLevelNonUniformityNormalized & 0.00039125900620263864 \\
+        wavelet-HLL\_firstorder\_Mean & 0.00039204905007008333 \\
+        lbp-3D-m1\_firstorder\_90Percentile & 0.00039243300970746056 \\
+        wavelet-LHH\_ngtdm\_Coarseness & 0.0003925853969096024 \\
+        gradient\_gldm\_DependenceVariance & 0.0003928919205525666 \\
+        squareroot\_glrlm\_RunVariance & 0.00039290226167794726 \\
+        wavelet-HHH\_glcm\_ClusterTendency & 0.0003931453806788611 \\
+        log-sigma-1-0-mm-3D\_glcm\_DifferenceEntropy & 0.00039363688619220674 \\
+        log-sigma-1-0-mm-3D\_firstorder\_Variance & 0.00039411012472978014 \\
+        gradient\_firstorder\_Minimum & 0.0003941160288885128 \\
+        square\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.0003942212587750393 \\
+        wavelet-LHH\_glcm\_ClusterShade & 0.000394403175755022 \\
+        wavelet-HHL\_glcm\_Autocorrelation & 0.00039517579066179124 \\
+        wavelet-HLL\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.00039596201229068505 \\
+        gradient\_gldm\_GrayLevelNonUniformity & 0.0003962219021780429 \\
+        original\_shape\_MeshVolume & 0.00039626043682210334 \\
+        exponential\_gldm\_GrayLevelNonUniformity & 0.0003979303349607875 \\
+        lbp-3D-k\_firstorder\_Minimum & 0.0003982208619426238 \\
+        log-sigma-1-0-mm-3D\_glcm\_Idn & 0.00039828620869426464 \\
+        lbp-3D-k\_firstorder\_Variance & 0.0003989627211201673 \\
+        wavelet-HLH\_firstorder\_10Percentile & 0.0003999557192866124 \\
+        lbp-3D-k\_glrlm\_GrayLevelVariance & 0.00040020142139094713 \\
+        wavelet-LLH\_firstorder\_Minimum & 0.0004004564163641891 \\
+        log-sigma-1-0-mm-3D\_glcm\_Idm & 0.00040143900547552446 \\
+        squareroot\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.00040160984740130124 \\
+        original\_ngtdm\_Busyness & 0.00040257195940233444 \\
+        wavelet-HHH\_firstorder\_Uniformity & 0.0004045210833704707 \\
+        wavelet-HHL\_glszm\_SmallAreaHighGrayLevelEmphasis & 0.0004046494675702101 \\
+        wavelet-LLH\_glcm\_JointEntropy & 0.00040558685338350984 \\
+        gradient\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.0004058158585184383 \\
+        wavelet-HHH\_gldm\_GrayLevelNonUniformity & 0.00040601164184066093 \\
+        square\_gldm\_GrayLevelNonUniformity & 0.0004065051735861475 \\
+        wavelet-LHL\_glszm\_GrayLevelVariance & 0.0004069032689089335 \\
+        logarithm\_glszm\_ZoneEntropy & 0.0004080422769794108 \\
+        wavelet-HHL\_ngtdm\_Busyness & 0.0004089488692247338 \\
+        wavelet-LHL\_firstorder\_Range & 0.000409184097048553 \\
+        original\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.00040962432901523274 \\
+        lbp-3D-k\_glszm\_SizeZoneNonUniformityNormalized & 0.000409950864652763 \\
+        wavelet-HLL\_glszm\_LowGrayLevelZoneEmphasis & 0.0004101500785568752 \\
+        wavelet-LLL\_firstorder\_Energy & 0.00041139909400450124 \\
+        lbp-3D-m2\_gldm\_DependenceNonUniformityNormalized & 0.00041174363555119273 \\
+        wavelet-HLH\_glrlm\_LowGrayLevelRunEmphasis & 0.0004121919719525276 \\
+        wavelet-HLH\_firstorder\_MeanAbsoluteDeviation & 0.0004133352485919908 \\
+        wavelet-LLL\_glcm\_Imc1 & 0.0004138553068870453 \\
+        wavelet-HHL\_glcm\_SumEntropy & 0.0004139883399893197 \\
+        wavelet-LLL\_glrlm\_LongRunEmphasis & 0.0004146060066787221 \\
+        wavelet-HLL\_ngtdm\_Busyness & 0.0004162086091203678 \\
+        wavelet-LHL\_glszm\_SmallAreaEmphasis & 0.0004164127387836003 \\
+        logarithm\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.0004171630624254182 \\
+        wavelet-LHH\_glrlm\_GrayLevelNonUniformityNormalized & 0.0004171825953150756 \\
+        lbp-3D-m2\_firstorder\_Median & 0.0004174050533878305 \\
+        wavelet-LLL\_firstorder\_Minimum & 0.0004183227774124684 \\
+        lbp-3D-m1\_gldm\_GrayLevelNonUniformity & 0.00041883262245326743 \\
+        wavelet-LLH\_glrlm\_LowGrayLevelRunEmphasis & 0.0004201862983267704 \\
+        logarithm\_glszm\_SmallAreaEmphasis & 0.00042045486787828075 \\
+        original\_shape\_SurfaceArea & 0.000420555567317798 \\
+        original\_shape\_Maximum2DDiameterRow & 0.00042158515736195044 \\
+        wavelet-LLH\_firstorder\_MeanAbsoluteDeviation & 0.00042343512814504503 \\
+        wavelet-LHL\_glszm\_HighGrayLevelZoneEmphasis & 0.0004237206609324142 \\
+        wavelet-LHL\_firstorder\_Variance & 0.00042420032021720443 \\
+        lbp-3D-m2\_firstorder\_10Percentile & 0.0004251338678913143 \\
+        wavelet-HHH\_gldm\_DependenceNonUniformity & 0.0004253406533603141 \\
+        wavelet-LHH\_glcm\_SumSquares & 0.00042652143954785364 \\
+        lbp-3D-k\_glrlm\_RunLengthNonUniformityNormalized & 0.00042654946459360813 \\
+        wavelet-HLL\_firstorder\_RobustMeanAbsoluteDeviation & 0.00042768025420604873 \\
+        wavelet-HHL\_gldm\_DependenceVariance & 0.00042794010287583255 \\
+        square\_gldm\_DependenceNonUniformityNormalized & 0.000427964274856438 \\
+        wavelet-HLH\_gldm\_GrayLevelNonUniformity & 0.000428002612759955 \\
+        wavelet-LLH\_firstorder\_InterquartileRange & 0.0004285647768464718 \\
+        original\_firstorder\_Energy & 0.00042909485799907525 \\
+        wavelet-LLH\_glrlm\_LongRunHighGrayLevelEmphasis & 0.00043020731336746554 \\
+        wavelet-LHL\_glszm\_LowGrayLevelZoneEmphasis & 0.0004303846379816005 \\
+        wavelet-HHL\_glszm\_HighGrayLevelZoneEmphasis & 0.00043045740728847565 \\
+        wavelet-HHH\_glszm\_HighGrayLevelZoneEmphasis & 0.0004310359505901236 \\
+        log-sigma-1-0-mm-3D\_glcm\_Imc1 & 0.0004317113960248636 \\
+        wavelet-HHH\_glcm\_Correlation & 0.0004317691300886798 \\
+        wavelet-HHL\_firstorder\_InterquartileRange & 0.00043301771785563464 \\
+        log-sigma-1-0-mm-3D\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.00043316124832077344 \\
+        wavelet-HHH\_glszm\_LowGrayLevelZoneEmphasis & 0.0004334273099559153 \\
+        log-sigma-3-0-mm-3D\_firstorder\_Minimum & 0.00043353784319631703 \\
+        lbp-3D-k\_gldm\_DependenceVariance & 0.00043396910879012326 \\
+        wavelet-LLH\_firstorder\_Kurtosis & 0.0004343506617734791 \\
+        wavelet-LLH\_glrlm\_GrayLevelVariance & 0.0004346458617063037 \\
+        wavelet-HHL\_glszm\_SmallAreaEmphasis & 0.00043476999393267954 \\
+        wavelet-LLH\_glcm\_MaximumProbability & 0.0004347955139890909 \\
+        log-sigma-1-0-mm-3D\_firstorder\_MeanAbsoluteDeviation & 0.000435630100528493 \\
+        wavelet-HHH\_glcm\_ClusterProminence & 0.00043572032289427925 \\
+        wavelet-LHL\_firstorder\_Median & 0.00043588760750251773 \\
+        wavelet-HLL\_glcm\_SumEntropy & 0.0004365911293215431 \\
+        log-sigma-3-0-mm-3D\_firstorder\_Kurtosis & 0.0004371264179312689 \\
+        wavelet-HLL\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.0004371560342249778 \\
+        wavelet-LLH\_glrlm\_RunLengthNonUniformityNormalized & 0.00043721225902282096 \\
+        lbp-3D-k\_glrlm\_ShortRunEmphasis & 0.00043754643639754974 \\
+        wavelet-LHL\_glcm\_DifferenceVariance & 0.00043880375634233374 \\
+        lbp-3D-k\_firstorder\_RobustMeanAbsoluteDeviation & 0.0004390205230121453 \\
+        original\_glrlm\_LongRunLowGrayLevelEmphasis & 0.0004391814349924491 \\
+        wavelet-HLH\_glszm\_SmallAreaLowGrayLevelEmphasis & 0.0004401517676318235 \\
+        wavelet-HHH\_ngtdm\_Coarseness & 0.0004401730134833394 \\
+        wavelet-HHH\_glcm\_Idm & 0.00044084927421660146 \\
+        lbp-3D-m1\_gldm\_DependenceVariance & 0.00044096448578267457 \\
+        wavelet-HLL\_gldm\_LowGrayLevelEmphasis & 0.0004413033382309874 \\
+        wavelet-HLH\_firstorder\_90Percentile & 0.00044177869970769547 \\
+        wavelet-HLH\_gldm\_LowGrayLevelEmphasis & 0.00044389265845650935 \\
+        wavelet-LLH\_firstorder\_RobustMeanAbsoluteDeviation & 0.00044510175971840125 \\
+        wavelet-LHH\_firstorder\_Minimum & 0.00044510961920845465 \\
+        square\_gldm\_DependenceVariance & 0.0004451855813483981 \\
+        wavelet-HLH\_glrlm\_LongRunLowGrayLevelEmphasis & 0.0004458160321827521 \\
+        lbp-3D-k\_glcm\_Imc1 & 0.00044773724139740665 \\
+        wavelet-HHH\_firstorder\_MeanAbsoluteDeviation & 0.0004490024545624281 \\
+        wavelet-LLL\_ngtdm\_Coarseness & 0.0004495999371827514 \\
+        wavelet-HHH\_glcm\_Idmn & 0.0004497292471977117 \\
+        wavelet-HLL\_gldm\_GrayLevelVariance & 0.00045067138273971436 \\
+        log-sigma-3-0-mm-3D\_gldm\_DependenceEntropy & 0.00045100036235130105 \\
+        wavelet-LHH\_glrlm\_GrayLevelVariance & 0.0004514800116941504 \\
+        log-sigma-1-0-mm-3D\_firstorder\_RobustMeanAbsoluteDeviation & 0.00045247085759954505 \\
+        wavelet-HLL\_gldm\_HighGrayLevelEmphasis & 0.00045346121304921233 \\
+        wavelet-HHH\_glcm\_Idn & 0.00045351240979503183 \\
+        wavelet-LLH\_glrlm\_GrayLevelNonUniformityNormalized & 0.000453775819995568 \\
+        squareroot\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.00045400774167157055 \\
+        logarithm\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.0004545489230695471 \\
+        exponential\_gldm\_DependenceNonUniformityNormalized & 0.00045553516179726853 \\
+        wavelet-HLL\_glszm\_HighGrayLevelZoneEmphasis & 0.0004555603211966391 \\
+        wavelet-HHL\_glcm\_ClusterShade & 0.0004565706419255399 \\
+        wavelet-HHH\_gldm\_DependenceVariance & 0.00045668650737166994 \\
+        wavelet-HLL\_glszm\_GrayLevelVariance & 0.0004567807184045051 \\
+        log-sigma-1-0-mm-3D\_glrlm\_LongRunHighGrayLevelEmphasis & 0.0004571780329455228 \\
+        lbp-3D-k\_firstorder\_InterquartileRange & 0.0004576331454213923 \\
+        wavelet-HHL\_glszm\_LowGrayLevelZoneEmphasis & 0.00045825248980788493 \\
+        lbp-3D-m1\_firstorder\_InterquartileRange & 0.0004584357390535593 \\
+        logarithm\_glrlm\_LongRunLowGrayLevelEmphasis & 0.0004586174548802308 \\
+        original\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.0004601518690078963 \\
+        wavelet-LHH\_firstorder\_RootMeanSquared & 0.00046144743634394674 \\
+        wavelet-LLL\_glszm\_SizeZoneNonUniformityNormalized & 0.00046196406117035614 \\
+        wavelet-LLH\_gldm\_GrayLevelNonUniformity & 0.0004621170301339041 \\
+        gradient\_gldm\_DependenceNonUniformityNormalized & 0.0004621443354316777 \\
+        original\_firstorder\_Minimum & 0.0004625471993749203 \\
+        gradient\_firstorder\_MeanAbsoluteDeviation & 0.0004632074981562642 \\
+        wavelet-HLH\_gldm\_DependenceNonUniformity & 0.0004637657418043992 \\
+        wavelet-HLH\_glrlm\_HighGrayLevelRunEmphasis & 0.00046379433735991123 \\
+        wavelet-HHH\_glcm\_DifferenceAverage & 0.0004652813234924339 \\
+        wavelet-HHL\_glszm\_SizeZoneNonUniformityNormalized & 0.0004659911902088887 \\
+        wavelet-LLL\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.0004661979325236076 \\
+        log-sigma-3-0-mm-3D\_glszm\_GrayLevelNonUniformity & 0.0004664211997573756 \\
+        lbp-3D-k\_glszm\_SmallAreaHighGrayLevelEmphasis & 0.00046677032601347097 \\
+        wavelet-LLH\_gldm\_LargeDependenceHighGrayLevelEmphasis & 0.0004686410275954057 \\
+        wavelet-LLH\_glcm\_Idm & 0.00046956615222751617 \\
+        squareroot\_glrlm\_LongRunLowGrayLevelEmphasis & 0.0004711113676716118 \\
+        lbp-3D-m2\_gldm\_DependenceVariance & 0.00047269175220983166 \\
+        wavelet-HLL\_firstorder\_Uniformity & 0.00047301163981023053 \\
+        lbp-3D-m2\_gldm\_GrayLevelNonUniformity & 0.0004737909114722628 \\
+        wavelet-HHH\_glcm\_SumEntropy & 0.0004740240849748345 \\
+        original\_firstorder\_Skewness & 0.0004740437197560014 \\
+        original\_glszm\_ZoneEntropy & 0.0004741660769011912 \\
+        lbp-3D-k\_gldm\_SmallDependenceHighGrayLevelEmphasis & 0.0004748018399811048 \\
+        wavelet-LLH\_firstorder\_90Percentile & 0.0004748988024794936 \\
+        wavelet-LLL\_glszm\_SmallAreaLowGrayLevelEmphasis & 0.0004749019252767655 \\
+        wavelet-HHL\_glrlm\_LowGrayLevelRunEmphasis & 0.0004757009252291853 \\
+        wavelet-LHH\_glcm\_SumEntropy & 0.0004757080926106734 \\
+        wavelet-HHL\_firstorder\_RobustMeanAbsoluteDeviation & 0.00047749339472531575 \\
+        wavelet-HHH\_firstorder\_10Percentile & 0.0004779547570275634 \\
+        wavelet-LHL\_firstorder\_Skewness & 0.00047812862761009386 \\
+        wavelet-LLH\_glcm\_InverseVariance & 0.0004784066212103785 \\
+        wavelet-LLL\_glszm\_GrayLevelVariance & 0.00047987760668642053 \\
+        lbp-3D-k\_glszm\_SmallAreaEmphasis & 0.00048037209181376234 \\
+        original\_glcm\_ClusterShade & 0.0004805635432692799 \\
+        wavelet-HLL\_ngtdm\_Coarseness & 0.00048070887810680655 \\
+        log-sigma-1-0-mm-3D\_gldm\_GrayLevelNonUniformity & 0.0004810181144556003 \\
+        wavelet-HHH\_firstorder\_90Percentile & 0.00048109883723866626 \\
+        wavelet-LHL\_gldm\_DependenceVariance & 0.0004814236473751115 \\
+        wavelet-HLL\_gldm\_DependenceNonUniformityNormalized & 0.0004820876166233291 \\
+        lbp-3D-k\_firstorder\_Skewness & 0.0004822555188151991 \\
+        wavelet-LHH\_ngtdm\_Contrast & 0.0004831988088137382 \\
+        wavelet-HLL\_glszm\_GrayLevelNonUniformityNormalized & 0.00048347005384006295 \\
+        wavelet-LHL\_gldm\_GrayLevelNonUniformity & 0.0004835432083657235 \\
+        wavelet-HLL\_glrlm\_LongRunLowGrayLevelEmphasis & 0.0004855814785025122 \\
+        wavelet-LLH\_glszm\_SizeZoneNonUniformityNormalized & 0.00048669090403363676 \\
+        log-sigma-1-0-mm-3D\_glszm\_SmallAreaLowGrayLevelEmphasis & 0.0004878666637236744 \\
+        wavelet-LHH\_gldm\_GrayLevelVariance & 0.0004880417059823159 \\
+        squareroot\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.0004886305096733935 \\
+        wavelet-HHL\_firstorder\_Skewness & 0.0004890675392502497 \\
+        wavelet-HHL\_firstorder\_Mean & 0.0004897257444912511 \\
+        wavelet-LLL\_ngtdm\_Strength & 0.000491231387765754 \\
+        squareroot\_firstorder\_Energy & 0.000492395720298489 \\
+        wavelet-HHL\_glcm\_JointAverage & 0.0004925775130982766 \\
+        log-sigma-1-0-mm-3D\_glszm\_SizeZoneNonUniformityNormalized & 0.0004930334937969134 \\
+        log-sigma-1-0-mm-3D\_glrlm\_LongRunEmphasis & 0.0004932649905625474 \\
+        wavelet-HHH\_glcm\_Id & 0.0004932731094449202 \\
+        wavelet-LLH\_glcm\_SumSquares & 0.0004939238442292822 \\
+        wavelet-LHL\_firstorder\_Maximum & 0.0004959381247706716 \\
+        wavelet-LLH\_firstorder\_Skewness & 0.0004967040400960135 \\
+        wavelet-LHL\_glcm\_Autocorrelation & 0.0004968623139967594 \\
+        wavelet-LLL\_glszm\_GrayLevelNonUniformityNormalized & 0.0004979146267372307 \\
+        wavelet-LHH\_ngtdm\_Complexity & 0.0004979986138239951 \\
+        logarithm\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.0004981907496750726 \\
+        wavelet-LLH\_glcm\_Idn & 0.0004993810168454818 \\
+        wavelet-HLL\_firstorder\_Entropy & 0.0004999156803092888 \\
+        wavelet-LLH\_gldm\_DependenceVariance & 0.0005001510105992836 \\
+        wavelet-HLL\_firstorder\_Kurtosis & 0.0005002635228022537 \\
+        lbp-3D-k\_glszm\_ZoneEntropy & 0.000500651461277459 \\
+        wavelet-LLH\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.0005008390323798259 \\
+        lbp-3D-m1\_gldm\_DependenceNonUniformityNormalized & 0.0005023835027733718 \\
+        lbp-3D-m1\_gldm\_DependenceNonUniformity & 0.0005034392853426858 \\
+        log-sigma-3-0-mm-3D\_glrlm\_ShortRunHighGrayLevelEmphasis & 0.0005046007447425929 \\
+        logarithm\_firstorder\_Energy & 0.0005048225246557926 \\
+        wavelet-HHH\_glcm\_Contrast & 0.0005071503268004211 \\
+        wavelet-HHH\_glszm\_SizeZoneNonUniformity & 0.0005073912381028556 \\
+        gradient\_gldm\_DependenceNonUniformity & 0.0005074405064105768 \\
+        log-sigma-1-0-mm-3D\_glszm\_SizeZoneNonUniformity & 0.0005075128205855838 \\
+        wavelet-HHL\_gldm\_LowGrayLevelEmphasis & 0.0005085013643488923 \\
+        wavelet-LHH\_firstorder\_Uniformity & 0.000510335085707346 \\
+        lbp-3D-k\_ngtdm\_Strength & 0.0005120891444593455 \\
+        wavelet-LHH\_gldm\_DependenceNonUniformity & 0.0005129449727119444 \\
+        wavelet-HHH\_glrlm\_GrayLevelNonUniformity & 0.000513394224758143 \\
+        wavelet-LLH\_gldm\_GrayLevelVariance & 0.0005139874633217408 \\
+        wavelet-LLH\_glrlm\_ShortRunEmphasis & 0.0005148378096828586 \\
+        exponential\_firstorder\_Skewness & 0.0005148720303827715 \\
+        lbp-3D-m2\_gldm\_DependenceNonUniformity & 0.000515455352516137 \\
+        lbp-3D-m1\_firstorder\_Mean & 0.0005158070074633593 \\
+        wavelet-LLH\_glcm\_ClusterProminence & 0.0005162906315174463 \\
+        wavelet-HLL\_ngtdm\_Strength & 0.0005165281787820026 \\
+        wavelet-HLL\_firstorder\_InterquartileRange & 0.0005176265529293666 \\
+        exponential\_gldm\_DependenceEntropy & 0.0005187195639832585 \\
+        wavelet-HLH\_glrlm\_GrayLevelNonUniformity & 0.000519234802684788 \\
+        wavelet-HLL\_glcm\_MaximumProbability & 0.00051939158382813 \\
+        wavelet-LLL\_glszm\_LowGrayLevelZoneEmphasis & 0.000524608372922732 \\
+        wavelet-HHH\_firstorder\_RobustMeanAbsoluteDeviation & 0.0005257791624585713 \\
+        lbp-3D-k\_firstorder\_10Percentile & 0.0005266253522567422 \\
+        wavelet-HHL\_glrlm\_GrayLevelNonUniformity & 0.0005299916286381872 \\
+        wavelet-HHH\_glcm\_InverseVariance & 0.0005310949080099518 \\
+        log-sigma-1-0-mm-3D\_firstorder\_RootMeanSquared & 0.0005325967362389809 \\
+        wavelet-LLL\_glszm\_SmallAreaHighGrayLevelEmphasis & 0.0005327227993370423 \\
+        lbp-3D-k\_ngtdm\_Coarseness & 0.0005333630957572192 \\
+        wavelet-HLH\_glrlm\_GrayLevelVariance & 0.000533600939700249 \\
+        wavelet-LHH\_glszm\_SizeZoneNonUniformity & 0.000535021026978162 \\
+        wavelet-HLL\_firstorder\_Energy & 0.0005352123689968076 \\
+        wavelet-LLH\_firstorder\_Uniformity & 0.0005379813409091622 \\
+        square\_gldm\_DependenceNonUniformity & 0.0005391882654583746 \\
+        wavelet-HLH\_glrlm\_LongRunEmphasis & 0.0005401803746753218 \\
+        wavelet-LHH\_firstorder\_Entropy & 0.0005409428941331876 \\
+        wavelet-LHL\_glcm\_Contrast & 0.0005418270751200399 \\
+        wavelet-LLH\_glcm\_Id & 0.0005419125856019844 \\
+        gradient\_firstorder\_RobustMeanAbsoluteDeviation & 0.0005428836015715513 \\
+        wavelet-HHL\_ngtdm\_Complexity & 0.0005431957225085998 \\
+        wavelet-HHH\_firstorder\_Kurtosis & 0.0005458626374093282 \\
+        wavelet-LLL\_glszm\_ZonePercentage & 0.000547335322463965 \\
+        wavelet-LLL\_ngtdm\_Busyness & 0.0005474996880935591 \\
+        lbp-3D-m2\_gldm\_DependenceEntropy & 0.0005475289234763032 \\
+        wavelet-HHL\_glcm\_ClusterTendency & 0.000548239262344807 \\
+        wavelet-LHH\_glszm\_SizeZoneNonUniformityNormalized & 0.000550059736930155 \\
+        wavelet-HHL\_glcm\_Idmn & 0.0005515249280252533 \\
+        original\_shape\_Sphericity & 0.0005518547068488113 \\
+        wavelet-LLH\_firstorder\_Entropy & 0.0005536083853201262 \\
+        wavelet-HLL\_gldm\_DependenceEntropy & 0.0005538060004126162 \\
+        wavelet-LLL\_gldm\_DependenceVariance & 0.0005541442763681532 \\
+        logarithm\_ngtdm\_Coarseness & 0.0005564170562299886 \\
+        wavelet-LHH\_glszm\_HighGrayLevelZoneEmphasis & 0.0005591746299254758 \\
+        wavelet-HHL\_glcm\_ClusterProminence & 0.0005599539232301132 \\
+        wavelet-HHL\_gldm\_HighGrayLevelEmphasis & 0.0005612130529690913 \\
+        wavelet-HLH\_glrlm\_GrayLevelNonUniformityNormalized & 0.0005616755645348566 \\
+        wavelet-LHL\_gldm\_DependenceNonUniformity & 0.0005622850132302805 \\
+        wavelet-HHH\_glcm\_SumSquares & 0.0005628766360733825 \\
+        wavelet-LLL\_glszm\_HighGrayLevelZoneEmphasis & 0.000563022952682927 \\
+        wavelet-LHH\_firstorder\_Median & 0.00056477345451474 \\
+        wavelet-LHL\_glszm\_ZoneEntropy & 0.0005651915465303833 \\
+        lbp-3D-m1\_firstorder\_Energy & 0.0005657882062006637 \\
+        wavelet-LLL\_glrlm\_RunVariance & 0.0005670494993880504 \\
+        wavelet-LLH\_glcm\_Contrast & 0.0005681230740417092 \\
+        wavelet-LHL\_ngtdm\_Contrast & 0.0005703306958162621 \\
+        wavelet-LHH\_glcm\_Id & 0.0005712786329978569 \\
+        wavelet-LHL\_glrlm\_GrayLevelNonUniformity & 0.0005719819244302385 \\
+        wavelet-LLH\_glcm\_DifferenceAverage & 0.0005723089908546476 \\
+        wavelet-LHH\_firstorder\_Mean & 0.0005723906742329898 \\
+        lbp-3D-k\_firstorder\_RootMeanSquared & 0.0005731985338916886 \\
+        wavelet-LHL\_glcm\_DifferenceAverage & 0.0005740979366410878 \\
+        wavelet-HHL\_gldm\_DependenceNonUniformity & 0.0005751284839029354 \\
+        log-sigma-1-0-mm-3D\_glrlm\_RunVariance & 0.0005755701758782967 \\
+        log-sigma-1-0-mm-3D\_gldm\_DependenceNonUniformityNormalized & 0.0005757313035369957 \\
+        wavelet-HHL\_glcm\_Idm & 0.0005758767123417301 \\
+        wavelet-LHL\_gldm\_LowGrayLevelEmphasis & 0.0005763326567139965 \\
+        wavelet-HHL\_glcm\_Correlation & 0.0005763572881395744 \\
+        wavelet-HHL\_glszm\_SmallAreaLowGrayLevelEmphasis & 0.0005769686820823576 \\
+        wavelet-LHH\_glszm\_LowGrayLevelZoneEmphasis & 0.0005789051075206415 \\
+        exponential\_gldm\_DependenceNonUniformity & 0.0005792407793090669 \\
+        wavelet-HLH\_glrlm\_RunVariance & 0.0005798860769938454 \\
+        wavelet-LHL\_glcm\_Idmn & 0.0005807918481517876 \\
+        wavelet-HLH\_glrlm\_LongRunHighGrayLevelEmphasis & 0.0005817688546587049 \\
+        original\_ngtdm\_Strength & 0.0005819730251051302 \\
+        wavelet-LHL\_glcm\_JointEntropy & 0.0005820307956122496 \\
+        squareroot\_ngtdm\_Coarseness & 0.0005822705394919158 \\
+        gradient\_gldm\_DependenceEntropy & 0.0005849472016973215 \\
+        wavelet-HHL\_glcm\_Contrast & 0.0005850386829512707 \\
+        wavelet-LHL\_glcm\_Idm & 0.0005859135937038371 \\
+        wavelet-HLH\_gldm\_DependenceNonUniformityNormalized & 0.0005864133934605936 \\
+        squareroot\_ngtdm\_Strength & 0.0005869410355641554 \\
+        wavelet-LHL\_glcm\_Id & 0.0005885428987938267 \\
+        wavelet-HHL\_glcm\_Id & 0.0005893657516554898 \\
+        wavelet-HHL\_glcm\_Idn & 0.0005897061998526727 \\
+        lbp-3D-m1\_firstorder\_RobustMeanAbsoluteDeviation & 0.0005915896508048865 \\
+        wavelet-LHL\_glcm\_JointEnergy & 0.0005917957769884386 \\
+        original\_ngtdm\_Coarseness & 0.0005946337824167989 \\
+        wavelet-LLH\_glcm\_Idmn & 0.0005961758477397263 \\
+        exponential\_firstorder\_Minimum & 0.0005969390123231194 \\
+        log-sigma-3-0-mm-3D\_glcm\_Correlation & 0.0005974192399832397 \\
+        wavelet-LHH\_glrlm\_GrayLevelNonUniformity & 0.0005994298451127999 \\
+        wavelet-HLH\_firstorder\_RobustMeanAbsoluteDeviation & 0.0006020503170054925 \\
+        wavelet-LHL\_glcm\_Idn & 0.0006025142892519908 \\
+        wavelet-HLH\_glszm\_ZoneVariance & 0.0006050657278759723 \\
+        wavelet-LHL\_glcm\_InverseVariance & 0.0006075931943251824 \\
+        wavelet-LHH\_gldm\_HighGrayLevelEmphasis & 0.0006076798421590513 \\
+        wavelet-HHL\_glrlm\_HighGrayLevelRunEmphasis & 0.0006077204944295583 \\
+        square\_gldm\_DependenceEntropy & 0.0006102385215686682 \\
+        wavelet-LHH\_glcm\_Correlation & 0.0006122790193937109 \\
+        wavelet-HHL\_glcm\_DifferenceAverage & 0.0006147263663860485 \\
+        wavelet-HLH\_firstorder\_Skewness & 0.0006150891929311139 \\
+        wavelet-HHL\_ngtdm\_Contrast & 0.0006163868761584579 \\
+        log-sigma-1-0-mm-3D\_glcm\_Correlation & 0.0006198085539065764 \\
+        wavelet-HLH\_firstorder\_InterquartileRange & 0.0006208629454155354 \\
+        lbp-3D-m1\_gldm\_DependenceEntropy & 0.0006322350529573984 \\
+        wavelet-LHH\_glcm\_ClusterTendency & 0.0006340040755280591 \\
+        wavelet-LHH\_glszm\_ZoneEntropy & 0.0006345254614118682 \\
+        wavelet-LHL\_glcm\_ClusterProminence & 0.000634669375562405 \\
+        wavelet-LHH\_glcm\_InverseVariance & 0.000638626982464324 \\
+        wavelet-LHL\_firstorder\_Kurtosis & 0.0006387652297372273 \\
+        wavelet-LHL\_glszm\_SmallAreaHighGrayLevelEmphasis & 0.0006387848028136209 \\
+        log-sigma-1-0-mm-3D\_firstorder\_Skewness & 0.0006390783839215469 \\
+        wavelet-LHH\_glcm\_Idmn & 0.0006428105073941336 \\
+        wavelet-LHL\_firstorder\_Entropy & 0.0006439123058883508 \\
+        wavelet-LHH\_glcm\_ClusterProminence & 0.0006439765592444706 \\
+        wavelet-LHH\_gldm\_LowGrayLevelEmphasis & 0.0006452353397478482 \\
+        original\_shape\_Maximum3DDiameter & 0.0006469156064793206 \\
+        log-sigma-1-0-mm-3D\_glcm\_ClusterTendency & 0.000650655564022473 \\
+        log-sigma-1-0-mm-3D\_glrlm\_LongRunLowGrayLevelEmphasis & 0.0006530063344983715 \\
+        wavelet-HHL\_glcm\_InverseVariance & 0.000655697815451997 \\
+        wavelet-LHH\_glcm\_Contrast & 0.0006557822183454054 \\
+        gradient\_firstorder\_90Percentile & 0.00066257253158609 \\
+        wavelet-HHH\_firstorder\_Mean & 0.0006638106434706313 \\
+        wavelet-LHL\_glcm\_Correlation & 0.0006652136942927641 \\
+        wavelet-HHH\_firstorder\_InterquartileRange & 0.0006668222415771249 \\
+        wavelet-HLL\_glrlm\_LongRunEmphasis & 0.0006676221219968653 \\
+        wavelet-LHL\_ngtdm\_Complexity & 0.0006706636636941106 \\
+        wavelet-LHH\_glcm\_DifferenceAverage & 0.000673535685506745 \\
+        logarithm\_ngtdm\_Strength & 0.0006750055914814987 \\
+        wavelet-HLH\_gldm\_DependenceVariance & 0.0006816527255544464 \\
+        original\_shape\_Maximum2DDiameterColumn & 0.0006826334773728613 \\
+        wavelet-LHL\_firstorder\_Uniformity & 0.0006844401006103032 \\
+        wavelet-HLL\_gldm\_DependenceNonUniformity & 0.000688553025922459 \\
+        wavelet-LLL\_gldm\_DependenceNonUniformity & 0.000691330897823901 \\
+        wavelet-LHH\_glcm\_Idm & 0.0006940742723544234 \\
+        wavelet-LLH\_ngtdm\_Busyness & 0.0006949137278356838 \\
+        log-sigma-3-0-mm-3D\_glcm\_ClusterProminence & 0.000697682062670332 \\
+        log-sigma-3-0-mm-3D\_glszm\_ZoneVariance & 0.0007007898130870487 \\
+        wavelet-LLH\_glrlm\_GrayLevelNonUniformity & 0.0007031456757383262 \\
+        wavelet-HHH\_firstorder\_Skewness & 0.0007036806397958498 \\
+        wavelet-HHH\_glszm\_ZoneVariance & 0.000704631659205479 \\
+        wavelet-LHL\_glcm\_SumSquares & 0.0007075257426337948 \\
+        wavelet-LHL\_gldm\_HighGrayLevelEmphasis & 0.0007076637209712215 \\
+        wavelet-LHH\_glcm\_Idn & 0.000710356562877812 \\
+        wavelet-LHH\_glszm\_GrayLevelNonUniformity & 0.0007106431949304192 \\
+        lbp-3D-m1\_firstorder\_Kurtosis & 0.000714578049156784 \\
+        wavelet-LLL\_glszm\_ZoneEntropy & 0.0007160922427863923 \\
+        wavelet-LHL\_gldm\_GrayLevelVariance & 0.0007179593589292615 \\
+        wavelet-LHL\_glcm\_ClusterTendency & 0.0007191660750723856 \\
+        log-sigma-1-0-mm-3D\_glcm\_ClusterProminence & 0.0007250637035250817 \\
+        wavelet-HLH\_firstorder\_Energy & 0.000728788361974801 \\
+        wavelet-HHL\_firstorder\_Median & 0.0007332652410765206 \\
+        wavelet-HHH\_glszm\_SmallAreaEmphasis & 0.0007419281882921366 \\
+        wavelet-HLH\_gldm\_DependenceEntropy & 0.0007439788679946217 \\
+        wavelet-HLH\_gldm\_GrayLevelVariance & 0.0007454832930600849 \\
+        lbp-3D-m1\_firstorder\_MeanAbsoluteDeviation & 0.00074942953260149 \\
+        original\_shape\_Maximum2DDiameterSlice & 0.0007496802651646416 \\
+        wavelet-HHL\_glszm\_ZoneEntropy & 0.0007534802549389039 \\
+        wavelet-HLL\_glszm\_GrayLevelNonUniformity & 0.0007556233602327599 \\
+        wavelet-HLL\_glrlm\_RunVariance & 0.000758597470921075 \\
+        gradient\_firstorder\_InterquartileRange & 0.0007667166174122422 \\
+        wavelet-HLL\_glszm\_SmallAreaLowGrayLevelEmphasis & 0.0007686703621801674 \\
+        wavelet-HLL\_glrlm\_GrayLevelNonUniformity & 0.0007695772865700523 \\
+        wavelet-LLL\_glszm\_SmallAreaEmphasis & 0.0007726721090944451 \\
+        log-sigma-1-0-mm-3D\_glrlm\_GrayLevelNonUniformity & 0.000776060054625034 \\
+        wavelet-LLL\_glrlm\_LongRunLowGrayLevelEmphasis & 0.00077678092642673 \\
+        wavelet-HLH\_firstorder\_Kurtosis & 0.0007790380331606615 \\
+        wavelet-LHL\_glcm\_ClusterShade & 0.0008020431223470241 \\
+        wavelet-HLL\_glcm\_SumSquares & 0.0008043920817225353 \\
+        wavelet-HHH\_glszm\_ZoneEntropy & 0.0008053040065467708 \\
+        logarithm\_gldm\_GrayLevelNonUniformity & 0.0008059312333682755 \\
+        lbp-3D-k\_glszm\_HighGrayLevelZoneEmphasis & 0.0008108650685582845 \\
+        wavelet-LHL\_glcm\_MaximumProbability & 0.0008130233623056246 \\
+        lbp-3D-k\_glszm\_GrayLevelNonUniformityNormalized & 0.0008139536263244431 \\
+        wavelet-HLH\_glcm\_SumSquares & 0.000814638375114973 \\
+        wavelet-HLH\_glszm\_ZoneEntropy & 0.000816001200442402 \\
+        original\_shape\_MajorAxisLength & 0.000818285991585234 \\
+        wavelet-HLL\_glcm\_ClusterTendency & 0.0008301181491945839 \\
+        squareroot\_gldm\_GrayLevelNonUniformity & 0.0008330814772253444 \\
+        original\_gldm\_GrayLevelNonUniformity & 0.0008348692306853972 \\
+        log-sigma-3-0-mm-3D\_glcm\_Imc2 & 0.0008355739924014428 \\
+        wavelet-LLH\_glrlm\_ShortRunLowGrayLevelEmphasis & 0.0008379115143864452 \\
+        wavelet-LHH\_glrlm\_HighGrayLevelRunEmphasis & 0.0008397590616985673 \\
+        lbp-3D-k\_glszm\_LowGrayLevelZoneEmphasis & 0.0008405033763714735 \\
+        wavelet-HLH\_firstorder\_Entropy & 0.0008520737381296725 \\
+        lbp-3D-k\_gldm\_DependenceNonUniformity & 0.0008712290932432088 \\
+        squareroot\_glszm\_SizeZoneNonUniformity & 0.0008749035644446494 \\
+        wavelet-HHH\_glszm\_SmallAreaHighGrayLevelEmphasis & 0.0008780785851424358 \\
+        log-sigma-1-0-mm-3D\_firstorder\_10Percentile & 0.0008908665898702336 \\
+        wavelet-LHL\_glszm\_SizeZoneNonUniformity & 0.0008958792510819794 \\
+        wavelet-HLL\_glcm\_Correlation & 0.0008991631243849439 \\
+        wavelet-HLL\_glcm\_ClusterProminence & 0.0009038435375477578 \\
+        wavelet-HLH\_firstorder\_Uniformity & 0.0009073688597239551 \\
+        log-sigma-3-0-mm-3D\_gldm\_GrayLevelNonUniformity & 0.0009076346643029135 \\
+        wavelet-HLL\_glcm\_InverseVariance & 0.0009087722335693047 \\
+        wavelet-HLL\_glcm\_Idm & 0.0009094813076792026 \\
+        log-sigma-3-0-mm-3D\_glszm\_LargeAreaLowGrayLevelEmphasis & 0.0009164748962208469 \\
+        wavelet-LLH\_gldm\_DependenceNonUniformityNormalized & 0.0009192915186248036 \\
+        wavelet-LLL\_gldm\_GrayLevelNonUniformity & 0.0009199816878589169 \\
+        lbp-3D-k\_glszm\_GrayLevelVariance & 0.0009253019865899098 \\
+        wavelet-LLH\_glszm\_GrayLevelNonUniformity & 0.0009255106167083241 \\
+        logarithm\_glszm\_SizeZoneNonUniformity & 0.0009285254494454032 \\
+        wavelet-HHL\_glszm\_SizeZoneNonUniformity & 0.0009306204204439903 \\
+        original\_glszm\_SizeZoneNonUniformity & 0.00093421577857304 \\
+        wavelet-HLL\_ngtdm\_Contrast & 0.0009355756091261195 \\
+        log-sigma-3-0-mm-3D\_glcm\_Imc1 & 0.0009364818326195403 \\
+        wavelet-HLL\_glcm\_Contrast & 0.0009365925549263086 \\
+        logarithm\_gldm\_DependenceNonUniformity & 0.0009381144699482581 \\
+        wavelet-LHH\_firstorder\_Kurtosis & 0.0009385637412183699 \\
+        original\_gldm\_DependenceNonUniformity & 0.000943703687324078 \\
+        wavelet-LHL\_glcm\_JointAverage & 0.0009468922171936838 \\
+        wavelet-HLL\_glrlm\_LongRunHighGrayLevelEmphasis & 0.0009549061772463041 \\
+        wavelet-LHH\_glrlm\_LowGrayLevelRunEmphasis & 0.0009692229575397894 \\
+        gradient\_firstorder\_Energy & 0.0009692505640927204 \\
+        squareroot\_gldm\_DependenceNonUniformity & 0.0009696916647138303 \\
+        lbp-3D-m1\_firstorder\_RootMeanSquared & 0.0009705121677376972 \\
+        wavelet-HLL\_glcm\_Idn & 0.0009720869319789631 \\
+        wavelet-HLL\_glcm\_Id & 0.000975973837842861 \\
+        wavelet-HLL\_glcm\_DifferenceAverage & 0.000993406653374852 \\
+        log-sigma-1-0-mm-3D\_glszm\_ZoneEntropy & 0.0010164539415266338 \\
+        wavelet-LHH\_glszm\_GrayLevelNonUniformityNormalized & 0.0010181738378703372 \\
+        gradient\_firstorder\_RootMeanSquared & 0.0010187088250293995 \\
+        lbp-3D-m1\_firstorder\_Variance & 0.0010225742292685885 \\
+        wavelet-LHH\_glszm\_GrayLevelVariance & 0.0010235587035839603 \\
+        wavelet-HHL\_firstorder\_Kurtosis & 0.0010254532589556746 \\
+        log-sigma-3-0-mm-3D\_glszm\_LargeAreaHighGrayLevelEmphasis & 0.0010303517302965278 \\
+        logarithm\_glszm\_GrayLevelNonUniformity & 0.0010337071988744649 \\
+        log-sigma-3-0-mm-3D\_gldm\_DependenceNonUniformityNormalized & 0.00103647304119528 \\
+        wavelet-HLL\_ngtdm\_Complexity & 0.0010481794601920045 \\
+        wavelet-HLL\_glcm\_Idmn & 0.0010490968103490134 \\
+        log-sigma-3-0-mm-3D\_glszm\_LargeAreaEmphasis & 0.001054472833920753 \\
+        original\_glszm\_GrayLevelNonUniformity & 0.0010905577394971376 \\
+        wavelet-HHL\_glszm\_ZoneVariance & 0.0011098969825133558 \\
+        squareroot\_glszm\_GrayLevelNonUniformity & 0.0011239278853386898 \\
+        lbp-3D-k\_glszm\_SizeZoneNonUniformity & 0.0011320187663331448 \\
+        wavelet-LHL\_glcm\_SumEntropy & 0.0011450597510307904 \\
+        wavelet-HLL\_glszm\_SizeZoneNonUniformity & 0.0011588466941131795 \\
+        log-sigma-1-0-mm-3D\_glszm\_GrayLevelNonUniformity & 0.001171264349404009 \\
+        log-sigma-1-0-mm-3D\_gldm\_DependenceNonUniformity & 0.001174134445801507 \\
+        wavelet-LLH\_glszm\_SmallAreaHighGrayLevelEmphasis & 0.0011770191143317256 \\
+        wavelet-LHH\_glrlm\_RunLengthNonUniformity & 0.0011940194338071089 \\
+        lbp-3D-m1\_glrlm\_LongRunHighGrayLevelEmphasis & 0.0012068038041299423 \\
+        wavelet-LHL\_glrlm\_RunLengthNonUniformity & 0.0012211702146841853 \\
+        wavelet-HLH\_glrlm\_RunLengthNonUniformity & 0.0012273351354237048 \\
+        wavelet-HLH\_glszm\_SizeZoneNonUniformity & 0.001227974634598181 \\
+        gradient\_glrlm\_LongRunHighGrayLevelEmphasis & 0.0012459329849477303 \\
+        square\_glrlm\_LongRunLowGrayLevelEmphasis & 0.0012522125218712896 \\
+        exponential\_glrlm\_LongRunLowGrayLevelEmphasis & 0.001257162808861402 \\
+        wavelet-HHH\_glrlm\_RunLengthNonUniformity & 0.001261547934515925 \\
+        gradient\_firstorder\_Mean & 0.001263262668407522 \\
+        square\_glrlm\_LongRunEmphasis & 0.0012827382042210724 \\
+        wavelet-HLH\_glszm\_GrayLevelNonUniformity & 0.0012829880812490816 \\
+        square\_glrlm\_LongRunHighGrayLevelEmphasis & 0.001288140285117921 \\
+        lbp-3D-m2\_glrlm\_LongRunHighGrayLevelEmphasis & 0.0013089137915283868 \\
+        lbp-3D-k\_glszm\_GrayLevelNonUniformity & 0.0013132477586334861 \\
+        exponential\_glrlm\_LongRunHighGrayLevelEmphasis & 0.0013242546092802046 \\
+        wavelet-HHL\_glrlm\_RunLengthNonUniformity & 0.0013587886999073399 \\
+        wavelet-LHL\_glszm\_GrayLevelNonUniformity & 0.0013594308013489844 \\
+        wavelet-LLH\_glszm\_SizeZoneNonUniformity & 0.0013759805658469394 \\
+        lbp-3D-m2\_glrlm\_LongRunEmphasis & 0.0013872532270308208 \\
+        exponential\_glrlm\_LongRunEmphasis & 0.0014139119145588528 \\
+        lbp-3D-m1\_glrlm\_LongRunEmphasis & 0.0014230631675995794 \\
+        lbp-3D-m1\_glrlm\_LongRunLowGrayLevelEmphasis & 0.0014244506149130197 \\
+        gradient\_glrlm\_LongRunLowGrayLevelEmphasis & 0.0014341766130941131 \\
+        lbp-3D-m2\_glrlm\_LongRunLowGrayLevelEmphasis & 0.0014450236687920971 \\
+        gradient\_glrlm\_LongRunEmphasis & 0.0014452672775836265 \\
+        wavelet-HLL\_glcm\_JointAverage & 0.0014507552157906204 \\
+        log-sigma-3-0-mm-3D\_gldm\_DependenceNonUniformity & 0.0015052490612015835 \\
+        log-sigma-1-0-mm-3D\_glrlm\_RunLengthNonUniformity & 0.001535135211893975 \\
+        log-sigma-3-0-mm-3D\_glrlm\_LongRunHighGrayLevelEmphasis & 0.0015379987231410248 \\
+        log-sigma-3-0-mm-3D\_glrlm\_LongRunLowGrayLevelEmphasis & 0.0015389070598904727 \\
+        log-sigma-3-0-mm-3D\_glrlm\_GrayLevelNonUniformity & 0.001580187415432534 \\
+        log-sigma-3-0-mm-3D\_glszm\_ZonePercentage & 0.001582541803216419 \\
+        lbp-3D-k\_glrlm\_GrayLevelNonUniformity & 0.0016370231861113718 \\
+        square\_glrlm\_RunVariance & 0.0016821572858572893 \\
+        logarithm\_glrlm\_GrayLevelNonUniformity & 0.0016924754215357635 \\
+        wavelet-HHL\_glszm\_GrayLevelNonUniformity & 0.0017038192485215947 \\
+        exponential\_glrlm\_RunVariance & 0.0017365187762939018 \\
+        squareroot\_glrlm\_GrayLevelNonUniformity & 0.0017402007437697317 \\
+        gradient\_glrlm\_RunVariance & 0.0017511426842714668 \\
+        log-sigma-3-0-mm-3D\_glrlm\_RunLengthNonUniformity & 0.0017859743472174187 \\
+        wavelet-LLH\_glrlm\_RunLengthNonUniformity & 0.0017937007522072451 \\
+        gradient\_firstorder\_10Percentile & 0.0018088501532191538 \\
+        wavelet-LLH\_glszm\_ZoneEntropy & 0.0018140741606264925 \\
+        square\_glrlm\_GrayLevelNonUniformity & 0.0018280313508076645 \\
+        wavelet-LLL\_glszm\_GrayLevelNonUniformity & 0.0018313870104682368 \\
+        lbp-3D-m2\_glrlm\_RunVariance & 0.0018429652241502314 \\
+        original\_glrlm\_GrayLevelNonUniformity & 0.0018447571421749286 \\
+        wavelet-LLL\_glrlm\_GrayLevelNonUniformity & 0.0018654519498221551 \\
+        lbp-3D-k\_glrlm\_RunLengthNonUniformity & 0.0018684527112191635 \\
+        gradient\_glrlm\_RunLengthNonUniformity & 0.0018849830415388277 \\
+        lbp-3D-m1\_glrlm\_GrayLevelNonUniformity & 0.0018919702298982343 \\
+        log-sigma-3-0-mm-3D\_glrlm\_LongRunEmphasis & 0.0019193858936671338 \\
+        wavelet-HLL\_glrlm\_RunLengthNonUniformity & 0.0019336171692861935 \\
+        lbp-3D-m1\_glrlm\_RunVariance & 0.001934683166735842 \\
+        lbp-3D-m2\_glrlm\_GrayLevelNonUniformity & 0.0019476975395883978 \\
+        logarithm\_glrlm\_RunLengthNonUniformity & 0.001949191585202378 \\
+        wavelet-LLL\_glrlm\_RunLengthNonUniformity & 0.0019618016933500484 \\
+        original\_glrlm\_RunLengthNonUniformity & 0.0019642452576983634 \\
+        square\_glrlm\_RunLengthNonUniformity & 0.0019717258985630726 \\
+        gradient\_glrlm\_GrayLevelNonUniformity & 0.0019781203032949728 \\
+        exponential\_glrlm\_RunLengthNonUniformity & 0.0019791564090879715 \\
+        exponential\_glrlm\_GrayLevelNonUniformity & 0.0019843263544039166 \\
+        squareroot\_glrlm\_RunLengthNonUniformity & 0.0019913267298356995 \\
+        lbp-3D-m1\_glrlm\_RunLengthNonUniformity & 0.0019992150833098095 \\
+        lbp-3D-m2\_glrlm\_RunLengthNonUniformity & 0.0020059181805340727 \\
+        gradient\_firstorder\_Median & 0.002012614051432967 \\
+        wavelet-HLL\_glcm\_Autocorrelation & 0.0020442520035203787 \\
+        wavelet-HLL\_glcm\_ClusterShade & 0.002044474612547827 \\
+        log-sigma-3-0-mm-3D\_glrlm\_RunVariance & 0.0020502116353229003 \\
+        wavelet-LLH\_gldm\_DependenceNonUniformity & 0.002057066317705382 \\
+        wavelet-LLL\_glszm\_SizeZoneNonUniformity & 0.0020975711670206004
+        \vspace{10pt}
+\end{xltabular}
+}
+\fi

@@ -1,0 +1,48 @@
+\section*{Abstract}
+
+\paragraph{Purpose} To determine the predictability of \acs{pcr} in colorectal
+tumor patients using statistical properties of associated \acs{mri} imaging data.
+Through the usage of a standardized radiomics library, beneficial radiomics 
+features for a better-than-random classification performance are determined. 
+The implementation of this setup is attempted through the sole use
+of widely available or replicable tools.
+
+\paragraph{Experimental Setup} The dataset featuring inconsistent tumor annotations
+was processed by a common semi-automatic annotation algorithm. An initial count 
+of \featureCount{} radiomics features was extracted using PyRadiomics. Each 
+feature was then assigned a weighted \enquote{importance} score, depending on 
+its contribution to a successful classification. Finally, the ideal importance 
+threshold was determined.
+
+Additionally, the possibility of favorable feature combinations was explored by
+creating groupings of related features. Models based on those groupings were
+evaluated by comparing their actual performance against their expected 
+performance. Feature combinations performing unexpectedly well were marked as 
+potentially beneficial in combination.
+
+Model performance was evaluated using a combination of balanced accuracy and 
+\acs{roc} curve metrics. Measures were taken over the average of 100 classifier
+models for any set of parameters.
+
+\paragraph{Results} A classifier model reaching a balanced
+accuracy of \num{0.697142857142857} (\SI{95}{\percent} Confidence Interval 
+[\num{0.68272882292878}, \num{0.711556891356934}]) and an AUC mean of 
+\num{0.766326530612245} (\SI{95}{\percent} Confidence Interval:
+[\num{0.7529118302973336}, \num{0.7797412309271564}]) has been constructed.
+
+Favorable groupings for increased model accuracy have been found.
+
+\paragraph{Conclusion} In concordance with similar studies, the prediction of 
+\acs{pcr} in colorectal tumor patients based on radiomics features seems 
+possible.
+
+Studies utilizing a different classification model for comparable challenges 
+consistently performed better than the \acs{rf}-based classifier used here. 
+Along with a strong difference in the amount of selected features, this result
+possibly calls the effectiveness of the feature selection algorithm introduced 
+in this thesis into question.
+
+Although feature groupings that perform unusually well together have been found
+as expected, low correlation between expected and achieved grouping performance
+points to flaws in either the evaluation of groupings or the earlier mentioned 
+weighting of feature importances.

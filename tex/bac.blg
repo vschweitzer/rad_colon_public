@@ -1,0 +1,27 @@
+[0] Config.pm:312> INFO - This is Biber 2.15
+[0] Config.pm:315> INFO - Logfile is 'bac.blg'
+[51] biber:330> INFO - === Do Dez 30, 2021, 00:25:22
+[60] Biber.pm:415> INFO - Reading 'bac.bcf'
+[125] Biber.pm:952> INFO - Found 59 citekeys in bib section 0
+[134] Biber.pm:4334> INFO - Processing section 0
+[141] Biber.pm:4523> INFO - Looking for bibtex format file 'bib.bib' for section 0
+[144] bibtex.pm:1682> INFO - LaTeX decoding ...
+[199] bibtex.pm:1494> INFO - Found BibTeX data source 'bib.bib'
+[231] Utils.pm:395> WARN - month field 'Sep' in entry 'Zorcolo2012' is not an integer - this will probably not sort properly.
+[284] Utils.pm:395> WARN - month field 'Mar' in entry 'auto_and_semiauto' is not an integer - this will probably not sort properly.
+[299] Utils.pm:395> WARN - month field 'Jul' in entry 'dl_rectal_segmentation' is not an integer - this will probably not sort properly.
+[388] Utils.pm:395> WARN - month field 'Nov' in entry 'collage' is not an integer - this will probably not sort properly.
+[390] Utils.pm:395> WARN - month field 'Oct' in entry 'random_forests_article' is not an integer - this will probably not sort properly.
+[393] Utils.pm:395> WARN - month field 'jun' in entry 'applications_and_limitations_of_radiomics' is not an integer - this will probably not sort properly.
+[527] Utils.pm:395> WARN - month field 'Oct' in entry 'nifti-1' is not an integer - this will probably not sort properly.
+[548] Utils.pm:395> WARN - Entry 'fundamentals_of_machine_learning' (bib.bib): Invalid format '24' of date field 'date' - ignoring
+[580] Utils.pm:395> WARN - Entry 'sklearn_docs' (bib.bib): Invalid format '2021-19-12' of date field 'urldate' - ignoring
+[616] Utils.pm:395> WARN - month field 'jan' in entry 'mersenne_twister' is not an integer - this will probably not sort properly.
+[620] Utils.pm:395> WARN - BibTeX subsystem: /tmp/biber_tmp_iijp/283e1cb250985c2debc501124f55eeff_19371.utf8, line 554, warning: 35 characters of junk seen at toplevel
+[661] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[661] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[661] Biber.pm:4162> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[661] Biber.pm:4168> INFO - No sort tailoring available for locale 'en-US'
+[690] bbl.pm:651> INFO - Writing 'bac.bbl' with encoding 'UTF-8'
+[751] bbl.pm:754> INFO - Output to bac.bbl
+[751] Biber.pm:128> INFO - WARNINGS: 11
